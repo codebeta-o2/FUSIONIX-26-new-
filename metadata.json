@@ -1,0 +1,6 @@
+{
+  "name": "FusioniX",
+  "description": "The elite full-featured, interactive hub for FusioniX - The Ultimate Sustainable Tech & IoT Innovation Hackathon organized by ECE & CSE(IoT), UEM Kolkata.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
