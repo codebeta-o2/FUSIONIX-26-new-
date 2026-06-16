@@ -42,12 +42,26 @@ import {
 } from 'lucide-react';
 
 // Define safe URL references to static generated assets
-const roboninjaHeroImg = "/src/assets/images/roboninja_hero_1781580759799.jpg";
-const shadowXImg = "/src/assets/images/shadow_x_1781580781018.jpg";
-const stealth07Img = "/src/assets/images/stealth_07_1781580797326.jpg";
-const nighthawkImg = "/src/assets/images/nighthawk_gold_1781580817851.jpg";
-const cyberVImg = "/src/assets/images/cyber_v_blue_1781580834832.jpg";
-const targetRobotImg = "/src/assets/images/target_robot_1781580853723.jpg";
+import roboninjaHeroImg from "./assets/images/roboninja_hero_1781580759799.jpg";
+import shadowXImg from "./assets/images/shadow_x_1781580781018.jpg";
+import stealth07Img from "./assets/images/stealth_07_1781580797326.jpg";
+import nighthawkImg from "./assets/images/nighthawk_gold_1781580817851.jpg";
+import cyberVImg from "./assets/images/cyber_v_blue_1781580834832.jpg";
+import targetRobotImg from "./assets/images/target_robot_1781580853723.jpg";
+import man1 from "./assets/images/DrAbir.jpeg";
+import man2 from "./assets/images/DrShreya.jpeg";
+import man3 from "./assets/images/AbhirajSaha.jpeg" ;
+import man4 from "./assets/images/DebdipGhosh.jpeg" ;
+import man5 from "./assets/images/ShibangiBose.jpeg";
+import man6 from "./assets/images/Subhankar.jpeg";
+import man7 from "./assets/images/Rohitaswa.jpeg" ;
+import man8 from "./assets/images/RajdebPal.jpeg" ;
+import man9 from "./assets/images/Raunak.jpeg" ;
+import man10 from "./assets/images/Moupriya.jpeg";
+import logo1 from "./assets/images/logo.png";
+import logo2 from "./assets/images/UEM-BALCK.png"; 
+import logo3 from "/src/assets/images/iem-blac.png" 
+
 
 // Type definitions for Innovation Tracks
 interface InnovationTrack {
@@ -597,7 +611,7 @@ export default function App() {
           <div style={{ textAlign: 'center', marginBottom: '20px' }}>
             <div style={{ display: 'inline-flex', padding: '12px', borderRadius: '16px', background: 'rgba(0, 255, 102, 0.03)', border: '1px solid rgba(0, 255, 102, 0.15)', marginBottom: '14px' }}>
               <img 
-                src="/src/assets/images/logo.png" 
+                src={logo1} 
                 alt="FusioniX Logo" 
                 style={{ height: '80px', width: 'auto', filter: 'drop-shadow(0 0 12px rgba(0, 255, 102, 0.45))' }} 
                 referrerPolicy="no-referrer"
@@ -768,7 +782,7 @@ export default function App() {
       <nav className="navbar" style={{ borderBottom: '1px solid rgba(0, 255, 102, 0.15)' }}>
         <a href="#home" className="nav-brand" onClick={() => { setActiveMenu('home'); setViewingSponsorsPage(false); setViewingFacultyPage(false); }}>
           <img 
-            src="/src/assets/images/logo.png" 
+            src={logo1}
             alt="FusioniX Logo" 
             style={{ height: '34px', width: 'auto', marginRight: '4px', filter: 'drop-shadow(0 0 6px rgba(0, 255, 102, 0.4))' }} 
             referrerPolicy="no-referrer"
@@ -866,12 +880,12 @@ export default function App() {
         <div className="nav-actions">
           <div className="univ-logos" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginRight: '10px' }}>
             <SmartLogo 
-              src="/src/assets/images/UEM-BALCK.png" 
+              src={logo2}
               alt="University Logo" 
               fallbackText="UEM"
             />
             <SmartLogo 
-              src="/src/assets/images/iem-blac.png" 
+              src={logo3} 
               alt="Department Logo" 
               fallbackText="ECE & CSE"
             />
@@ -1640,7 +1654,7 @@ export default function App() {
             <div className="team-card-inner">
               <div className="team-avatar-frame">
                 <SmartAvatar 
-                  src="/src/assets/images/DrAbir.jpeg" 
+                  src={man1}
                   alt="Dr. Abir Chattopadhyay" 
                   initials="AC" 
                   accentColor="var(--accent-green)"
@@ -1679,7 +1693,7 @@ export default function App() {
             <div className="team-card-inner">
               <div className="team-avatar-frame">
                 <SmartAvatar 
-                  src="/src/assets/images/DrShreya.jpeg" 
+                  src={man2}
                   alt="Prof. Dr. Shreya Nag" 
                   initials="SN" 
                   accentColor="var(--accent-green)"
@@ -1751,7 +1765,7 @@ export default function App() {
             <div className="team-card-inner">
               <div className="team-avatar-frame">
                 <SmartAvatar 
-                  src="/src/assets/images/AbhirajSaha.jpeg" 
+                  src={man3}
                   alt="Abhiraj Saha" 
                   initials="AS" 
                   accentColor="var(--accent-blue)"
@@ -1790,7 +1804,7 @@ export default function App() {
             <div className="team-card-inner">
               <div className="team-avatar-frame">
                 <SmartAvatar 
-                  src="/src/assets/images/DebdipGhosh.jpeg" 
+                  src={man4}
                   alt="Debdip Ghosh" 
                   initials="DG" 
                   accentColor="var(--accent-blue)"
@@ -1829,7 +1843,7 @@ export default function App() {
             <div className="team-card-inner">
               <div className="team-avatar-frame">
                 <SmartAvatar 
-                  src="/src/assets/images/ShibangiBose.jpeg" 
+                  src={man5} 
                   alt="Shibangi Bose" 
                   initials="SB" 
                   accentColor="var(--accent-blue)"
@@ -1874,7 +1888,7 @@ export default function App() {
             <div className="team-card-inner">
               <div className="team-avatar-frame">
                 <SmartAvatar 
-                  src="/src/assets/images/Subhankar.jpeg" 
+                  src={man6} 
                   alt="Subhankar Das Adhikary" 
                   initials="SD" 
                   accentColor="var(--accent-gold)"
@@ -1913,7 +1927,7 @@ export default function App() {
             <div className="team-card-inner">
               <div className="team-avatar-frame">
                 <SmartAvatar 
-                  src="/src/assets/images/Rohitaswa.jpeg" 
+                  src={man7}
                   alt="Rohitaswa Singha" 
                   initials="RS" 
                   accentColor="var(--accent-gold)"
@@ -1952,7 +1966,7 @@ export default function App() {
             <div className="team-card-inner">
               <div className="team-avatar-frame">
                 <SmartAvatar 
-                  src="/src/assets/images/RajdebPal.jpeg" 
+                  src={man8}
                   alt="Rajdeb Pal" 
                   initials="RP" 
                   accentColor="var(--accent-gold)"
@@ -1991,7 +2005,7 @@ export default function App() {
             <div className="team-card-inner">
               <div className="team-avatar-frame">
                 <SmartAvatar 
-                  src="/src/assets/images/Raunak.jpeg" 
+                  src={man9}
                   alt="Raunak Dasgupta" 
                   initials="RD" 
                   accentColor="var(--accent-gold)"
@@ -2030,7 +2044,7 @@ export default function App() {
             <div className="team-card-inner">
               <div className="team-avatar-frame">
                 <SmartAvatar 
-                  src="/src/assets/images/Moupriya.jpeg" 
+                  src={man10}
                   alt="Maupriya Pramanik" 
                   initials="MP" 
                   accentColor="var(--accent-gold)"
