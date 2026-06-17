@@ -2074,3 +2074,85 @@ body {
   }
 }
 
+/* Pollution Gauntlet Animations & Keyframes */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-105vh) translateX(40px);
+    opacity: 0;
+  }
+}
+
+@keyframes moveSmog {
+  0% { transform: translateX(0) scale(1); }
+  50% { transform: translateX(100px) scale(1.15); }
+  100% { transform: translateX(0) scale(1); }
+}
+
+@keyframes moveSmogReverse {
+  0% { transform: translateX(0) scale(1); }
+  50% { transform: translateX(-120px) scale(0.95); }
+  100% { transform: translateX(0) scale(1); }
+}
+
+@keyframes flashAnimation {
+  0% { opacity: 0; }
+  15% { opacity: 0.9; background-color: #d1cca0; }
+  100% { opacity: 0; }
+}
+
+@keyframes toxicPulse {
+  0% { box-shadow: 0 0 10px rgba(0, 255, 102, 0.2); }
+  50% { box-shadow: 0 0 25px rgba(0, 229, 255, 0.45); }
+  100% { box-shadow: 0 0 10px rgba(0, 255, 102, 0.2); }
+}
+
+.pollution-warning-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 42px;
+  box-sizing: border-box;
+  background: rgba(17, 8, 4, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid #ff3300;
+  color: #ff3300;
+  z-index: 10005;
+  padding: 10px 15px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(255, 50, 0, 0.35);
+  animation: pulse 1.5s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  transition: all 0.3s ease;
+}
+
+.gauntlet-fixed-trigger {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 100020;
+}
+
+@media (max-width: 768px) {
+  .gauntlet-fixed-trigger {
+    bottom: 35px;
+    left: 15px;
+    z-index: 100020;
+  }
+}
