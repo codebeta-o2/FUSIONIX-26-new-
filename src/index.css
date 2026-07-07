@@ -1795,9 +1795,9 @@ body {
 
 /* Custom Futurisic Team Card Design */
 .team-member-card {
-  background: rgba(4, 12, 7, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(4, 12, 7, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   padding: 24px;
@@ -1861,7 +1861,7 @@ body {
 .team-member-card.green:hover {
   border-color: var(--accent-green);
   box-shadow: 0 0 25px rgba(0, 255, 102, 0.25);
-  background: rgba(4, 20, 10, 0.85);
+  background: rgba(4, 20, 10, 0.45);
   transform: translateY(-5px);
 }
 .team-member-card.green:hover .team-card-corners::before,
@@ -1884,7 +1884,7 @@ body {
 .team-member-card.blue:hover {
   border-color: var(--accent-blue);
   box-shadow: 0 0 25px rgba(0, 229, 255, 0.25);
-  background: rgba(4, 15, 20, 0.85);
+  background: rgba(4, 15, 20, 0.45);
   transform: translateY(-5px);
 }
 .team-member-card.blue:hover .team-card-corners::before,
@@ -1907,7 +1907,7 @@ body {
 .team-member-card.gold:hover {
   border-color: var(--accent-gold);
   box-shadow: 0 0 25px rgba(255, 183, 3, 0.25);
-  background: rgba(20, 16, 4, 0.85);
+  background: rgba(20, 16, 4, 0.45);
   transform: translateY(-5px);
 }
 .team-member-card.gold:hover .team-card-corners::before,
@@ -1998,11 +1998,51 @@ body {
 /* Navigation logos wrapper */
 .univ-logos {
   display: flex !important;
+  align-items: center;
+}
+
+.navbar-logo-uem {
+  height: 90px !important;
+  width: 90px !important;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(0, 255, 102, 0.45));
+}
+
+.navbar-logo-iem {
+  height: 80px !important;
+  width: 80px !important;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(0, 255, 102, 0.45));
+}
+
+.nav-brand-text {
+  display: none;
 }
 
 @media (max-width: 768px) {
+  .nav-brand-text {
+    display: block !important;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-family: var(--font-display);
+    color: var(--text-primary);
+  }
+
   .univ-logos {
-    display: none !important;
+    display: flex !important;
+    gap: 8px !important;
+    margin-right: 5px !important;
+  }
+
+  .navbar-logo-uem {
+    height: 48px !important;
+    width: 48px !important;
+  }
+
+  .navbar-logo-iem {
+    height: 42px !important;
+    width: 42px !important;
   }
 }
 

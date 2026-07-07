@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Bot, 
   Cpu, 
@@ -45,7 +45,7 @@ import {
 } from 'lucide-react';
 
 // Define safe URL references to static generated assets
-import roboninjaHeroImg from "./assets/images/roboninja_hero_1781580759799.jpg";
+import roboninjaHeroImg from "./assets/images/Bg.png";
 import shadowXImg from "./assets/images/about_section_robot.png";
 import stealth07Img from "./assets/images/stealth_07_1781580797326.jpg";
 import nighthawkImg from "./assets/images/nighthawk_gold_1781580817851.jpg";
@@ -69,10 +69,11 @@ import shivam from "./assets/images/shivam.png";
 import iem from "./assets/images/iem-blac.png";
 import uem from "./assets/images/UEM-BALCK.png";
 import ankan from "./assets/images/Ankan.png";
-import prizesBannerImg from "./assets/images/50K Prize Pool.png";
+import prizesBannerImg from "./assets/images/30k.jpg";
 import introVideo from "./assets/images/intro.mp4";
-
-
+import mobileIntroVideo from "./assets/images/intro_mobil.mp4";
+import sudip from "./assets/images/sudip.jpg";
+import them from "./assets/images/THEME.png";
 // Type definitions for Innovation Tracks
 interface InnovationTrack {
   id: string;
@@ -141,15 +142,17 @@ interface SmartLogoProps {
   src: string;
   alt: string;
   fallbackText: string;
+  className?: string;
   style?: React.CSSProperties;
 }
 
-function SmartLogo({ src, alt, fallbackText, style }: SmartLogoProps) {
+function SmartLogo({ src, alt, fallbackText, className, style }: SmartLogoProps) {
   const [hasError, setHasError] = useState(false);
 
   if (hasError || !src) {
     return (
       <div 
+        className={className}
         style={{
           fontSize: '0.72rem',
           fontFamily: 'var(--font-mono)',
@@ -177,6 +180,7 @@ function SmartLogo({ src, alt, fallbackText, style }: SmartLogoProps) {
     <img 
       src={src} 
       alt={alt} 
+      className={className}
       style={{ height: '38px', width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(0, 255, 102, 0.45))', ...style }}
       onError={() => setHasError(true)}
     />
@@ -190,13 +194,20 @@ const subordinateTeams: Record<string, Array<{ name: string; role: string; email
     { name: "Sondip jana", role: "Assistant Web Developer", email: "srinjoy.dutta@uem.edu.in", initials: "SD" }
   ],
   "Rohitaswa Singha": [
-    { name: "Riddhiman Roy", role: "Lead Graphic Artist", email: "riddhiman.roy@uem.edu.in", initials: "RR" },
-    { name: "Anjali Sharma", role: "UI Illustrator", email: "anjali.sharma@uem.edu.in", initials: "AS" }
-  ],
-  "Rajdeb Pal": [
-    { name: "Sourav Das", role: "Corporate Relations Manager", email: "sourav.das@uem.edu.in", initials: "SD" },
-    { name: "Preeti Kumari", role: "Sponsor Liaison Officer", email: "preeti.kumari@uem.edu.in", initials: "PK" }
-  ],
+  { name: "Souhardya Majumder", role: "Student Coordinator", email: "", initials: "SM" },
+  { name: "Jiya Sarkar", role: "Student Coordinator", email: "", initials: "JS" },
+  { name: "Sandipan Saha", role: "Student Coordinator", email: "", initials: "SS" },
+  { name: "Debojeet Bannerjee", role: "Student Coordinator", email: "", initials: "DB" },
+  { name: "Soumi Deb Singha", role: "Student Coordinator", email: "", initials: "SDS" }
+],
+  "Rajdeb Pal":  [
+  { name: "Debarshi Kar", role: "Volunteer", email: "", initials: "DK" },
+  { name: "Subhodeep Nandy", role: "Volunteer", email: "", initials: "SN" },
+  { name: "Preyashi Dutta", role: "Volunteer", email: "", initials: "PD" },
+  { name: "Sagnik Saha", role: "Volunteer", email: "", initials: "SS" },
+  { name: "Kaustav Sarkar", role: "Volunteer", email: "", initials: "KS" },
+  { name: "Ishita Singh", role: "Volunteer", email: "", initials: "IS" }
+],
   "Raunak Dasgupta": [
     { name: "Aditya Sen", role: "Social Media Specialist", email: "aditya.sen@uem.edu.in", initials: "AS" },
     { name: "Riya Ghosh", role: "Engagement Coordinator", email: "riya.ghosh@uem.edu.in", initials: "RG" }
@@ -212,7 +223,25 @@ const subordinateTeams: Record<string, Array<{ name: string; role: string; email
   "Piyali Sen": [
     { name: "Arunima Chowdhury", role: "Public Relations Executive", email: "arunima.chowdhury@uem.edu.in", initials: "AC" },
     { name: "Rahul Bose", role: "Venue Logistics Coordinator", email: "rahul.bose@uem.edu.in", initials: "RB" }
-  ]
+  ],
+
+  "Shivam Singh":[
+  { name: "Anik Nath", role: "Volunteer", email: "", initials: "AN" },
+  { name: "Anusua Roy", role: "Volunteer", email: "", initials: "AR" },
+  { name: "Archisman Parua", role: "Volunteer", email: "", initials: "AP" },
+  { name: "Asmita Hazra", role: "Volunteer", email: "", initials: "AH" },
+  { name: "Bidisha Dutta", role: "Volunteer", email: "", initials: "BD" },
+  { name: "Bidipta Manna", role: "Volunteer", email: "", initials: "BM" },
+  { name: "Debalina Banerjee", role: "Volunteer", email: "", initials: "DB" },
+  { name: "Debayan Banerjee", role: "Volunteer", email: "", initials: "DB" },
+  { name: "Debojoyti Poddar", role: "Volunteer", email: "", initials: "DP" },
+  { name: "Ishan Ghosh", role: "Volunteer", email: "", initials: "IG" },
+  { name: "Krish Shah", role: "Volunteer", email: "", initials: "KS" },
+  { name: "Sataparna Banerjee", role: "Volunteer", email: "", initials: "SB" },
+  { name: "Sourjyodeep Das", role: "Volunteer", email: "", initials: "SD" },
+  { name: "Srijita Roy", role: "Volunteer", email: "", initials: "SR" },
+  { name: "Maupiya Pramanik", role: "Volunteer", email: "", initials: "MP" }
+]
 };
 
 function playSfx(type: 'snap' | 'destroy' | 'click') {
@@ -281,6 +310,60 @@ export default function App() {
 
   // Loading Screen & Mini-Game State
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isMobileVideo, setIsMobileVideo] = useState<boolean>(
+    typeof window !== 'undefined' ? window.innerWidth <= 768 : false
+  );
+  const introVideoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobileVideo(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (!isLoading) return;
+
+    const timer = window.setTimeout(() => {
+      setIsLoading(false);
+    }, 6000);
+
+    return () => window.clearTimeout(timer);
+  }, [isLoading]);
+
+  useEffect(() => {
+    const video = introVideoRef.current;
+    if (!video) return;
+
+    const startIntroVideo = () => {
+      video.muted = false;
+      video.volume = 1;
+      video.play().catch((err) => {
+        console.warn('Intro video autoplay was blocked by the browser. The video will still try to play on focus.', err);
+        video.muted = true;
+      });
+    };
+
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        video.play().catch(() => {});
+      }
+    };
+
+    startIntroVideo();
+
+    document.addEventListener('visibilitychange', handleVisibility);
+    window.addEventListener('focus', handleVisibility);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('focus', handleVisibility);
+    };
+  }, []);
+
   const [bypassCountdown, setBypassCountdown] = useState<number>(7);
   const [isAutoCloseActive, setIsAutoCloseActive] = useState<boolean>(true);
   const [board, setBoard] = useState<(string | null)[]>(Array(9).fill(null));
@@ -480,6 +563,14 @@ export default function App() {
   // Modals for Redesign 2 layout integration
   const [sponsorsModalOpen, setSponsorsModalOpen] = useState<boolean>(false);
   const [teamsModalOpen, setTeamsModalOpen] = useState<boolean>(false);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const y = element.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
   const [rulesModalOpen, setRulesModalOpen] = useState<boolean>(false);
   const [faqModalOpen, setFaqModalOpen] = useState<boolean>(false);
   const [gameModalOpen, setGameModalOpen] = useState<boolean>(false);
@@ -550,7 +641,7 @@ export default function App() {
   const faqData = [
     {
       q: 'Why should I join FusioniX?',
-      a: 'FusioniX is an epic 24-hour hackathon to show your skills, network with fellow engineers, and construct physical solutions for a smarter, greener, and more connected tomorrow. Participation earns elite certificates, professional mentoring, and access to a ₹50,000 cash prize pool!'
+      a: 'FusioniX is an epic 24-hour hackathon to show your skills, network with fellow engineers, and construct physical solutions for a smarter, greener, and more connected tomorrow. Participation earns elite certificates, professional mentoring, and access to a ₹30,000 cash prize pool!'
     },
     {
       q: 'Who can participate in the hackathon?',
@@ -778,11 +869,16 @@ export default function App() {
       >
         {/* Full-Screen background video */}
         <video
-          src={introVideo}
+          ref={introVideoRef}
+          key={isMobileVideo ? 'mobile' : 'desktop'}
+          src={isMobileVideo ? mobileIntroVideo : introVideo}
           autoPlay
           loop
-          muted
+          muted={false}
           playsInline
+          preload="auto"
+          volume={1}
+          onLoadedData={() => introVideoRef.current?.play().catch(() => {})}
           style={{
             position: 'absolute',
             top: 0,
@@ -792,7 +888,6 @@ export default function App() {
             objectFit: 'cover',
             zIndex: 1
           }}
-          onEnded={() => setIsLoading(false)}
         />
       </div>
     );
@@ -972,14 +1067,14 @@ export default function App() {
           transition: 'top 0.3s ease'
         }}
       >
-        <a href="#home" className="nav-brand" onClick={() => { setActiveMenu('home'); setViewingSponsorsPage(false); setViewingFacultyPage(false); }}>
+        <a href="#home" className="nav-brand" onClick={() => { setActiveMenu('home'); setViewingSponsorsPage(false); setViewingFacultyPage(false); setViewingSubordinateTeam(null); }}>
           <img 
             src={logoImg} 
             alt="FusioniX Logo" 
             style={{ height: '54px', width: 'auto', marginRight: '4px', filter: 'drop-shadow(0 0 6px rgba(0, 255, 102, 0.4))' }} 
             referrerPolicy="no-referrer"
           />
-          <h3>FusioniX</h3>
+          <h3 className="nav-brand-text">FusioniX</h3>
         </a>
 
         {/* Navigation Menu Links */}
@@ -994,7 +1089,7 @@ export default function App() {
             <a 
               href="#home" 
               className={`nav-link ${activeMenu === 'home' ? 'active nav-underlined-active' : ''}`}
-              onClick={() => { setActiveMenu('home'); setMobileMenuOpen(false); }}
+              onClick={() => { setActiveMenu('home'); setMobileMenuOpen(false); setViewingSponsorsPage(false); setViewingSubordinateTeam(null); }}
             >
               Home
             </a>
@@ -1003,7 +1098,7 @@ export default function App() {
             <a 
               href="#about" 
               className={`nav-link ${activeMenu === 'about' ? 'active nav-underlined-active' : ''}`}
-              onClick={() => { setActiveMenu('about'); setMobileMenuOpen(false); }}
+              onClick={() => { setActiveMenu('about'); setMobileMenuOpen(false); setViewingSponsorsPage(false); setViewingSubordinateTeam(null); }}
             >
               About Us
             </a>
@@ -1012,7 +1107,15 @@ export default function App() {
             <a 
               href="#timeline" 
               className={`nav-link ${activeMenu === 'timeline' ? 'active nav-underlined-active' : ''}`}
-              onClick={() => { setActiveMenu('timeline'); setMobileMenuOpen(false); }}
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveMenu('timeline');
+                setMobileMenuOpen(false);
+                setViewingSponsorsPage(false);
+                setViewingFacultyPage(false);
+                setViewingSubordinateTeam(null);
+                scrollToSection('timeline');
+              }}
             >
               Timeline
             </a>
@@ -1021,7 +1124,7 @@ export default function App() {
             <a 
               href="#prizes" 
               className={`nav-link ${activeMenu === 'prizes' ? 'active nav-underlined-active' : ''}`}
-              onClick={() => { setActiveMenu('prizes'); setMobileMenuOpen(false); }}
+              onClick={() => { setActiveMenu('prizes'); setMobileMenuOpen(false); setViewingSponsorsPage(false); setViewingSubordinateTeam(null); }}
             >
               Prizes
             </a>
@@ -1030,7 +1133,15 @@ export default function App() {
             <button 
               className="nav-link"
               style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-body)', fontSize: '1.15rem' }}
-              onClick={() => { setSponsorsModalOpen(true); setMobileMenuOpen(false); }}
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveMenu('sponsors');
+                setMobileMenuOpen(false);
+                setViewingSponsorsPage(false);
+                setViewingFacultyPage(false);
+                setViewingSubordinateTeam(null);
+                scrollToSection('sponsors');
+              }}
             >
               Sponsors
             </button>
@@ -1072,14 +1183,14 @@ export default function App() {
               src={uem}
               alt="University Logo" 
               fallbackText="UEM"
-              style={{ height: '90px', width: '90px', objectFit: 'contain' }}
+              className="navbar-logo-uem"
             />
             <div style={{ width: '1px', height: '24px', backgroundColor: 'rgba(255, 255, 255, 0.3)' }} />
             <SmartLogo 
               src={iem} 
               alt="Department Logo" 
               fallbackText="ECE & CSE"
-              style={{ height: '80px', width: '80px', objectFit: 'contain' }}
+              className="navbar-logo-iem"
             />
           </div>
 
@@ -1163,49 +1274,64 @@ export default function App() {
               <span>RETURN TO MAIN TERMINAL</span>
             </button>
 
-            <div style={{ borderBottom: '1px solid rgba(255, 183, 3, 0.25)', paddingBottom: '30px', marginBottom: '50px', textAlign: 'center' }}>
-              <span className="overline" style={{ color: 'var(--accent-gold)' }}>ACTIVE PROTOCOL DECK</span>
-              <h2 className="glow-text-gold" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '10px', textTransform: 'uppercase' }}>
-                {viewingSubordinateTeam.coordinatorName === "Subhankar Das Adhikary" ? "WEB DEVELOPMENT SQUAD" :
-                 viewingSubordinateTeam.coordinatorName === "Rohitaswa Singha" ? "GRAPHICS SQUAD" :
-                 viewingSubordinateTeam.coordinatorName === "Rajdeb Pal" ? "SPONSORSHIP SQUAD" :
-                 viewingSubordinateTeam.coordinatorName === "Raunak Dasgupta" ? "SOCIAL MEDIA SQUAD" :
-                 viewingSubordinateTeam.coordinatorName === "Maupriya Pramanik" ? "DECORATION SQUAD" :
-                 viewingSubordinateTeam.coordinatorName === "Soham Chatterjee" ? "DESIGN & UX SQUAD" :
-                 viewingSubordinateTeam.coordinatorName === "Piyali Sen" ? "PR & LOGISTICS SQUAD" : "OPERATIONAL SQUAD"}
-              </h2>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', margin: 0 }}>
-                Coordinator: <strong style={{ color: '#fff' }}>{viewingSubordinateTeam.coordinatorName}</strong>
-              </p>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px', maxWidth: '900px', margin: '0 auto' }}>
-              {viewingSubordinateTeam.members.map((member, idx) => (
-                <div 
-                  key={idx} 
-                  className="pdf-card-container"
-                  style={{ 
-                    padding: '24px', 
-                    borderRadius: '12px', 
-                    border: '1px solid var(--accent-gold)', 
-                    background: 'rgba(2, 6, 3, 0.8)',
-                    textAlign: 'center',
-                    boxShadow: '0 0 15px rgba(255, 183, 3, 0.1)'
-                  }}
-                >
-                  <h4 style={{ 
-                    fontFamily: 'var(--font-display)', 
-                    color: '#fff', 
-                    fontSize: '1.4rem', 
-                    fontWeight: 700, 
-                    margin: 0,
-                    textShadow: '0 0 8px rgba(255, 183, 3, 0.2)'
+            {(() => {
+              const isFaculty = viewingSubordinateTeam.coordinatorName === "OUR ANOTHER FACULTY";
+              return (
+                <>
+                  <div style={{ 
+                    borderBottom: isFaculty ? '1px solid rgba(0, 255, 102, 0.25)' : '1px solid rgba(255, 183, 3, 0.25)', 
+                    paddingBottom: '30px', 
+                    marginBottom: '50px', 
+                    textAlign: 'center' 
                   }}>
-                    {member.name}
-                  </h4>
-                </div>
-              ))}
-            </div>
+                    <span className="overline" style={{ color: isFaculty ? 'var(--accent-green)' : 'var(--accent-gold)' }}>
+                      {isFaculty ? "ACADEMIC INTEGRATION PROTOCOL" : "ACTIVE PROTOCOL DECK"}
+                    </span>
+                    <h2 className={isFaculty ? "glow-text-green" : "glow-text-gold"} style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '10px', textTransform: 'uppercase' }}>
+                      {viewingSubordinateTeam.coordinatorName === "Subhankar Das Adhikary" ? "WEB DEVELOPMENT SQUAD" :
+                       viewingSubordinateTeam.coordinatorName === "Rohitaswa Singha" ? "GRAPHICS SQUAD" :
+                       viewingSubordinateTeam.coordinatorName === "Rajdeb Pal" ? "SPONSORSHIP SQUAD" :
+                       viewingSubordinateTeam.coordinatorName === "Raunak Dasgupta" ? "SOCIAL MEDIA SQUAD" :
+                       viewingSubordinateTeam.coordinatorName === "Maupriya Pramanik" ? "DECORATION SQUAD" :
+                       viewingSubordinateTeam.coordinatorName === "Soham Chatterjee" ? "DESIGN & UX SQUAD" :
+                       viewingSubordinateTeam.coordinatorName === "Piyali Sen" ? "PR & LOGISTICS SQUAD" :
+                       isFaculty ? "OUR ANOTHER FACULTY" : "OPERATIONAL SQUAD"}
+                    </h2>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', margin: 0 }}>
+                      {isFaculty ? "Faculty Integrators" : <>Coordinator: <strong style={{ color: '#fff' }}>{viewingSubordinateTeam.coordinatorName}</strong></>}
+                    </p>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px', maxWidth: '900px', margin: '0 auto' }}>
+                    {viewingSubordinateTeam.members.map((member, idx) => (
+                      <div 
+                        key={idx} 
+                        className="pdf-card-container"
+                        style={{ 
+                          padding: '24px', 
+                          borderRadius: '12px', 
+                          border: isFaculty ? '1px solid var(--accent-green)' : '1px solid var(--accent-gold)', 
+                          background: 'rgba(2, 6, 3, 0.8)',
+                          textAlign: 'center',
+                          boxShadow: isFaculty ? '0 0 15px rgba(0, 255, 102, 0.15)' : '0 0 15px rgba(255, 183, 3, 0.1)'
+                        }}
+                      >
+                        <h4 style={{ 
+                          fontFamily: 'var(--font-display)', 
+                          color: '#fff', 
+                          fontSize: '1.4rem', 
+                          fontWeight: 700, 
+                          margin: 0,
+                          textShadow: isFaculty ? '0 0 8px rgba(0, 255, 102, 0.3)' : '0 0 8px rgba(255, 183, 3, 0.2)'
+                        }}>
+                          {member.name}
+                        </h4>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              );
+            })()}
           </div>
         </div>
       ) : (
@@ -1227,20 +1353,8 @@ export default function App() {
               zIndex: 0,
             }} />
             
-            {/* Dark Overlay Layer for Premium Contrast and Text Legibility */}
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              background: 'linear-gradient(to bottom, rgba(2, 6, 3, 0.72) 0%, rgba(2, 6, 3, 0.88) 100%)',
-              zIndex: 1,
-              pointerEvents: 'none'
-            }} />
-
             {/* Split Content Grid (Elevated to zIndex: 2) */}
-            <div className="army-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', alignItems: 'center', gap: '60px', width: '100%', position: 'relative', zIndex: 2 }}>
+            <div className="army-grid" style={{ position: 'relative', zIndex: 2 }}>
               <div className="hero-left">
                 <span className="overline" style={{ color: 'var(--accent-green)', letterSpacing: '3px', fontWeight: 'bold' }}>FUSIONIX'26</span>
                 <h1 className="hero-title" style={{ textTransform: 'uppercase', fontFamily: "'Orbitron', sans-serif", fontSize: 'clamp(2.5rem, 8vw, 4.8rem)', fontWeight: 900, lineHeight: 1.1, margin: '15px 0' }}>
@@ -1292,35 +1406,10 @@ export default function App() {
                   </button>
                 </div>
               </div>
-
-              {/* Pedestal Interactive Cybernet Portal (with no duplicated central image, keeping active glowing core) */}
-              <div className="hero-right">
-                <div className="pedestal-container" style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                  <div className="hologram-circle-outer"></div>
-                  <div className="hologram-circle-inner"></div>
-                  <div className="pedestal-glow"></div>
-
-                  {/* High-end Holographic Energy Core */}
-                  <div style={{
-                    width: '120px',
-                    height: '120px',
-                    borderRadius: '50%',
-                    background: 'radial-gradient(circle, rgba(0,255,102,0.4) 0%, rgba(2,6,3,0.85) 75%)',
-                    border: '2px solid #00ff66',
-                    boxShadow: '0 0 35px rgba(0,255,102,0.6), inset 0 0 15px rgba(0,255,102,0.3)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    zIndex: 10,
-                    animation: 'pulse 2s infinite'
-                  }}>
-                    <Cpu size={48} style={{ color: '#00ff66', filter: 'drop-shadow(0 0 8px #00ff66)' }} />
-                  </div>
-                </div>
-              </div>
+              {/* Empty placeholder div to occupy the right column of the grid on desktop */}
+              <div />
             </div>
 
-            {/* Countdown timer card centered at the bottom of hero - Beautiful dual-layer trapezoid shape exactly like image.png */}
             <div style={{ width: '100%', maxWidth: '1000px', margin: '60px auto 0', zIndex: 12, position: 'relative' }}>
               <div className="countdown-trapezoid-outer">
                 <div className="countdown-trapezoid-inner">
@@ -1385,12 +1474,12 @@ export default function App() {
 
     .about-image img{
       width:100%;
-      max-width:430px;
+      max-width:580px;
       height:auto;
       display:block;
       pointer-events:none;
       transition:0.3s;
-      transform: translateX(120px);
+      transform: translateX(40px);
     }
 
     /* Tablet */
@@ -1404,7 +1493,7 @@ export default function App() {
       }
 
       .about-image img{
-        max-width:340px;
+        max-width:460px;
         transform: translateX(0);
       }
     }
@@ -1435,7 +1524,7 @@ export default function App() {
       }
 
       .about-image img{
-        max-width:260px;
+        max-width:320px;
         transform: translateX(0);
       }
     }
@@ -1514,7 +1603,7 @@ export default function App() {
              ========================================== */}
           <section id="theme" style={{ width: '100%', padding: 0, position: 'relative', overflow: 'hidden' }}>
             <img 
-              src="/src/assets/images/THEME.png" 
+              src={them} 
               alt="Theme Sustainability" 
               style={{ width: '100%', height: 'auto', display: 'block' }}
               referrerPolicy="no-referrer"
@@ -1524,7 +1613,7 @@ export default function App() {
           {/* ==========================================
              PAGE 4: TIMELINE
              ========================================== */}
-          <section id="timeline" style={{ padding: '80px 8% 60px', background: 'rgba(2, 6, 3, 0.4)' }}>
+          <section id="timeline" style={{ padding: '80px 8% 60px', background: 'rgba(2, 6, 3, 0.4)', scrollMarginTop: '90px' }}>
             <div className="pdf-card-container">
               <h2 style={{ fontFamily: 'var(--font-display)', color: '#00ff66', fontSize: '2.4rem', fontWeight: 800, textTransform: 'uppercase', marginBottom: '50px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <span style={{ width: '12px', height: '12px', background: '#00ff66', borderRadius: '2px', display: 'inline-block' }}></span>
@@ -1715,7 +1804,7 @@ export default function App() {
           <section id="prizes" style={{ width: '100%', padding: 0, position: 'relative', overflow: 'hidden' }}>
             <img 
               src={prizesBannerImg} 
-              alt="50K Prize Pool" 
+              alt="30K Prize Pool" 
               style={{ width: '100%', height: 'auto', display: 'block' }}
               referrerPolicy="no-referrer"
             />
@@ -1889,7 +1978,7 @@ export default function App() {
         <h3 style={{ fontFamily: 'var(--font-display)', color: 'var(--accent-green)', letterSpacing: '1px', fontSize: '1.24rem', marginBottom: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <span>●</span> FACULTY INTEGRATORS
         </h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '30px', marginBottom: '80px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '30px', marginBottom: '30px' }}>
           {[
             {
               name: "Dr. Abir Chattopadhyay",
@@ -1909,10 +1998,10 @@ export default function App() {
               linkedin: "https://linkedin.com",
               desc: "Directing institutional resource planning, department lab integrations, and logistics coordination."
             },
-             {
+            {
               name: "Sudipta Ghosh",
               role: "Faculty Coordinator",
-              src:madam,
+              src:sudip,
               initials: "SN",
               email: "shreya.nag@uem.edu.in",
               linkedin: "https://linkedin.com",
@@ -1963,6 +2052,62 @@ export default function App() {
         </div>
 
         {/* Action Button for Additional Faculty */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginBottom: '80px' }}>
+          <button 
+            className="btn-cyber-solid"
+            onClick={() => {
+              setViewingSubordinateTeam({
+                coordinatorName: "OUR ANOTHER FACULTY",
+                coordinatorRole: "Faculty Integrator",
+                coordinatorAvatar: "",
+               members: [
+ 
+  { name: "Prof. (Dr.) Arpita Das", role: "Faculty Integrator", email: "", initials: "APD" },
+ 
+  { name: "Prof. Debanjana Ghosh", role: "Faculty Integrator", email: "", initials: "DG" },
+  { name: "Prof. Rimi Sengupta", role: "Faculty Integrator", email: "", initials: "RSG" },
+  { name: "Prof. Karunamayee Dey", role: "Faculty Integrator", email: "", initials: "KD" },
+  { name: "Prof. Sohom Chakraborty", role: "Faculty Integrator", email: "", initials: "SCH" },
+  { name: "Prof. Mandar Chakrabarti", role: "Faculty Integrator", email: "", initials: "MNC" },
+  { name: "Prof. (Dr.) Maumita Das", role: "Faculty Integrator", email: "", initials: "MMD" },
+  { name: "Prof. (Dr.) Ayan Chatterjee", role: "Faculty Integrator", email: "", initials: "AYC" },
+  { name: "Prof. (Dr.) Sudipta Ghosh", role: "Faculty Integrator", email: "", initials: "SGH" },
+  { name: "Prof. (Dr.) Subhajit Das", role: "Faculty Integrator", email: "", initials: "SBD" },
+  { name: "Prof. Prakash Banerjee", role: "Faculty Integrator", email: "", initials: "PB" },
+  { name: "Prof. (Dr.) Rijhi Dey", role: "Faculty Integrator", email: "", initials: "RJD" },
+  { name: "Prof. Somnath Garai", role: "Faculty Integrator", email: "", initials: "SG" },
+  { name: "Sanchita Sarkar", role: "Faculty Integrator", email: "", initials: "SCS" },
+  { name: "Prof. Saikat Biswas", role: "Faculty Integrator", email: "", initials: "SKB" },
+  { name: "Prof. (Dr.) Pramita Nath", role: "Faculty Integrator", email: "", initials: "PRN" },
+  { name: "Prof. (Dr.) Arpita Biswas", role: "Faculty Integrator", email: "", initials: "ARB" }
+  
+]
+              });
+              window.scrollTo({ top: 0, behavior: 'instant' });
+            }}
+            style={{
+              padding: '12px 28px',
+              fontSize: '0.85rem',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              borderRadius: '4px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              color: '#000',
+              background: 'var(--accent-green)',
+              border: 'none',
+              cursor: 'pointer',
+              boxShadow: '0 0 15px rgba(132, 236, 48, 0.3)',
+              fontFamily: 'var(--font-mono)',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            OUR ANOTHER FACULTY
+          </button>
+        </div>
+
         {/* Student Leads */}
         <h3 style={{ fontFamily: 'var(--font-display)', color: 'var(--accent-blue)', letterSpacing: '1px', fontSize: '1.24rem', marginBottom: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <span>●</span> CORE STUDENT LEADS
@@ -2048,11 +2193,11 @@ export default function App() {
           {[
             {
               name: "Subhankar Das Adhikary",
-              role: "Web Developer Exec",
+              role: "Web Developer Executive",
               src: subhankar,
               initials: "SD",
               email: "subhankardasadhikary2005@gmail.com",
-              linkedin: "https://linkedin.com/in/subhankar-das-adhikary-196144299",
+              linkedin: "https://www.linkedin.com/in/subhankar-das-adhikary-a4b555320/",
               desc: "Architecting core platform architecture, responsive system frameworks, and secure cloud handshakes."
             },
             {
@@ -2060,8 +2205,8 @@ export default function App() {
               role: "Graphics Executive",
               src: rohitaswa,
               initials: "RS",
-              email: "rohitaswasingha@gmail.com",
-              linkedin: "https://linkedin.com",
+              email: "rohitaswa.singha2024@uem.edu.in",
+              linkedin: "https://www.linkedin.com/in/rohitaswa-singha-b46ba4318/",
               desc: "Designing top tier visual interfaces, dark mode color grading schemas, vector mockups, and assets."
             },
             {
@@ -2078,26 +2223,26 @@ export default function App() {
               role: "Social Media Lead",
               src: raunak,
               initials: "RD",
-              email: "raunakdasgupta@gmail.com",
-              linkedin: "https://linkedin.com",
+              email: "raunak.dasgupta2024@uem.edu.in",
+              linkedin: "https://www.instagram.com/shivamsingh_6439?igsh=MWg4am5yd2RyYjh5bg==",
               desc: "Synchronizing community outreach broadcasts, interactive social threads, and engagement tracks."
             },
-            {
-              name: "Maupriya Pramanik",
-              role: "Decoration Lead",
-              src:maupriya,
-              initials: "MP",
-              email: "maupriyapramanik@gmail.com",
-              linkedin: "https://linkedin.com",
-              desc: "Managing offline ambient lighting blueprints, physical venue layouts, and immersive installation plans."
-            },
+            // {
+            //   name: "Maupriya Pramanik",
+            //   role: "Decoration Lead",
+            //   src:maupriya,
+            //   initials: "MP",
+            //   email: "maupriyapramanik@gmail.com",
+            //   linkedin: "https://linkedin.com",
+            //   desc: "Managing offline ambient lighting blueprints, physical venue layouts, and immersive installation plans."
+            // },
             {
               name: "Daliya Paul",
               role: "Sponsership Manager",
               src: dalia,
               initials: "SC",
-              email: "sohamchatterjee@gmail.com",
-              linkedin: "https://linkedin.com",
+              email: "Daliyapaul05@gmail.com ",
+              linkedin: "https://www.linkedin.com/in/daliya-paul-4b80393a9?utm_source=share_via&utm_content=profile&utm_medium=member_android",
               desc: "Directing user experience blueprints, high contrast layout hierarchies, and accessible flows."
             },
             {
@@ -2105,8 +2250,8 @@ export default function App() {
               role: "Decoration",
               src: shivam,
               initials: "PS",
-              email: "piyalisen@gmail.com",
-              linkedin: "https://linkedin.com",
+              email: "shivam54singh1@gmail.com ",
+              linkedin: "https://www.linkedin.com/in/shivam-singh-2638a4308?utm_source=share_via&utm_content=profile&utm_medium=member_android",
               desc: "Supervising venue micro-logistics, catering syncs, hardware kits distribution, and communications."
             },
              {
@@ -2114,8 +2259,8 @@ export default function App() {
               role: "Treasuer",
               src:ankan,
               initials: "PS",
-              email: "piyalisen@gmail.com",
-              linkedin: "https://linkedin.com",
+              email: "ankan28aug@gmail.com",
+              linkedin: " https://www.linkedin.com/in/ankan-sarkar-391005325/",
               desc: "Supervising venue micro-logistics, catering syncs, hardware kits distribution, and communications."
             }
           ].map((coord, idx) => (
@@ -2234,7 +2379,7 @@ export default function App() {
       {/* ==========================================
          PARTNERS & SPONSORS GRID
          ========================================== */}
-      <section className="benefit-rail" style={{ background: 'rgba(5, 15, 8, 0.45)' }}>
+      <section id="sponsors" className="benefit-rail" style={{ background: 'rgba(5, 15, 8, 0.45)', scrollMarginTop: '90px' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '45px' }}>
             <span className="overline">ECOSYSTEM SUPPORT</span>
