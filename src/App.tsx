@@ -70,7 +70,7 @@ import iem from "./assets/images/iem-blac.png";
 import uem from "./assets/images/UEM-BALCK.png";
 import ankan from "./assets/images/Ankan.png";
 import prizesBannerImg from "./assets/images/50K Prize Pool.png";
-import introVideo from "../assets/images/intro.mp4";
+import introVideo from "./assets/images/intro.mp4";
 
 
 // Type definitions for Innovation Tracks
