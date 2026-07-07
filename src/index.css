@@ -2156,3 +2156,399 @@ body {
     z-index: 100020;
   }
 }
+
+/* ==========================================
+   HIGH FIDELITY REDESIGN 2 PDF CUSTOM STYLES
+   ========================================== */
+
+/* Green-bordered card mimicking the PDF style */
+.pdf-card-container {
+  border: 1px solid rgba(0, 255, 102, 0.45);
+  background: rgba(3, 10, 5, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  padding: 40px;
+  box-shadow: 0 0 30px rgba(0, 255, 102, 0.08), inset 0 0 20px rgba(0, 255, 102, 0.04);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pdf-card-container:hover {
+  border-color: rgba(0, 255, 102, 0.8);
+  box-shadow: 0 0 45px rgba(0, 255, 102, 0.16), inset 0 0 25px rgba(0, 255, 102, 0.08);
+}
+
+/* Leafy/Foliage Grass typography */
+.leafy-title {
+  font-family: 'Orbitron', 'Segoe UI', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #00ff66 0%, #22c55e 35%, #15803d 70%, #a3e635 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px rgba(0, 255, 102, 0.15);
+  filter: drop-shadow(0 0 2px rgba(0, 255, 102, 0.35));
+}
+
+/* Floating leaf animation style */
+.floating-leaf-container {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+}
+
+.leaf-item {
+  position: absolute;
+  color: #22c55e;
+  opacity: 0.6;
+  filter: drop-shadow(0 0 6px rgba(34, 197, 150, 0.3));
+  animation: fallAndSway 12s linear infinite;
+}
+
+@keyframes fallAndSway {
+  0% {
+    transform: translateY(-20px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(110%) translateX(60px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Interactive Timeline Styles */
+.timeline-container-wrapper {
+  position: relative;
+  padding: 40px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.timeline-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(180px, 1fr));
+  gap: 24px;
+  min-width: 1000px;
+  position: relative;
+}
+
+.timeline-track-line {
+  position: absolute;
+  top: 25px; /* Center aligned vertically with the 50px sphere */
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  background: linear-gradient(90deg, #00ff66 0%, #22c55e 50%, rgba(255, 255, 255, 0.15) 100%);
+  z-index: 1;
+}
+
+.timeline-sphere-node {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  transition: transform 0.3s ease;
+}
+
+.timeline-sphere-node:hover {
+  transform: scale(1.05);
+}
+
+.timeline-sphere-globe {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-sphere-globe.active {
+  background: radial-gradient(circle, #020b05 20%, #00ff66 100%);
+  border: 2px solid #00ff66;
+  color: #00ff66;
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.4), inset 0 0 10px rgba(0, 255, 102, 0.3);
+}
+
+.timeline-sphere-globe.inactive {
+  background: radial-gradient(circle, #020603 40%, #1e293b 100%);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Atmospheric spin/glow for the earth globe */
+@keyframes earthRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.timeline-earth-icon {
+  transition: all 0.3s ease;
+}
+
+.timeline-sphere-globe.active .timeline-earth-icon {
+  animation: earthRotate 15s linear infinite;
+  color: #00ff66;
+  filter: drop-shadow(0 0 4px rgba(0, 255, 102, 0.8));
+}
+
+.timeline-sphere-globe.inactive .timeline-earth-icon {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.timeline-node-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.timeline-node-title {
+  color: #00ff66;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.timeline-node-title.inactive {
+  color: #94a3b8 !important;
+}
+
+.timeline-node-date {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.8rem;
+}
+
+/* Responsive vertical styles for mobile screen sizes */
+@media (max-width: 768px) {
+  .timeline-container-wrapper {
+    overflow-x: visible;
+    padding: 10px 0;
+  }
+
+  .timeline-grid-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    min-width: auto;
+    width: 100%;
+    align-items: flex-start;
+    padding-left: 15px;
+  }
+
+  .timeline-track-line {
+    top: 15px;
+    bottom: 15px;
+    left: 40px; /* Aligned vertically with center of the 50px sphere starting after padding-left */
+    right: auto;
+    width: 3px;
+    height: auto;
+    background: linear-gradient(180deg, #00ff66 0%, #22c55e 50%, rgba(255, 255, 255, 0.05) 100%);
+    transform: none;
+  }
+
+  .timeline-sphere-node {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .timeline-node-info {
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+/* Underline link effect */
+.nav-underlined-active {
+  position: relative;
+}
+
+.nav-underlined-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+}
+
+/* Style of countdown box */
+.countdown-box-layout {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 15px 10px;
+  border-radius: 12px;
+  background: rgba(4, 15, 6, 0.7);
+  border: 1px solid rgba(0, 255, 102, 0.5);
+  box-shadow: 0 0 25px rgba(0, 255, 102, 0.15), inset 0 0 10px rgba(0, 255, 102, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Responsive Countdown Trapezoid Wrapper */
+.countdown-trapezoid-outer {
+  background: #84ec30; /* Neon green border background */
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+  padding: 2px;
+  box-shadow: 0 0 35px rgba(132, 236, 48, 0.35);
+  transition: all 0.3s ease;
+}
+
+.countdown-trapezoid-inner {
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+  background: rgba(5, 12, 7, 0.95);
+  border: none;
+  box-shadow: none;
+  padding: 24px 6%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .countdown-trapezoid-outer {
+    clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
+  }
+  .countdown-trapezoid-inner {
+    clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
+    padding: 12px 3%;
+  }
+  .countdown-number {
+    font-size: clamp(1.2rem, 5vw, 1.8rem) !important;
+  }
+  .countdown-label {
+    font-size: clamp(0.55rem, 2.2vw, 0.75rem) !important;
+    letter-spacing: 0.5px !important;
+    margin-top: 2px !important;
+  }
+  .countdown-column:not(:last-child)::after {
+    top: 25%;
+    bottom: 25%;
+  }
+}
+
+.countdown-column {
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+
+.countdown-column:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 1px;
+  background: rgba(0, 255, 102, 0.25);
+}
+
+.countdown-number {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(0, 255, 102, 0.4);
+}
+
+.countdown-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+  color: var(--accent-green);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 4px;
+}
+
+/* Custom Cyber BGM Widget Styles */
+.cyber-bgm-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 50px;
+  background: rgba(3, 10, 5, 0.9);
+  border: 1px solid #84ec30;
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.15), inset 0 0 10px rgba(0, 255, 102, 0.05);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.cyber-bgm-widget:hover {
+  transform: translateY(-2px);
+  border-color: #00ff66;
+  box-shadow: 0 0 25px rgba(0, 255, 102, 0.3), inset 0 0 15px rgba(0, 255, 102, 0.1);
+}
+
+.cyber-bgm-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #84ec30;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.equalizer-bar {
+  width: 3px;
+  height: 15px;
+  background-color: #84ec30;
+  border-radius: 1px;
+  transform-origin: bottom;
+}
+
+.equalizer-bar.animating {
+  animation: bounce 1s ease-in-out infinite alternate;
+}
+
+.equalizer-bar.animating:nth-child(2) {
+  animation-delay: 0.2s;
+  animation-duration: 0.8s;
+}
+
+.equalizer-bar.animating:nth-child(3) {
+  animation-delay: 0.4s;
+  animation-duration: 1.2s;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scaleY(0.2);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+

@@ -38,29 +38,39 @@ import {
   Share2,
   BookOpen,
   GraduationCap,
-  Search
+  Search,
+  ChevronRight,
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 
 // Define safe URL references to static generated assets
-import roboninjaHeroImg from "./assets/images/roboninja_hero_1781580759799.jpg";
-import shadowXImg from "./assets/images/shadow_x_1781580781018.jpg";
-import stealth07Img from "./assets/images/stealth_07_1781580797326.jpg";
-import nighthawkImg from "./assets/images/nighthawk_gold_1781580817851.jpg";
-import cyberVImg from "./assets/images/cyber_v_blue_1781580834832.jpg";
-import targetRobotImg from "./assets/images/target_robot_1781580853723.jpg";
-import man1 from "./assets/images/DrAbir.jpeg";
-import man2 from "./assets/images/DrShreya.jpeg";
-import man3 from "./assets/images/AbhirajSaha.jpeg" ;
-import man4 from "./assets/images/DebdipGhosh.jpeg" ;
-import man5 from "./assets/images/ShibangiBose.jpeg";
-import man6 from "./assets/images/Subhankar.jpeg";
-import man7 from "./assets/images/Rohitaswa.jpeg" ;
-import man8 from "./assets/images/RajdebPal.jpeg" ;
-import man9 from "./assets/images/Raunak.jpeg" ;
-import man10 from "./assets/images/Moupriya.jpeg";
-import logo1 from "./assets/images/logo.png";
-import logo2 from "./assets/images/UEM-BALCK.png"; 
-import logo3 from "/src/assets/images/iem-blac.png" 
+const roboninjaHeroImg = "/src/assets/images/roboninja_hero_1781580759799.jpg";
+const shadowXImg = "/src/assets/images/about_section_robot.png";
+const stealth07Img = "/src/assets/images/stealth_07_1781580797326.jpg";
+const nighthawkImg = "/src/assets/images/nighthawk_gold_1781580817851.jpg";
+const cyberVImg = "/src/assets/images/cyber_v_blue_1781580834832.jpg";
+const targetRobotImg = "/src/assets/images/target_robot_1781580853723.jpg";
+const hologramEarthImg = "/src/assets/images/hologram_earth_1783313760796.jpg";
+const animes = "/src/assets/images/Animes Pharikal (1).png";
+const logoImg = "/src/assets/images/logo.png";
+const madam ="/src/assets/images/madam.png";
+const hod="/src/assets/images/HOD.png";
+const abhiraj ="/src/assets/images/abhiraj.png";
+const debdip ="/src/assets/images/debdip.png";
+const shibangi ="/src/assets/images/shibangi.png";
+const subhankar ="/src/assets/images/subhankar.png";
+const rohitaswa="/src/assets/images/rohitaswa.png";
+const rajdeb ="/src/assets/images/rajdeb.png";
+const maupriya="/src/assets/images/maupriya.png";
+const raunak="/src/assets/images/raunak.png";
+const dalia="/src/assets/images/dalia.png";
+const shivam="/src/assets/images/shivam.png";
+const iem ="/src/assets/images/iem-blac.png";
+const uem="/src/assets/images/UEM-BALCK.png";
+const ankan  ="/src/assets/images/Ankan.png";
+
+const prizesBannerImg = "/src/assets/images/50K%20Prize%20Pool.png";
 
 
 // Type definitions for Innovation Tracks
@@ -173,14 +183,105 @@ function SmartLogo({ src, alt, fallbackText, style }: SmartLogoProps) {
   );
 }
 
+const subordinateTeams: Record<string, Array<{ name: string; role: string; email: string; initials: string }>> = {
+  "Subhankar Das Adhikary": [
+    { name: "Hars Gourav", role: "Assistant Web Developer", email: "aritra.sen@uem.edu.in", initials: "AS" },
+    { name: "Vivak Kumar Shaw", role: "Assistant Web Developer", email: "srinjoy.dutta@uem.edu.in", initials: "SD" },
+    { name: "Sondip jana", role: "Assistant Web Developer", email: "srinjoy.dutta@uem.edu.in", initials: "SD" }
+  ],
+  "Rohitaswa Singha": [
+    { name: "Riddhiman Roy", role: "Lead Graphic Artist", email: "riddhiman.roy@uem.edu.in", initials: "RR" },
+    { name: "Anjali Sharma", role: "UI Illustrator", email: "anjali.sharma@uem.edu.in", initials: "AS" }
+  ],
+  "Rajdeb Pal": [
+    { name: "Sourav Das", role: "Corporate Relations Manager", email: "sourav.das@uem.edu.in", initials: "SD" },
+    { name: "Preeti Kumari", role: "Sponsor Liaison Officer", email: "preeti.kumari@uem.edu.in", initials: "PK" }
+  ],
+  "Raunak Dasgupta": [
+    { name: "Aditya Sen", role: "Social Media Specialist", email: "aditya.sen@uem.edu.in", initials: "AS" },
+    { name: "Riya Ghosh", role: "Engagement Coordinator", email: "riya.ghosh@uem.edu.in", initials: "RG" }
+  ],
+  "Maupriya Pramanik": [
+    { name: "Sohini Roy", role: "Venue Design Assistant", email: "sohini.roy@uem.edu.in", initials: "SR" },
+    { name: "Vikram Malhotra", role: "Material Logistics Executive", email: "vikram.malhotra@uem.edu.in", initials: "VM" }
+  ],
+  "Soham Chatterjee": [
+    { name: "Tamoghna Banerjee", role: "UX Researcher", email: "tamoghna.banerjee@uem.edu.in", initials: "TB" },
+    { name: "Sohini Basu", role: "Product Interaction Designer", email: "sohini.basu@uem.edu.in", initials: "SB" }
+  ],
+  "Piyali Sen": [
+    { name: "Arunima Chowdhury", role: "Public Relations Executive", email: "arunima.chowdhury@uem.edu.in", initials: "AC" },
+    { name: "Rahul Bose", role: "Venue Logistics Coordinator", email: "rahul.bose@uem.edu.in", initials: "RB" }
+  ]
+};
+
 function playSfx(type: 'snap' | 'destroy' | 'click') {
   // Sound effects removed as requested
 }
 
 export default function App() {
+  // Background sound state
+  const [isPlayingSound, setIsPlayingSound] = useState<boolean>(false);
+  const [bgAudio] = useState<HTMLAudioElement>(() => {
+    const audioObj = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3');
+    audioObj.loop = true;
+    audioObj.volume = 0.35; // Comfortable volume
+    return audioObj;
+  });
+
+  const toggleSound = () => {
+    if (isPlayingSound) {
+      bgAudio.pause();
+      setIsPlayingSound(false);
+    } else {
+      bgAudio.play().catch((err) => {
+        console.warn("Autoplay was prevented by browser. Click to retry.", err);
+      });
+      setIsPlayingSound(true);
+    }
+  };
+
+  // Auto clean up audio on unmount
+  useEffect(() => {
+    return () => {
+      bgAudio.pause();
+    };
+  }, [bgAudio]);
+
+  // Autoplay music on mount with fallback user interaction listeners to satisfy browser policies
+  useEffect(() => {
+    const startAudio = () => {
+      bgAudio.play()
+        .then(() => {
+          setIsPlayingSound(true);
+          // Clean up the fallback listeners once playback starts successfully
+          document.removeEventListener('click', startAudio);
+          document.removeEventListener('touchstart', startAudio);
+          document.removeEventListener('keydown', startAudio);
+        })
+        .catch((err) => {
+          console.warn("Autoplay blocked by browser. Music will start on next user interaction.", err);
+        });
+    };
+
+    // Attempt standard autoplay immediately on component mount
+    startAudio();
+
+    // Register interaction-driven audio trigger listeners
+    document.addEventListener('click', startAudio);
+    document.addEventListener('touchstart', startAudio);
+    document.addEventListener('keydown', startAudio);
+
+    return () => {
+      document.removeEventListener('click', startAudio);
+      document.removeEventListener('touchstart', startAudio);
+      document.removeEventListener('keydown', startAudio);
+    };
+  }, [bgAudio]);
+
   // Loading Screen & Mini-Game State
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [bypassCountdown, setBypassCountdown] = useState<number>(30);
+  const [bypassCountdown, setBypassCountdown] = useState<number>(7);
   const [isAutoCloseActive, setIsAutoCloseActive] = useState<boolean>(true);
   const [board, setBoard] = useState<(string | null)[]>(Array(9).fill(null));
   const [isPlayerTurn, setIsPlayerTurn] = useState<boolean>(true);
@@ -210,6 +311,12 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [viewingSponsorsPage, setViewingSponsorsPage] = useState<boolean>(false);
   const [viewingFacultyPage, setViewingFacultyPage] = useState<boolean>(false);
+  const [viewingSubordinateTeam, setViewingSubordinateTeam] = useState<{
+    coordinatorName: string;
+    coordinatorRole: string;
+    coordinatorAvatar: string;
+    members: Array<{ name: string; role: string; email: string; initials: string }>;
+  } | null>(null);
 
   // Filter state for innovation tracks
   const [activeFilter, setActiveFilter] = useState<'all' | 'rare' | 'epic' | 'legendary'>('all');
@@ -296,7 +403,41 @@ export default function App() {
   const [newsletterEmail, setNewsletterEmail] = useState<string>('');
   const [newsletterSubscribed, setNewsletterSubscribed] = useState<boolean>(false);
 
-  // Countdown timer for Registration Close
+  // Real-time dynamic countdown to FusioniX 2026 (Oct 23, 2026)
+  const [pdfTimeLeft, setPdfTimeLeft] = useState({
+    days: 152,
+    hours: 14,
+    minutes: 24,
+    seconds: 35
+  });
+
+  useEffect(() => {
+    const targetDate = new Date('2026-10-23T09:00:00').getTime();
+    
+    const calculateTime = () => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+      
+      if (diff <= 0) {
+        // Dynamic simulated countdown fallback in case of past dates
+        setPdfTimeLeft({ days: 152, hours: 14, minutes: 24, seconds: 35 });
+        return;
+      }
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      setPdfTimeLeft({ days, hours, minutes, seconds });
+    };
+
+    calculateTime();
+    const interval = setInterval(calculateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Countdown timer for Registration Close (legacy)
   const [timeLeft, setTimeLeft] = useState({
     hours: 71,
     minutes: 34,
@@ -304,7 +445,7 @@ export default function App() {
     ms: 99
   });
 
-  // Ticking countdown effect
+  // Ticking countdown effect (legacy)
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(prev => {
@@ -335,6 +476,13 @@ export default function App() {
 
     return () => clearInterval(timer);
   }, []);
+
+  // Modals for Redesign 2 layout integration
+  const [sponsorsModalOpen, setSponsorsModalOpen] = useState<boolean>(false);
+  const [teamsModalOpen, setTeamsModalOpen] = useState<boolean>(false);
+  const [rulesModalOpen, setRulesModalOpen] = useState<boolean>(false);
+  const [faqModalOpen, setFaqModalOpen] = useState<boolean>(false);
+  const [gameModalOpen, setGameModalOpen] = useState<boolean>(false);
 
 
 
@@ -616,204 +764,36 @@ export default function App() {
 
   if (isLoading) {
     return (
-      <div style={{
-        position: 'fixed',
-        inset: 0,
-        backgroundColor: '#020603',
-        zIndex: 9999,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontFamily: 'var(--font-sans)',
-        color: '#fff',
-        padding: '20px',
-        overflowY: 'auto'
-      }}>
-        {/* Glowing Matrix Theme grid background */}
-        <div style={{
-          position: 'absolute',
+      <div 
+        id="intro-video-container" 
+        style={{
+          position: 'fixed',
           inset: 0,
-          background: 'linear-gradient(rgba(0, 0, 0, 0.95), rgba(4, 18, 9, 0.95))',
-          backgroundImage: 'radial-gradient(ellipse at center, rgba(0, 255, 102, 0.08) 0%, rgba(0, 0, 0, 0.98) 75%)',
-          zIndex: -1
-        }}></div>
-
-        <div style={{
-          width: '100%',
-          maxWidth: '520px',
-          background: 'rgba(5, 15, 8, 0.93)',
-          border: '1px solid rgba(0, 255, 102, 0.3)',
-          borderRadius: '8px',
-          padding: '30px',
-          boxShadow: '0 0 25px rgba(0, 255, 102, 0.15)',
-          position: 'relative'
-        }}>
-          {/* Accent corners */}
-          <div style={{ position: 'absolute', top: 0, left: 0, width: '12px', height: '12px', borderTop: '2px solid var(--accent-green)', borderLeft: '2px solid var(--accent-green)' }}></div>
-          <div style={{ position: 'absolute', top: 0, right: 0, width: '12px', height: '12px', borderTop: '2px solid var(--accent-green)', borderRight: '2px solid var(--accent-green)' }}></div>
-          <div style={{ position: 'absolute', bottom: 0, left: 0, width: '12px', height: '12px', borderBottom: '2px solid var(--accent-green)', borderLeft: '2px solid var(--accent-green)' }}></div>
-          <div style={{ position: 'absolute', bottom: 0, right: 0, width: '12px', height: '12px', borderBottom: '2px solid var(--accent-green)', borderRight: '2px solid var(--accent-green)' }}></div>
-
-          <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-            <div style={{ display: 'inline-flex', padding: '12px', borderRadius: '16px', background: 'rgba(0, 255, 102, 0.03)', border: '1px solid rgba(0, 255, 102, 0.15)', marginBottom: '14px' }}>
-              <img 
-                src={logo1} 
-                alt="FusioniX Logo" 
-                style={{ height: '80px', width: 'auto', filter: 'drop-shadow(0 0 12px rgba(0, 255, 102, 0.45))' }} 
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', letterSpacing: '1px', color: '#fff', margin: '0 0 4px' }}>
-              FUSION<span className="glow-text-green">IX</span> BOOT SYSTEM
-            </h1>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-secondary)', letterSpacing: '0.5px' }}>
-              SECURE TELEMETRY NODES INITIALIZING...
-            </span>
-          </div>
-
-          {/* Interactive Tic Tac Toe Game Block */}
-          <div style={{
-            background: 'rgba(0, 0, 0, 0.4)',
-            border: '1px solid rgba(0, 255, 102, 0.15)',
-            borderRadius: '6px',
-            padding: '20px',
-            marginBottom: '20px'
-          }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-              <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-green)' }}>
-                PORT SECURITY CODES
-              </span>
-              <span style={{ fontSize: '0.72rem', background: 'rgba(0, 229, 255, 0.1)', color: '#00e5ff', padding: '3px 8px', borderRadius: '3px', fontFamily: 'var(--font-mono)' }}>
-                HACKER: {hackerScore} | SYSTEM: {systemScore}
-              </span>
-            </div>
-
-            {/* Tic Tac Toe Grid */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '10px',
-              maxWidth: '240px',
-              margin: '15px auto 20px'
-            }}>
-              {board.map((cell, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => handleCellClick(idx)}
-                  style={{
-                    aspectRatio: '1',
-                    background: 'rgba(0, 0, 0, 0.65)',
-                    border: cell 
-                      ? cell === 'X' 
-                        ? '1px solid rgba(0, 255, 102, 0.6)' 
-                        : '1px solid rgba(13, 148, 136, 0.6)'
-                      : '1px solid rgba(0, 255, 102, 0.15)',
-                    borderRadius: '6px',
-                    fontSize: '1.8rem',
-                    fontWeight: 900,
-                    fontFamily: 'var(--font-mono)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: cell || tttWinner ? 'not-allowed' : 'pointer',
-                    color: cell === 'X' ? '#00ff66' : '#00e5ff',
-                    textShadow: cell === 'X' 
-                      ? '0 0 10px rgba(0, 255, 102, 0.8)' 
-                      : cell === 'O' 
-                        ? '0 0 10px rgba(0, 229, 255, 0.8)' 
-                        : 'none',
-                    transition: 'all 0.15s ease',
-                    boxShadow: cell ? 'inset 0 0 8px rgba(0, 0, 0, 0.8)' : 'none'
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!cell && !tttWinner) {
-                      e.currentTarget.style.borderColor = 'rgba(0, 255, 102, 0.7)';
-                      e.currentTarget.style.background = 'rgba(0, 255, 102, 0.05)';
-                      e.currentTarget.style.boxShadow = '0 0 8px rgba(0, 255, 102, 0.2)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!cell && !tttWinner) {
-                      e.currentTarget.style.borderColor = 'rgba(0, 255, 102, 0.15)';
-                      e.currentTarget.style.background = 'rgba(0, 0, 0, 0.65)';
-                      e.currentTarget.style.boxShadow = 'none';
-                    }
-                  }}
-                >
-                  {cell}
-                </button>
-              ))}
-            </div>
-
-            {/* Game Message Context Terminal */}
-            <p style={{
-              fontSize: '0.8rem',
-              fontFamily: 'var(--font-mono)',
-              lineHeight: '1.4',
-              color: tttWinner === 'O' ? '#ff4f4f' : tttWinner === 'X' ? '#00ff66' : 'var(--text-secondary)',
-              minHeight: '44px',
-              textAlign: 'center',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'rgba(0, 0, 0, 0.25)',
-              borderRadius: '4px',
-              padding: '6px 14px',
-              border: '1px dashed rgba(255, 255, 255, 0.05)',
-              marginBottom: '15px'
-            }}>
-              {tttMessage}
-            </p>
-
-            <button 
-              type="button" 
-              onClick={handleResetTtt}
-              style={{
-                width: '100%',
-                background: 'rgba(255, 255, 255, 0.03)',
-                color: '#fff',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.78rem',
-                border: '1px dashed rgba(255, 255, 255, 0.15)',
-                borderRadius: '4px',
-                padding: '10px',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-                transition: 'all 0.2s'
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)'; e.currentTarget.style.borderColor = 'var(--accent-green)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)'; }}
-            >
-              <span>RESET HACK CYCLES BOARD</span>
-            </button>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', textAlign: 'center' }}>
-            <button
-              onClick={() => setIsLoading(false)}
-              className="btn-cyber-secondary"
-              style={{
-                width: '100%',
-                justifyContent: 'center',
-                border: '1px dashed rgba(0, 255, 102, 0.3)',
-                padding: '10px',
-                fontSize: '0.8rem',
-                background: 'transparent',
-                cursor: 'pointer'
-              }}
-            >
-              <span>BY-PASS SECURITY & ENTER HUB{isAutoCloseActive ? ` (${bypassCountdown}s)` : ''}</span>
-            </button>
-            <span style={{ fontSize: '0.62rem', color: 'rgba(255, 255, 255, 0.4)', fontFamily: 'var(--font-mono)' }}>
-              ECE-IoT SECURITY PARADIGM SHIELD v2.4.9
-            </span>
-          </div>
-        </div>
+          backgroundColor: '#000000',
+          zIndex: 99999,
+          overflow: 'hidden',
+          cursor: 'pointer'
+        }}
+        onClick={() => setIsLoading(false)}
+      >
+        {/* Full-Screen background video */}
+        <video
+          src="/src/assets/images/intro.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            objectFit: 'cover',
+            zIndex: 1
+          }}
+          onEnded={() => setIsLoading(false)}
+        />
       </div>
     );
   }
@@ -994,12 +974,12 @@ export default function App() {
       >
         <a href="#home" className="nav-brand" onClick={() => { setActiveMenu('home'); setViewingSponsorsPage(false); setViewingFacultyPage(false); }}>
           <img 
-            src={logo1}
+            src={logoImg} 
             alt="FusioniX Logo" 
-            style={{ height: '34px', width: 'auto', marginRight: '4px', filter: 'drop-shadow(0 0 6px rgba(0, 255, 102, 0.4))' }} 
+            style={{ height: '54px', width: 'auto', marginRight: '4px', filter: 'drop-shadow(0 0 6px rgba(0, 255, 102, 0.4))' }} 
             referrerPolicy="no-referrer"
           />
-          <span>FUSIONIX</span>
+          <h3>FusioniX</h3>
         </a>
 
         {/* Navigation Menu Links */}
@@ -1013,8 +993,8 @@ export default function App() {
           <li>
             <a 
               href="#home" 
-              className={`nav-link ${activeMenu === 'home' && !viewingSponsorsPage && !viewingFacultyPage ? 'active' : ''}`}
-              onClick={() => { setActiveMenu('home'); setMobileMenuOpen(false); setViewingSponsorsPage(false); setViewingFacultyPage(false); }}
+              className={`nav-link ${activeMenu === 'home' ? 'active nav-underlined-active' : ''}`}
+              onClick={() => { setActiveMenu('home'); setMobileMenuOpen(false); }}
             >
               Home
             </a>
@@ -1022,56 +1002,47 @@ export default function App() {
           <li>
             <a 
               href="#about" 
-              className={`nav-link ${activeMenu === 'about' && !viewingSponsorsPage && !viewingFacultyPage ? 'active' : ''}`}
-              onClick={() => { setActiveMenu('about'); setMobileMenuOpen(false); setViewingSponsorsPage(false); setViewingFacultyPage(false); }}
+              className={`nav-link ${activeMenu === 'about' ? 'active nav-underlined-active' : ''}`}
+              onClick={() => { setActiveMenu('about'); setMobileMenuOpen(false); }}
             >
-              About
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#tracks" 
-              className={`nav-link ${activeMenu === 'tracks' && !viewingSponsorsPage && !viewingFacultyPage ? 'active' : ''}`}
-              onClick={() => { setActiveMenu('tracks'); setMobileMenuOpen(false); setViewingSponsorsPage(false); setViewingFacultyPage(false); }}
-            >
-              Tracks
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#rules" 
-              className={`nav-link ${activeMenu === 'rules' && !viewingSponsorsPage && !viewingFacultyPage ? 'active' : ''}`}
-              onClick={() => { setActiveMenu('rules'); setMobileMenuOpen(false); setViewingSponsorsPage(false); setViewingFacultyPage(false); }}
-            >
-              Rules
+              About Us
             </a>
           </li>
           <li>
             <a 
               href="#timeline" 
-              className={`nav-link ${activeMenu === 'timeline' && !viewingSponsorsPage && !viewingFacultyPage ? 'active' : ''}`}
-              onClick={() => { setActiveMenu('timeline'); setMobileMenuOpen(false); setViewingSponsorsPage(false); setViewingFacultyPage(false); }}
+              className={`nav-link ${activeMenu === 'timeline' ? 'active nav-underlined-active' : ''}`}
+              onClick={() => { setActiveMenu('timeline'); setMobileMenuOpen(false); }}
             >
               Timeline
             </a>
           </li>
           <li>
             <a 
-              href="#team" 
-              className={`nav-link ${activeMenu === 'team' && !viewingSponsorsPage && !viewingFacultyPage ? 'active' : ''}`}
-              onClick={() => { setActiveMenu('team'); setMobileMenuOpen(false); setViewingSponsorsPage(false); setViewingFacultyPage(false); }}
+              href="#prizes" 
+              className={`nav-link ${activeMenu === 'prizes' ? 'active nav-underlined-active' : ''}`}
+              onClick={() => { setActiveMenu('prizes'); setMobileMenuOpen(false); }}
             >
-              Teams
+              Prizes
             </a>
           </li>
           <li>
-            <a 
-              href="#faq" 
-              className={`nav-link ${activeMenu === 'faq' && !viewingSponsorsPage && !viewingFacultyPage ? 'active' : ''}`}
-              onClick={() => { setActiveMenu('faq'); setMobileMenuOpen(false); setViewingSponsorsPage(false); setViewingFacultyPage(false); }}
+            <button 
+              className="nav-link"
+              style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-body)', fontSize: '1.15rem' }}
+              onClick={() => { setSponsorsModalOpen(true); setMobileMenuOpen(false); }}
             >
-              FAQ
-            </a>
+              Sponsors
+            </button>
+          </li>
+          <li>
+            <button 
+              className="nav-link"
+              style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-body)', fontSize: '1.15rem' }}
+              onClick={() => { setTeamsModalOpen(true); setMobileMenuOpen(false); }}
+            >
+              Teams
+            </button>
           </li>
           {mobileMenuOpen && (
             <li style={{ marginTop: '20px' }}>
@@ -1098,14 +1069,17 @@ export default function App() {
         <div className="nav-actions">
           <div className="univ-logos" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginRight: '10px' }}>
             <SmartLogo 
-              src={logo2} 
+              src={uem}
               alt="University Logo" 
               fallbackText="UEM"
+              style={{ height: '90px', width: '90px', objectFit: 'contain' }}
             />
+            <div style={{ width: '1px', height: '24px', backgroundColor: 'rgba(255, 255, 255, 0.3)' }} />
             <SmartLogo 
-              src={logo3}
+              src={iem} 
               alt="Department Logo" 
               fallbackText="ECE & CSE"
+              style={{ height: '80px', width: '80px', objectFit: 'contain' }}
             />
           </div>
 
@@ -1174,12 +1148,12 @@ export default function App() {
             </div>
           </div>
         </div>
-      ) : viewingFacultyPage ? (
+      ) : viewingSubordinateTeam ? (
         <div style={{ padding: '120px 8% 80px', minHeight: '85vh', position: 'relative' }}>
           <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
             <button
               onClick={() => {
-                setViewingFacultyPage(false);
+                setViewingSubordinateTeam(null);
                 window.scrollTo({ top: 0, behavior: 'instant' });
               }}
               className="btn-cyber-outline"
@@ -1189,100 +1163,46 @@ export default function App() {
               <span>RETURN TO MAIN TERMINAL</span>
             </button>
 
-            <div style={{ borderBottom: '1px solid rgba(0, 255, 102, 0.25)', paddingBottom: '30px', marginBottom: '50px' }}>
-              <span className="overline">AUXILIARY FACULTY REGISTRY</span>
-              <h2 className="glow-text-green" style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', marginBottom: '15px', textTransform: 'uppercase' }}>
-                FUSIONIX EXTRA BOARD OF INTEGRATORS
+            <div style={{ borderBottom: '1px solid rgba(255, 183, 3, 0.25)', paddingBottom: '30px', marginBottom: '50px', textAlign: 'center' }}>
+              <span className="overline" style={{ color: 'var(--accent-gold)' }}>ACTIVE PROTOCOL DECK</span>
+              <h2 className="glow-text-gold" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '10px', textTransform: 'uppercase' }}>
+                {viewingSubordinateTeam.coordinatorName === "Subhankar Das Adhikary" ? "WEB DEVELOPMENT SQUAD" :
+                 viewingSubordinateTeam.coordinatorName === "Rohitaswa Singha" ? "GRAPHICS SQUAD" :
+                 viewingSubordinateTeam.coordinatorName === "Rajdeb Pal" ? "SPONSORSHIP SQUAD" :
+                 viewingSubordinateTeam.coordinatorName === "Raunak Dasgupta" ? "SOCIAL MEDIA SQUAD" :
+                 viewingSubordinateTeam.coordinatorName === "Maupriya Pramanik" ? "DECORATION SQUAD" :
+                 viewingSubordinateTeam.coordinatorName === "Soham Chatterjee" ? "DESIGN & UX SQUAD" :
+                 viewingSubordinateTeam.coordinatorName === "Piyali Sen" ? "PR & LOGISTICS SQUAD" : "OPERATIONAL SQUAD"}
               </h2>
-              <p style={{ color: 'var(--text-secondary)', maxWidth: '800px', fontSize: '1.05rem', lineHeight: '1.6' }}>
-                Dedicated faculty mentors coordinating hardware setups, laboratory spaces, and regulatory compliances across the ECE and CSE departments.
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', margin: 0 }}>
+                Coordinator: <strong style={{ color: '#fff' }}>{viewingSubordinateTeam.coordinatorName}</strong>
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '25px' }}>
-              {[
-                {
-                  name: "Prof. Dr. Rajeev Chatterjee",
-                  designation: "Professor, CSE (IoT) Department",
-                  initials: "RC",
-                  color: "var(--accent-green)",
-                  desc: "Expert in internet core protocols, distributed databases, cyber-physical security, and high-performance sensor integrations.",
-                  email: "rajeev.chatterjee@uem.edu.in",
-                  linkedin: "https://linkedin.com"
-                },
-                {
-                  name: "Prof. Dr. Sandip Chandra",
-                  designation: "Associate Professor, ECE Department",
-                  initials: "SC",
-                  color: "var(--accent-blue)",
-                  desc: "Specialist in high-gain antennas, wireless smart node designs, low-power embedded software architectures, and RF telemetry systems.",
-                  email: "sandip.chandra@uem.edu.in",
-                  linkedin: "https://linkedin.com"
-                },
-                {
-                  name: "Prof. Dr. Souren Mitra",
-                  designation: "Assistant Professor, CSE Department",
-                  initials: "SM",
-                  color: "var(--accent-purple)",
-                  desc: "Specialist in edge cloud deployments, real-time sensory data streams, lightweight REST APIs, and embedded ML compilers.",
-                  email: "souren.mitra@uem.edu.in",
-                  linkedin: "https://linkedin.com"
-                },
-                {
-                  name: "Prof. Debasri Roy",
-                  designation: "Assistant Professor, ECE Department",
-                  initials: "DR",
-                  color: "var(--accent-gold)",
-                  desc: "Academic researcher specializing in analog signal processing, microelectronic sensor arrays, smart node packaging, and green hardware structures.",
-                  email: "debasri.roy@uem.edu.in",
-                  linkedin: "https://linkedin.com"
-                }
-              ].map((faculty, idx) => (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px', maxWidth: '900px', margin: '0 auto' }}>
+              {viewingSubordinateTeam.members.map((member, idx) => (
                 <div 
                   key={idx} 
-                  className="team-member-card green"
-                  style={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}
+                  className="pdf-card-container"
+                  style={{ 
+                    padding: '24px', 
+                    borderRadius: '12px', 
+                    border: '1px solid var(--accent-gold)', 
+                    background: 'rgba(2, 6, 3, 0.8)',
+                    textAlign: 'center',
+                    boxShadow: '0 0 15px rgba(255, 183, 3, 0.1)'
+                  }}
                 >
-                  <div className="team-card-corners" />
-                  <div>
-                    <div className="team-card-inner" style={{ marginBottom: '20px' }}>
-                      <div className="team-avatar-frame" style={{ borderColor: faculty.color }}>
-                        <SmartAvatar 
-                          src={`/input_file_faculty_${idx + 13}.png`} 
-                          alt={faculty.name} 
-                          initials={faculty.initials} 
-                          accentColor={faculty.color}
-                        />
-                      </div>
-                      <div>
-                        <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.15rem', fontWeight: 700, lineHeight: '1.25' }}>{faculty.name}</h4>
-                        <span style={{ color: faculty.color, fontSize: '0.8rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>{faculty.designation}</span>
-                      </div>
-                    </div>
-
-                    <p className="team-card-desc" style={{ minHeight: '90px', margin: '0 0 20px 0' }}>
-                      {faculty.desc}
-                    </p>
-                  </div>
-
-                  <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '15px', display: 'flex', gap: '8px', marginTop: 'auto' }}>
-                    <a 
-                      href={`mailto:${faculty.email}`} 
-                      title="Send Email"
-                      className="team-social-btn"
-                    >
-                      <Mail size={14} />
-                    </a>
-                    <a 
-                      href={faculty.linkedin} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      title="LinkedIn Profile"
-                      className="team-social-btn"
-                    >
-                      <Linkedin size={14} />
-                    </a>
-                  </div>
+                  <h4 style={{ 
+                    fontFamily: 'var(--font-display)', 
+                    color: '#fff', 
+                    fontSize: '1.4rem', 
+                    fontWeight: 700, 
+                    margin: 0,
+                    textShadow: '0 0 8px rgba(255, 183, 3, 0.2)'
+                  }}>
+                    {member.name}
+                  </h4>
                 </div>
               ))}
             </div>
@@ -1291,1085 +1211,521 @@ export default function App() {
       ) : (
         <>
           {/* ==========================================
-             HERO SECTION WITH CHROME ROTATING GRID
+             PAGE 1: HERO & REGISTRATION
              ========================================== */}
-          <section className="hero" id="home">
-        <div className="hero-left">
-          <span className="overline">ECE & CSE (IoT) PRESENT</span>
-          <h1 className="hero-title" style={{ textTransform: 'none' }}>
-            FUSION<span className="glow-text-green">IX</span>
-          </h1>
-          <p className="hero-desc">
-            <strong>THE ULTIMATE SUSTAINABLE TECH & IoT INNOVATION HACKATHON.</strong> <br />
-            Prototype custom integrated systems across multi-competitive domains. Build hardware and software designs for a smarter, greener, and more connected tomorrow.
-          </p>
-
-          <div className="hero-btn-group" style={{ flexWrap: 'wrap', gap: '15px' }}>
-            <a 
-              href="https://unstop.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-cyber-solid"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}
-              onClick={(e) => {
-                e.preventDefault();
-                setShowScholarSuggestionModal(true);
-              }}
-            >
-              <span>REGISTER NOW</span>
-              <ArrowRight size={18} />
-            </a>
-            <button 
-              onClick={() => {
-                handleResetTtt();
-                setIsLoading(true);
-              }}
-              className="btn-cyber-outline"
-              style={{ 
-                display: 'inline-flex', 
-                alignItems: 'center', 
-                gap: '8px', 
-                padding: '12px 20px', 
-                background: 'rgba(0, 255, 102, 0.04)',
-                borderColor: 'rgba(0, 255, 102, 0.45)',
-                color: 'var(--accent-green)'
-              }}
-              title="Re-open Port Decrypt Security Code Game"
-            >
-              <Gamepad2 size={16} />
-              <span>PLAY CODES GAME</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Robot platform and telemetry details */}
-        <div className="hero-right">
-          <div className="pedestal-container">
-            <div className="hologram-circle-outer"></div>
-            <div className="hologram-circle-inner"></div>
-            <div className="pedestal-glow"></div>
-
-            <img 
-              src={roboninjaHeroImg} 
-              className="hero-robot-image" 
-              alt="Holographic Mascot Guarding Node" 
-              referrerPolicy="no-referrer"
-            />
-
-            {/* Floating Telemetry Metric Overlays */}
-            <div className="floating-stat-panel panel-stat-1" style={{ width: '220px' }}>
-              <div className="floating-icon">
-                <Award size={20} className="glow-text-green" />
-              </div>
-              <div className="floating-info">
-                <span className="floating-val">₹50,000</span>
-                <span className="floating-lbl">Grand Cash Prize Pool</span>
-              </div>
-            </div>
-
-            <div className="floating-stat-panel panel-stat-2" style={{ width: '230px' }}>
-              <div className="floating-icon">
-                <Activity size={20} style={{ color: '#00ff66' }} />
-              </div>
-              <div className="floating-info">
-                <span className="floating-lbl">REGISTRATION CLOSING</span>
-                <span className="timer-text">
-                  {timeLeft.hours.toString().padStart(2, '0')}:
-                  {timeLeft.minutes.toString().padStart(2, '0')}:
-                  {timeLeft.seconds.toString().padStart(2, '0')}
-                  <span style={{ fontSize: '0.8rem', opacity: 0.8 }} className="glow-text-green">.{timeLeft.ms.toString().padStart(2, '0')}</span>
-                </span>
-              </div>
-            </div>
-
-            <div className="floating-stat-panel panel-stat-3">
-              <div className="floating-icon">
-                <Calendar size={20} style={{ color: '#ffb703' }} />
-              </div>
-              <div className="floating-info">
-                <span className="floating-val">24 HOURS</span>
-                <span className="floating-lbl">Hackathon Sprint</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ==========================================
-         ABOUT THE HACKATHON
-         ========================================== */}
-      <section className="benefit-rail" id="about" style={{ background: 'rgba(4, 12, 7, 0.8)', borderTop: '1px solid rgba(0, 255, 102, 0.1)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px 15px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '30px', textAlign: 'center', marginBottom: '50px' }}>
-            <div>
-              <span className="overline">EVENT OVERVIEW</span>
-              <h2 className="collection-main-title" style={{ fontSize: 'clamp(1.6rem, 6vw, 2.8rem)', wordBreak: 'break-word' }}>TRANSFORM IDEAS TO HARDWARE</h2>
-            </div>
-          </div>
-
-          <div className="army-grid" style={{ alignItems: 'center' }}>
-            <div>
-              <div className="stat-box" style={{ width: '100%', marginBottom: '20px', display: 'block', padding: 'clamp(15px, 5vw, 30px)' }}>
-                <h3 className="benefit-title" style={{ color: 'var(--accent-green)', marginBottom: '15px' }}>ORGANIZED BY DEPARTMENTS OF ECE & CSE (IoT)</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.7' }}>
-                  FusioniX, hosted at the University of Engineering & Management, is the paramount platform where developers build physical software-integrated blueprints. With no fixed stream limitations, teams pitch, map components, draft wiring diagrams, write firmware logic, and demonstrate physical models during real rounds.
-                </p>
-                <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '25px' }}>
-                  <span style={{ background: 'rgba(0, 255, 102, 0.08)', border: '1px solid var(--accent-green)', padding: '5px 12px', borderRadius: '4px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)' }}>IoT Systems</span>
-                  <span style={{ background: 'rgba(0, 229, 255, 0.08)', border: '1px solid var(--accent-blue)', padding: '5px 12px', borderRadius: '4px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)' }}>Sustainable Tech</span>
-                  <span style={{ background: 'rgba(255, 183, 3, 0.08)', border: '1px solid var(--accent-gold)', padding: '5px 12px', borderRadius: '4px', fontSize: '0.82rem', fontFamily: 'var(--font-mono)' }}>Hardware Prototype</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Event Core specs column */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <div className="stat-box" style={{ background: 'rgba(4, 10, 6, 0.5)' }}>
-                <div className="stat-icon">
-                  <MapPin size={22} style={{ color: 'var(--accent-green)' }} />
-                </div>
-                <div className="stat-content">
-                  <span style={{ fontWeight: 'bold', color: '#fff', fontSize: '1.1rem' }}>GRAND FINALE VENUE</span>
-                  <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>University of Engineering & Management, Newtown Campus, Kolkata - 700160</span>
-                </div>
-              </div>
-
-              <div className="stat-box" style={{ background: 'rgba(4, 10, 6, 0.5)' }}>
-                <div className="stat-icon">
-                  <FlameKindling size={22} style={{ color: 'var(--accent-blue)' }} />
-                </div>
-                <div className="stat-content">
-                  <span style={{ fontWeight: 'bold', color: '#fff', fontSize: '1.1rem' }}>UNRESTRICTED ACCESS</span>
-                  <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Comprehensive kit utility setup. Standard 24Hr power backup nodes with high velocity internet support.</span>
-                </div>
-              </div>
-
-              <div className="stat-box" style={{ background: 'rgba(4, 10, 6, 0.5)' }}>
-                <div className="stat-icon">
-                  <Coins size={22} style={{ color: 'var(--accent-gold)' }} />
-                </div>
-                <div className="stat-content">
-                  <span style={{ fontWeight: 'bold', color: '#fff', fontSize: '1.1rem' }}>AFFORDABLE FEE</span>
-                  <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Standard 400 INR team fee, fully covering dynamic meal services (Breakfast, Lunch, Dinner, Drinks)</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ==========================================
-          RAPID AI CO-PILOT IDEATION LAUNCHER (NEW)
-          ========================================== */}
-      <section 
-        id="rapid-ai-ideation" 
-        style={{ 
-          background: 'rgba(2, 6, 3, 0.95)', 
-          borderTop: '1px solid rgba(0, 255, 102, 0.12)', 
-          borderBottom: '1px solid rgba(0, 255, 102, 0.12)', 
-          padding: '80px 8% 80px',
-          position: 'relative'
-        }}
-      >
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', textAlign: 'center', marginBottom: '45px' }}>
-            <div>
-              <span className="overline" style={{ color: 'var(--accent-blue)', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                <Sparkles size={14} style={{ color: 'var(--accent-blue)' }} /> DUAL-NODE AI COPILOT LAUNCHER
-              </span>
-              <h2 className="collection-main-title" style={{ fontSize: 'clamp(1.8rem, 6vw, 2.6rem)', marginTop: '10px', wordBreak: 'break-word' }}>
-                LAUNCH YOUR IDEA DIRECTLY TO CHATGPT & PERPLEXITY
-              </h2>
-              <p style={{ color: 'var(--text-secondary)', maxWidth: '800px', margin: '15px auto 0 auto', fontSize: '1.02rem', lineHeight: '1.6' }}>
-                Write your key sustainability or IoT hackathon concept below. Our terminal will compile a balanced expert engineering prompt, write it automatically to your clipboard, and launch queries across ChatGPT and Perplexity in two new tabs to discover new features and implementation formulas!
-              </p>
-            </div>
-          </div>
-
-          <div className="army-grid" style={{ gap: '30px', alignItems: 'flex-start' }}>
-            {/* Input Desk Card */}
-            <div 
-              className="stat-box" 
-              style={{ 
-                width: '100%', 
-                padding: 'clamp(15px, 5vw, 30px)', 
-                display: 'block', 
-                background: 'rgba(4, 12, 7, 0.7)', 
-                border: '1px solid rgba(0, 229, 255, 0.15)',
-                borderRadius: '8px',
-                boxShadow: '0 4px 30px rgba(0, 0, 0, 0.3)'
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px', flexWrap: 'wrap', gap: '10px' }}>
-                <span style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--accent-blue)', display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'var(--font-mono)' }}>
-                  <Cpu size={16} /> ENTER PROJECT CONCEPT & REQUISITES
-                </span>
-                <span className="badge-rare" style={{ fontSize: '0.68rem', padding: '2px 8px' }}>ACTIVE ROUTER</span>
-              </div>
-
-              <textarea
-                value={quickKeyIdea}
-                onChange={(e) => setQuickKeyIdea(e.target.value)}
-                placeholder="Describe your project idea in detail (e.g., 'An intelligent automated solar-panel cleaner with dust-density optical sensors, driven by an ESP32 microcontroller with power-saving deep sleep intervals and rain-harvesting feedback loops...')"
-                style={{
-                  width: '100%',
-                  height: '140px',
-                  background: '#020603',
-                  border: '1px solid rgba(0, 229, 255, 0.25)',
-                  borderRadius: '4px',
-                  padding: '12px',
-                  color: '#fff',
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '0.93rem',
-                  lineHeight: '1.5',
-                  resize: 'none',
-                  outline: 'none',
-                  boxSizing: 'border-box',
-                  marginBottom: '20px'
-                }}
-              />
-
-              {/* Toast response message inside card */}
-              {showCopiedToast && (
-                <div style={{
-                  background: 'rgba(0, 229, 255, 0.08)',
-                  border: '1px solid var(--accent-blue)',
-                  borderRadius: '4px',
-                  padding: '12px',
-                  color: '#00e5ff',
-                  fontSize: '0.85rem',
-                  fontFamily: 'var(--font-mono)',
-                  marginBottom: '15px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  animation: 'fadeIn 0.3s ease-out'
-                }}>
-                  <CheckCircle2 size={16} style={{ color: 'var(--accent-blue)' }} />
-                  <span>🚀 Prompt generated, written to clipboard, and dual AI tabs initiated! Allow popups if tabs did not open.</span>
-                </div>
-              )}
-
-              {/* Submit triggers */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
-                <button
-                  onClick={() => {
-                    if (!quickKeyIdea.trim()) {
-                      alert("Please describe your key idea first!");
-                      return;
-                    }
-                    
-                    const pText = `Please review my sustainable IoT hackathon project: "${quickKeyIdea}". 
-                    
-1. Recommend 3 brilliant, high-impact new features that I can add to maximize my innovation score/novelty score.
-2. Provide a step-by-step technical execution strategy (which microcontrollers, sensors, power modules, and precise system flow map to implement).`;
-
-                    try {
-                      navigator.clipboard.writeText(pText);
-                    } catch (err) {
-                      // Clipboard fallback
-                    }
-
-                    setShowCopiedToast(true);
-                    setTimeout(() => setShowCopiedToast(false), 9000);
-
-                    // Dual tab windows launch
-                    const chatGptTab = `https://chatgpt.com/?q=${encodeURIComponent(pText)}`;
-                    const perplexityTab = `https://www.perplexity.ai/?q=${encodeURIComponent(pText)}`;
-                    
-                    window.open(chatGptTab, '_blank');
-                    setTimeout(() => {
-                      window.open(perplexityTab, '_blank');
-                    }, 400);
-                  }}
-                  className="btn-cyber-solid"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '10px',
-                    background: 'var(--accent-blue)',
-                    color: '#01090f',
-                    border: 'none',
-                    fontWeight: '800',
-                    width: '100%',
-                    padding: '14px',
-                    fontSize: '0.9rem',
-                    cursor: 'pointer',
-                    boxShadow: '0 0 15px rgba(0, 229, 255, 0.3)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px'
-                  }}
-                >
-                  <ExternalLink size={16} />
-                  <span>Launch Dual-AI Review (ChatGPT & Perplexity)</span>
-                </button>
-
-                {/* Individual Fallbacks if Popup Blocker Blocks */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginTop: '5px' }}>
-                  <button
-                    onClick={() => {
-                      if (!quickKeyIdea.trim()) {
-                        alert("Please describe your key idea first!");
-                        return;
-                      }
-                      const pText = `Recommend new features and code execution for my hackathon project: "${quickKeyIdea}"`;
-                      window.open(`https://chatgpt.com/?q=${encodeURIComponent(pText)}`, '_blank');
-                    }}
-                    style={{
-                      background: 'rgba(255,255,255,0.06)',
-                      border: '1px solid rgba(255,255,255,0.15)',
-                      color: '#fff',
-                      fontSize: '0.78rem',
-                      fontFamily: 'var(--font-mono)',
-                      padding: '10px',
-                      borderRadius: '4px',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '6px'
-                    }}
-                  >
-                    <span>ChatGPT Tab</span>
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      if (!quickKeyIdea.trim()) {
-                        alert("Please describe your key idea first!");
-                        return;
-                      }
-                      const pText = `Recommend new features and code execution for my hackathon project: "${quickKeyIdea}"`;
-                      window.open(`https://www.perplexity.ai/?q=${encodeURIComponent(pText)}`, '_blank');
-                    }}
-                    style={{
-                      background: 'rgba(0, 229, 255, 0.04)',
-                      border: '1px solid rgba(0, 229, 255, 0.15)',
-                      color: 'var(--accent-blue)',
-                      fontSize: '0.78rem',
-                      fontFamily: 'var(--font-mono)',
-                      padding: '10px',
-                      borderRadius: '4px',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '6px'
-                    }}
-                  >
-                    <span>Perplexity Tab</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Explanations Node Panel */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <div 
-                className="stat-box" 
-                style={{ 
-                  background: 'rgba(2, 6, 3, 0.5)', 
-                  border: '1px solid rgba(0, 255, 102, 0.08)',
-                  borderRadius: '8px',
-                  padding: '20px',
-                  display: 'flex',
-                  gap: '15px'
-                }}
-              >
-                <div style={{
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  borderRadius: '50%',
-                  width: '40px',
-                  height: '40px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0
-                }}>
-                  <Bot size={20} style={{ color: '#fff' }} />
-                </div>
-                <div>
-                  <h4 style={{ color: '#fff', fontSize: '1rem', fontWeight: 'bold', margin: '0 0 5px 0', fontFamily: 'var(--font-mono)' }}>NODE 01: CHATGPT FEATURE SYNERGY</h4>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', margin: 0, lineHeight: '1.5' }}>
-                    Analyzes your core hackathon design to discover missing sensors, unique telemetry loops, and creative software elements. It answers <strong>what new features you can add</strong> to outclass conventional solutions.
-                  </p>
-                </div>
-              </div>
-
-              <div 
-                className="stat-box" 
-                style={{ 
-                  background: 'rgba(2, 6, 3, 0.5)', 
-                  border: '1px solid rgba(0, 255, 102, 0.08)',
-                  borderRadius: '8px',
-                  padding: '20px',
-                  display: 'flex',
-                  gap: '15px'
-                }}
-              >
-                <div style={{
-                  background: 'rgba(0, 229, 255, 0.08)',
-                  borderRadius: '50%',
-                  width: '40px',
-                  height: '40px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0
-                }}>
-                  <Search size={20} style={{ color: 'var(--accent-blue)' }} />
-                </div>
-                <div>
-                  <h4 style={{ color: 'var(--accent-blue)', fontSize: '1rem', fontWeight: 'bold', margin: '0 0 5px 0', fontFamily: 'var(--font-mono)' }}>NODE 02: PERPLEXITY LIVE RE-SEARCH</h4>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', margin: 0, lineHeight: '1.5' }}>
-                    Performs a real-time crawl to fetch patents, existing products, and hardware references. It answers <strong>how to execute and implement your design</strong> with modern chipsets, avoiding copyright traps.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ==========================================
-         AI MULTI-AGENT SWARM IDEA CROSS-REFERENCER
-         ========================================== */}
-      <div id="swarm-copilot" style={{ display: 'none' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
-          
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', textAlign: 'center', marginBottom: '40px' }}>
-            <div>
-              <span className="overline" style={{ color: 'var(--accent-blue)', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                <Bot size={14} style={{ color: 'var(--accent-blue)' }} /> SWARM MULTI-AGENT VALIDATION
-              </span>
-              <h2 className="collection-main-title" style={{ fontSize: '2.5rem', marginTop: '10px' }}>COLLECTIVE INTELLIGENCE BENCH</h2>
-              <p style={{ color: 'var(--text-secondary)', maxWidth: '750px', margin: '15px auto 0 auto', fontSize: '1.05rem', lineHeight: '1.6' }}>
-                Type your hardware or sustainability prototype idea below. Instantly cross-reference across ChatGPT, Gemini, Claude, DeepSeek, and Perplexity. Determine saturated market vectors, discover innovative invention channels, and get step-by-step circuit recipes.
-              </p>
-            </div>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '40px', alignItems: 'flex-start' }} className="army-grid">
+          <section className="hero" id="home" style={{ position: 'relative', overflow: 'hidden', padding: '120px 8% 60px', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            {/* Robot Image Background Layer (Full Screen Width, behind the section content) */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              backgroundImage: `url(${roboninjaHeroImg})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center 20%',
+              zIndex: 0,
+            }} />
             
-            {/* Input Workspace Panel */}
-            <div className="stat-box" style={{ width: '100%', padding: '30px', display: 'block', height: '100%', background: 'rgba(2, 6, 3, 0.65)', border: '1px solid rgba(0, 255, 102, 0.15)', position: 'relative' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                <h3 className="benefit-title" style={{ fontSize: '1.2rem', marginBottom: 0, color: 'var(--accent-green)', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <Layers size={18} /> MODEL WORKSPACE INPUT
+            {/* Dark Overlay Layer for Premium Contrast and Text Legibility */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              background: 'linear-gradient(to bottom, rgba(2, 6, 3, 0.72) 0%, rgba(2, 6, 3, 0.88) 100%)',
+              zIndex: 1,
+              pointerEvents: 'none'
+            }} />
+
+            {/* Split Content Grid (Elevated to zIndex: 2) */}
+            <div className="army-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', alignItems: 'center', gap: '60px', width: '100%', position: 'relative', zIndex: 2 }}>
+              <div className="hero-left">
+                <span className="overline" style={{ color: 'var(--accent-green)', letterSpacing: '3px', fontWeight: 'bold' }}>FUSIONIX'26</span>
+                <h1 className="hero-title" style={{ textTransform: 'uppercase', fontFamily: "'Orbitron', sans-serif", fontSize: 'clamp(2.5rem, 8vw, 4.8rem)', fontWeight: 900, lineHeight: 1.1, margin: '15px 0' }}>
+                  FUSION<span className="glow-text-green">IX'26</span>
+                </h1>
+                <h3 style={{ fontSize: 'clamp(1.3rem, 3vw, 2.2rem)', color: '#00ff66', fontFamily: "'Space Grotesk', sans-serif", fontWeight: 'bold', textShadow: '0 0 10px rgba(0, 255, 102, 0.4)', marginBottom: '15px' }}>
+                  A 24 HOUR HACKATHON
                 </h3>
-                <span style={{ fontSize: '0.72rem', color: 'rgba(0, 255, 102, 0.5)', fontFamily: 'var(--font-mono)' }}>NODE STATUS: SYNCHRONIZED</span>
-              </div>
-
-              <div style={{ marginBottom: '20px' }}>
-                <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '8px', fontWeight: 'bold', fontFamily: 'var(--font-mono)' }}>
-                  DESCRIBE YOUR IoT OR GREEN-TECH CORES:
-                </label>
-                <textarea
-                  id="multi-agent-textarea"
-                  value={multiAgentIdea}
-                  onChange={(e) => setMultiAgentIdea(e.target.value)}
-                  placeholder="Paste your hackathon idea here (e.g., 'A remote solar-powered smart farm diagnostic kit connecting an ESP32 to dynamic sensor grids to measure moisture transiency and water flow leaks in capillary channels...')"
-                  style={{
-                    width: '100%',
-                    height: '140px',
-                    background: '#020703',
-                    border: '1px solid rgba(0, 255, 102, 0.25)',
-                    borderRadius: '6px',
-                    padding: '15px',
-                    color: '#fff',
-                    fontFamily: 'var(--font-sans)',
-                    fontSize: '0.92rem',
-                    lineHeight: '1.5',
-                    resize: 'none',
-                    outline: 'none',
-                    boxSizing: 'border-box'
-                  }}
-                />
-              </div>
-
-              {/* Action Buttons */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                
-                {/* Simulated Local Processing Button */}
-                <button
-                  id="validate-multi-agent-btn"
-                  className="btn-cyber-solid"
-                  onClick={() => {
-                    if (!multiAgentIdea.trim()) {
-                      alert("Please type your sustainability research or project idea first!");
-                      return;
-                    }
-                    setIsCrossAnalyzing(true);
-                    setShowAgentResults(false);
-                    setCrossAnalysisLogs([]);
-                    
-                    const logs = [
-                      ">> Initializing sovereign server-side AI swarm alignment link...",
-                      ">> Contacting GEMINI-3.5 engine to index hardware peripheral pins...",
-                      ">> Querying CHATGPT-4o to isolate Saturated Market competitors...",
-                      ">> Connecting to CLAUDE-3.5 node to audit circular lifecycle casings...",
-                      ">> Spawning DEEPSEEK-R1 controller for low-level register assembly formulas...",
-                      ">> Harvesting PERPLEXITY.AI research index mappings & digital patents...",
-                      ">> Formatting complete analytical consensus... Ready!"
-                    ];
-
-                    logs.forEach((log, index) => {
-                      setTimeout(() => {
-                        setCrossAnalysisLogs(prev => [...prev, log]);
-                        if (index === logs.length - 1) {
-                          setTimeout(() => {
-                            setIsCrossAnalyzing(false);
-                            setShowAgentResults(true);
-                          }, 500);
-                        }
-                      }, (index + 1) * 350);
-                    });
-                  }}
-                  disabled={isCrossAnalyzing}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '10px',
-                    background: 'var(--accent-green)',
-                    color: '#020603',
-                    border: 'none',
-                    fontWeight: '800',
-                    width: '100%',
-                    padding: '14px',
-                    fontSize: '0.9rem',
-                    cursor: 'pointer',
-                    boxShadow: '0 0 15px rgba(0, 255, 102, 0.4)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px'
-                  }}
-                >
-                  <Sparkles size={16} /> 
-                  <span>{isCrossAnalyzing ? "Cross-referencing Swarm..." : "Validate Idea across Swarm Nodes"}</span>
-                </button>
-
-                {/* Direct Launch Multi-Tabs Launcher Button */}
-                <button
-                  id="launcher-tabs-btn"
-                  className="btn-cyber-outline"
-                  onClick={() => {
-                    if (!multiAgentIdea.trim()) {
-                      alert("Please write your creative idea first, so we can engineer the comparative AI prompt!");
-                      return;
-                    }
-                    
-                    const basePrompt = `Review my sustainable IoT hackathon project design: "${multiAgentIdea}". 
-1. Which aspects of this design are already saturated market prior-art?
-2. What are 3 high-impact novelty vectors or unique software/hardware layers that I can introduce to win the hackathon review panel?
-3. What is the recommended microcontrollers, sensor wires, and power sleep cycles to use?`;
-
-                    try {
-                      navigator.clipboard.writeText(basePrompt);
-                      alert("🚀 Engineered Research Prompt copied to your clipboard! Opening multiple tabs now. Please paste the prompt in each AI chat window!");
-                    } catch (e) {
-                      // clipboard fallback
-                    }
-
-                    // Direct urls with preloaded values where possible, or home pages
-                    const pUrl = `https://www.perplexity.ai/?q=${encodeURIComponent(basePrompt)}`;
-                    const cUrl = `https://chatgpt.com/?q=${encodeURIComponent(basePrompt)}`;
-                    const gUrl = `https://gemini.google.com/app`;
-                    const clUrl = `https://claude.ai/`;
-                    const dsUrl = `https://chat.deepseek.com/`;
-
-                    // Open sequentially to bypass pop-up filters
-                    window.open(cUrl, '_blank');
-                    setTimeout(() => window.open(pUrl, '_blank'), 420);
-                    setTimeout(() => window.open(gUrl, '_blank'), 840);
-                    setTimeout(() => window.open(clUrl, '_blank'), 1200);
-                    setTimeout(() => window.open(dsUrl, '_blank'), 1500);
-                  }}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '10px',
-                    background: 'rgba(0, 229, 255, 0.05)',
-                    color: 'var(--accent-blue)',
-                    border: '1px solid rgba(0, 229, 255, 0.4)',
-                    fontWeight: '700',
-                    width: '100%',
-                    padding: '13px',
-                    fontSize: '0.85rem',
-                    cursor: 'pointer'
-                  }}
-                >
-                  <ExternalLink size={15} />
-                  <span>Launch in Multiple Browser Tabs Simultaneously</span>
-                </button>
-              </div>
-
-              {/* Interactive Info footer */}
-              <div style={{ marginTop: '20px', borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: '15px' }}>
-                <p style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.4)', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Info size={14} style={{ color: 'var(--accent-blue)', flexShrink: 0 }} />
-                  <span>Due to system browser security, opening multiple tabs instantly may trigger popup block alerts. Allow popups to launch ChatGPT, Perplexity, Gemini, Claude, and DeepSeek in one click.</span>
+                <p className="hero-desc" style={{ fontSize: '1.25rem', color: '#e2e8f0', maxWidth: '600px', lineHeight: '1.6', marginBottom: '10px' }}>
+                  The Ultimate Sustainable ECE & IOT Innovation Hackathon
                 </p>
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.98rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '35px', borderLeft: '3px solid var(--accent-green)', paddingLeft: '12px' }}>
+                  Organized by: Department Of ECE & CSE ( IOT )
+                </p>
+
+                <div className="hero-btn-group" style={{ flexWrap: 'wrap', gap: '20px' }}>
+                  <button 
+                    className="btn-cyber-solid"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', padding: '15px 35px', fontSize: '1rem', fontWeight: 'bold', background: '#00ff66', color: '#000', border: 'none', borderRadius: '4px', cursor: 'pointer', boxShadow: '0 0 15px rgba(0, 255, 102, 0.45)' }}
+                    onClick={() => setShowScholarSuggestionModal(true)}
+                  >
+                    <span>REGISTER</span>
+                    <ArrowRight size={18} />
+                  </button>
+                  <a 
+                    href="#rules-contact-link"
+                    className="btn-cyber-outline"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const footerElement = document.getElementById('rules-contact-link');
+                      if (footerElement) {
+                        footerElement.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 35px', fontSize: '1rem', fontWeight: 'bold', color: '#00ff66', border: '1px solid #00ff66', background: 'rgba(0, 255, 102, 0.05)', borderRadius: '4px', textDecoration: 'none' }}
+                  >
+                    <span>CONTACT US</span>
+                  </a>
+                  <button 
+                    className="btn-cyber-solid"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 35px', fontSize: '1rem', fontWeight: 'bold', background: 'rgba(0, 229, 255, 0.15)', color: 'var(--accent-blue)', border: '1px solid var(--accent-blue)', borderRadius: '4px', cursor: 'pointer', boxShadow: '0 0 15px rgba(0, 229, 255, 0.3)' }}
+                    onClick={() => {
+                      playSfx('click');
+                      setGameModalOpen(true);
+                    }}
+                  >
+                    <Gamepad2 size={18} />
+                    <span>PLAY THE GAME</span>
+                  </button>
+                </div>
               </div>
 
+              {/* Pedestal Interactive Cybernet Portal (with no duplicated central image, keeping active glowing core) */}
+              <div className="hero-right">
+                <div className="pedestal-container" style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <div className="hologram-circle-outer"></div>
+                  <div className="hologram-circle-inner"></div>
+                  <div className="pedestal-glow"></div>
+
+                  {/* High-end Holographic Energy Core */}
+                  <div style={{
+                    width: '120px',
+                    height: '120px',
+                    borderRadius: '50%',
+                    background: 'radial-gradient(circle, rgba(0,255,102,0.4) 0%, rgba(2,6,3,0.85) 75%)',
+                    border: '2px solid #00ff66',
+                    boxShadow: '0 0 35px rgba(0,255,102,0.6), inset 0 0 15px rgba(0,255,102,0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 10,
+                    animation: 'pulse 2s infinite'
+                  }}>
+                    <Cpu size={48} style={{ color: '#00ff66', filter: 'drop-shadow(0 0 8px #00ff66)' }} />
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Terminal Logs & Output Panel */}
-            <div style={{ height: '100%', minHeight: '380px', display: 'flex', flexDirection: 'column' }}>
-              
-              {/* If idle */}
-              {!isCrossAnalyzing && !showAgentResults && (
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '40px', background: 'rgba(4, 10, 6, 0.4)', border: '1px dashed rgba(0, 255, 102, 0.15)', borderRadius: '8px', textAlign: 'center' }}>
-                  <Bot size={48} style={{ color: 'rgba(0, 255, 102, 0.25)', marginBottom: '15px' }} />
-                  <h4 style={{ color: '#fff', fontSize: '1.1rem', margin: '0 0 10px 0', fontFamily: 'var(--font-display)' }}>SWARM REPORT DESK</h4>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', maxWidth: '320px', margin: 0 }}>
-                    Enter your sustainability idea in the workspace desk and execute "Validate Idea" to spin up the local multi-agent synthesis array.
-                  </p>
+            {/* Countdown timer card centered at the bottom of hero - Beautiful dual-layer trapezoid shape exactly like image.png */}
+            <div style={{ width: '100%', maxWidth: '1000px', margin: '60px auto 0', zIndex: 12, position: 'relative' }}>
+              <div className="countdown-trapezoid-outer">
+                <div className="countdown-trapezoid-inner">
+                  <div className="countdown-column">
+                    <div className="countdown-number" style={{ color: '#ffffff', textShadow: 'none', fontWeight: 800 }}>
+                      {pdfTimeLeft.days.toString().padStart(2, '0')}
+                    </div>
+                    <div className="countdown-label" style={{ color: '#84ec30', textTransform: 'none', fontWeight: 'bold', marginTop: '4px', letterSpacing: '0.5px' }}>
+                      Days
+                    </div>
+                  </div>
+                  <div className="countdown-column">
+                    <div className="countdown-number" style={{ color: '#ffffff', textShadow: 'none', fontWeight: 800 }}>
+                      {pdfTimeLeft.hours.toString().padStart(2, '0')}
+                    </div>
+                    <div className="countdown-label" style={{ color: '#84ec30', textTransform: 'none', fontWeight: 'bold', marginTop: '4px', letterSpacing: '0.5px' }}>
+                      Hours
+                    </div>
+                  </div>
+                  <div className="countdown-column">
+                    <div className="countdown-number" style={{ color: '#ffffff', textShadow: 'none', fontWeight: 800 }}>
+                      {pdfTimeLeft.minutes.toString().padStart(2, '0')}
+                    </div>
+                    <div className="countdown-label" style={{ color: '#84ec30', textTransform: 'none', fontWeight: 'bold', marginTop: '4px', letterSpacing: '0.5px' }}>
+                      Minutes
+                    </div>
+                  </div>
+                  <div className="countdown-column">
+                    <div className="countdown-number" style={{ color: '#ffffff', textShadow: 'none', fontWeight: 800 }}>
+                      {pdfTimeLeft.seconds.toString().padStart(2, '0')}
+                    </div>
+                    <div className="countdown-label" style={{ color: '#84ec30', textTransform: 'none', fontWeight: 'bold', marginTop: '4px', letterSpacing: '0.5px' }}>
+                      Seconds
+                    </div>
+                  </div>
                 </div>
-              )}
-
-              {/* While analyzing (Term logs) */}
-              {isCrossAnalyzing && (
-                <div style={{ flex: 1, background: '#020703', border: '1px solid var(--accent-green)', borderRadius: '8px', padding: '25px', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#00ff66', display: 'flex', flexDirection: 'column', gap: '12px', boxShadow: 'inset 0 0 20px rgba(0,255,90,0.1)' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(0,255,102,0.2)', paddingBottom: '10px' }}>
-                    <span>CORE-SWARM-SYS v4.9.1</span>
-                    <span className="glow-text-green" style={{ animation: 'pulse 1.5s infinite' }}>[PROCESSING...]</span>
-                  </div>
-                  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px', overflowY: 'auto' }}>
-                    {crossAnalysisLogs.map((log, index) => (
-                      <div key={index} style={{ wordBreak: 'break-all', opacity: index === crossAnalysisLogs.length - 1 ? 1 : 0.7 }}>
-                        {log}
-                      </div>
-                    ))}
-                    <div style={{ display: 'inline-block', width: '8px', height: '14px', background: 'var(--accent-green)', animation: 'blink 1s infinite', marginLeft: '2px' }}></div>
-                  </div>
-                </div>
-              )}
-
-              {/* When Results ready */}
-              {showAgentResults && !isCrossAnalyzing && (
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: 'rgba(4, 12, 7, 0.9)', border: '1px solid rgba(0,255,102,0.25)', borderRadius: '8px', overflow: 'hidden' }}>
-                  
-                  {/* Tabs header */}
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', background: '#020703', borderBottom: '1px solid rgba(0,255,102,0.15)' }}>
-                    
-                    {/* Gemini button */}
-                    <button
-                      className={`agent-tab-btn ${activeAgentTab === 'gemini' ? 'active' : ''}`}
-                      onClick={() => setActiveAgentTab('gemini')}
-                      style={{
-                        padding: '12px 6px',
-                        border: 'none',
-                        background: activeAgentTab === 'gemini' ? 'rgba(255,183,3,0.1)' : 'transparent',
-                        color: activeAgentTab === 'gemini' ? 'var(--accent-gold)' : 'var(--text-secondary)',
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '0.68rem',
-                        fontWeight: 'bold',
-                        cursor: 'pointer',
-                        borderBottom: activeAgentTab === 'gemini' ? '2px solid var(--accent-gold)' : 'none',
-                        transition: 'all 0.2s ease'
-                      }}
-                    >
-                      GEMINI
-                    </button>
-
-                    {/* ChatGPT button */}
-                    <button
-                      className={`agent-tab-btn ${activeAgentTab === 'chatgpt' ? 'active' : ''}`}
-                      onClick={() => setActiveAgentTab('chatgpt')}
-                      style={{
-                        padding: '12px 6px',
-                        border: 'none',
-                        background: activeAgentTab === 'chatgpt' ? 'rgba(255,255,255,0.06)' : 'transparent',
-                        color: activeAgentTab === 'chatgpt' ? '#fff' : 'var(--text-secondary)',
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '0.68rem',
-                        fontWeight: 'bold',
-                        cursor: 'pointer',
-                        borderBottom: activeAgentTab === 'chatgpt' ? '2px solid #fff' : 'none',
-                        transition: 'all 0.2s ease'
-                      }}
-                    >
-                      CHATGPT
-                    </button>
-
-                    {/* Claude button */}
-                    <button
-                      className={`agent-tab-btn ${activeAgentTab === 'claude' ? 'active' : ''}`}
-                      onClick={() => setActiveAgentTab('claude')}
-                      style={{
-                        padding: '12px 6px',
-                        border: 'none',
-                        background: activeAgentTab === 'claude' ? 'rgba(234,117,95,0.08)' : 'transparent',
-                        color: activeAgentTab === 'claude' ? '#EA755F' : 'var(--text-secondary)',
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '0.68rem',
-                        fontWeight: 'bold',
-                        cursor: 'pointer',
-                        borderBottom: activeAgentTab === 'claude' ? '2px solid #EA755F' : 'none',
-                        transition: 'all 0.2s ease'
-                      }}
-                    >
-                      CLAUDE
-                    </button>
-
-                    {/* DeepSeek button */}
-                    <button
-                      className={`agent-tab-btn ${activeAgentTab === 'deepseek' ? 'active' : ''}`}
-                      onClick={() => setActiveAgentTab('deepseek')}
-                      style={{
-                        padding: '12px 6px',
-                        border: 'none',
-                        background: activeAgentTab === 'deepseek' ? 'rgba(64,112,255,0.1)' : 'transparent',
-                        color: activeAgentTab === 'deepseek' ? '#4070FF' : 'var(--text-secondary)',
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '0.68rem',
-                        fontWeight: 'bold',
-                        cursor: 'pointer',
-                        borderBottom: activeAgentTab === 'deepseek' ? '2px solid #4070FF' : 'none',
-                        transition: 'all 0.2s ease'
-                      }}
-                    >
-                      DEEPSEEK
-                    </button>
-
-                    {/* Perplexity button */}
-                    <button
-                      className={`agent-tab-btn ${activeAgentTab === 'perplexity' ? 'active' : ''}`}
-                      onClick={() => setActiveAgentTab('perplexity')}
-                      style={{
-                        padding: '12px 6px',
-                        border: 'none',
-                        background: activeAgentTab === 'perplexity' ? 'rgba(0,229,255,0.1)' : 'transparent',
-                        color: activeAgentTab === 'perplexity' ? 'var(--accent-blue)' : 'var(--text-secondary)',
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '0.68rem',
-                        fontWeight: 'bold',
-                        cursor: 'pointer',
-                        borderBottom: activeAgentTab === 'perplexity' ? '2px solid var(--accent-blue)' : 'none',
-                        transition: 'all 0.2s ease'
-                      }}
-                    >
-                      PPLX
-                    </button>
-                  </div>
-
-                  {/* Tab Body */}
-                  <div style={{ flex: 1, padding: '20px', overflowY: 'auto', maxHeight: '310px' }} className="custom-scroll">
-                    <pre style={{
-                      whiteSpace: 'pre-wrap',
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '0.8rem',
-                      lineHeight: '1.6',
-                      color: activeAgentTab === 'gemini' ? 'var(--text-secondary)' : 
-                             activeAgentTab === 'chatgpt' ? '#e2e8f0' : 
-                             activeAgentTab === 'claude' ? '#dfd5ca' : 
-                             activeAgentTab === 'deepseek' ? '#38bdf8' : 'var(--accent-blue)',
-                      margin: 0
-                    }}>
-                      {generateMultiAgentAnalysis(multiAgentIdea)[activeAgentTab]}
-                    </pre>
-                  </div>
-
-                  {/* Active Agent Launcher shortcut bar */}
-                  <div style={{ padding: '12px 20px', background: '#020703', borderTop: '1px solid rgba(0,255,102,0.15)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.4)', display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                      <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-green)' }}></span>
-                      <span>PRE-COMPILED VERDICT READY</span>
-                    </span>
-                    <button
-                      onClick={() => {
-                        const engineeredPr = `Assess this IoT sustainable prototype idea: "${multiAgentIdea}". Highlight saturated prior-art, novelty room, chip specs and code lines.`;
-                        try {
-                          navigator.clipboard.writeText(engineeredPr);
-                          alert(`📋 Engineered prompt for ${activeAgentTab.toUpperCase()} copied!`);
-                        } catch(e) {}
-                        
-                        let targetPage = 'https://gemini.google.com/app';
-                        if (activeAgentTab === 'chatgpt') targetPage = `https://chatgpt.com/?q=${encodeURIComponent(engineeredPr)}`;
-                        if (activeAgentTab === 'claude') targetPage = 'https://claude.ai/';
-                        if (activeAgentTab === 'deepseek') targetPage = 'https://chat.deepseek.com/';
-                        if (activeAgentTab === 'perplexity') targetPage = `https://www.perplexity.ai/?q=${encodeURIComponent(engineeredPr)}`;
-                        
-                        window.open(targetPage, '_blank');
-                      }}
-                      style={{
-                        background: 'transparent',
-                        border: '1px solid var(--accent-green)',
-                        color: 'var(--accent-green)',
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '0.72rem',
-                        padding: '4px 10px',
-                        borderRadius: '3px',
-                        cursor: 'pointer'
-                      }}
-                    >
-                      LAUNCH {activeAgentTab.toUpperCase()}
-                    </button>
-                  </div>
-
-                </div>
-              )}
-
+              </div>
             </div>
+          </section>
 
-          </div>
+          {/* ==========================================
+             PAGE 2: ABOUT US
+             ========================================== */}
+          <style>{`
+    .about-container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:50px;
+    }
 
+    .about-text{
+      flex:1.8;
+    }
+
+    .about-image{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .about-image img{
+      width:100%;
+      max-width:430px;
+      height:auto;
+      display:block;
+      pointer-events:none;
+      transition:0.3s;
+      transform: translateX(120px);
+    }
+
+    /* Tablet */
+    @media (max-width:992px){
+      .about-container{
+        gap:30px;
+      }
+
+      .about-text{
+        flex:1.4;
+      }
+
+      .about-image img{
+        max-width:340px;
+        transform: translateX(0);
+      }
+    }
+
+    /* Mobile */
+    @media (max-width:768px){
+      .about-container{
+        flex-direction:column;
+      }
+
+      .about-image{
+        order:1;
+        width:100%;
+        margin-bottom:25px;
+      }
+
+      .about-text{
+        order:2;
+        width:100%;
+      }
+
+      .about-text h2{
+        text-align:center;
+      }
+
+      .about-text p{
+        text-align:justify;
+      }
+
+      .about-image img{
+        max-width:260px;
+        transform: translateX(0);
+      }
+    }
+  `}</style>
+
+  <section
+    id="about"
+    style={{
+      padding: "80px 8% 60px",
+      background: "rgba(2, 6, 3, 0.4)",
+      position: "relative",
+      overflow: "visible",
+    }}
+  >
+    <div
+      style={{
+        border: "1.5px solid #84ec30",
+        background: "#020603",
+        borderRadius: "24px",
+        padding: "60px 6%",
+        boxShadow: "0 0 35px rgba(132,236,48,0.05)",
+        overflow: "visible",
+      }}
+    >
+      <div className="about-container">
+        {/* Text */}
+        <div className="about-text">
+          <h2
+            style={{
+              fontFamily: "var(--font-display)",
+              color: "#84ec30",
+              fontSize: "clamp(2rem,4vw,3rem)",
+              fontWeight: 700,
+              marginBottom: "20px",
+            }}
+          >
+            About Us
+          </h2>
+
+          <p
+            style={{
+              color: "#cbd5e1",
+              fontSize: "clamp(0.95rem,1.8vw,1.15rem)",
+              lineHeight: "1.8",
+              margin: 0,
+              textAlign: "justify",
+            }}
+          >
+            FusioniX is a 24-hour hackathon by the Departments of ECE and CSE
+            (IoT) at the University of Engineering & Management, Kolkata where
+            participants transform ideas into real-world solutions through
+            integrated hardware and software innovation. With no fixed domain—
+            spanning intelligent systems, environmental monitoring, industrial
+            safety, and beyond—teams ideate, design, and prototype across
+            multiple competitive rounds. Judged on creativity and real-world
+            impact, top performers win prizes and cash rewards alongside
+            valuable feedback from industry experts. Full meals provided. At
+            FusioniX, innovation is expected where ideas become solutions.
+          </p>
+        </div>
+
+        {/* Image */}
+        <div className="about-image">
+          <img
+            src={shadowXImg}
+            alt="FusioniX Cyber Scout Mascot"
+            referrerPolicy="no-referrer"
+          />
         </div>
       </div>
+    </div>
+  </section>
 
-      {/* ==========================================
-         SUSTECH IDEAS / AI COPILOT INTERACTIVE RAIL
-         ========================================== */}
-      <section className="benefit-rail" id="tracks">
-        <div className="benefit-grid">
-          {/* AI COPILOT CARD */}
-          <div className="benefit-card">
-            <div className="benefit-icon-box">
-              <Cpu size={24} />
-            </div>
-            <h3 className="benefit-title">AI SMART COPILOT</h3>
-            <p className="benefit-desc">
-              Unsure about sustainable ideas? Use our dynamic idea synthesizer to generate customized ECE/IoT prototypes in real-time.
-            </p>
-
-            <div className="ai-interactive-panel" style={{ marginTop: 'auto' }}>
-              <form onSubmit={runIdeaGenerator} className="ai-input-row">
-                <input 
-                  type="text" 
-                  className="ai-minibox" 
-                  placeholder="Keyword: e.g. waste, solar"
-                  value={ideaKeyword}
-                  onChange={(e) => setIdeaKeyword(e.target.value)}
-                  disabled={aiGenerating}
-                />
-                <button type="submit" className="ai-minibtn">
-                  {aiGenerating ? '...' : 'GENERATE'}
-                </button>
-              </form>
-              <div className="ai-terminal-output" style={{ minHeight: '85px' }}>
-                {aiTerminalLogs.map((log, idx) => (
-                  <div key={idx} style={{ marginBottom: '3px' }}>{log}</div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* PRIZES BREAKDOWN CARD */}
-          <div className="benefit-card">
-            <div className="benefit-icon-box">
-              <Coins size={24} style={{ color: 'var(--accent-gold)' }} />
-            </div>
-            <h3 className="benefit-title">₹50K PRIZE POOL</h3>
-            <p className="benefit-desc">
-              Substantial investments distributed perfectly across the most viable and highly polished sustainable models:
-            </p>
-            <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '0.85rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                <span style={{ color: 'var(--accent-gold)', fontWeight: 'bold' }}>1st Place Champion</span>
-                <span style={{ color: '#fff' }}>₹20,000 + Trophy</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                <span style={{ color: 'var(--text-secondary)' }}>2nd Place Runner</span>
-                <span style={{ color: '#fff' }}>₹15,000 + Trophy</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                <span style={{ color: 'var(--text-secondary)' }}>3rd Place Runner</span>
-                <span style={{ color: '#fff' }}>₹10,000 + Trophy</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0' }}>
-                <span style={{ color: 'var(--accent-green)' }}>Best IoT Specialized</span>
-                <span style={{ color: '#fff' }}>₹5,000</span>
-              </div>
-            </div>
-          </div>
-
-          {/* TEAM DYNAMICS CARD */}
-          <div className="benefit-card">
-            <div className="benefit-icon-box">
-              <Users size={24} style={{ color: 'var(--accent-blue)' }} />
-            </div>
-            <h3 className="benefit-title">TEAM DYNAMICS</h3>
-            <p className="benefit-desc">
-              Teams must consist of exactly 3 to 4 participants. Cross-stream, cross-department, and cross-campus combinations are highly encouraged to build multi-disciplinary tech!
-            </p>
-            <div style={{ marginTop: 'auto', paddingTop: '10px' }}>
-              <div className="mini-progress-track">
-                <div className="mini-progress-fill" style={{ width: '100%', background: 'var(--accent-blue)' }}></div>
-              </div>
-            </div>
-          </div>
-
-          {/* PARTICIPANT BENEFITS CARD */}
-          <div className="benefit-card">
-            <div className="benefit-icon-box">
-              <ShieldCheck size={24} />
-            </div>
-            <h3 className="benefit-title">HACKER BENEFITS</h3>
-            <p className="benefit-desc">
-              All registered candidates are entitled to first-rate infrastructure supplies for seamless prototyping:
-            </p>
-            <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
-              <div style={{ display: 'flex', gap: '8px' }}>
-                <Check size={14} className="glow-text-green" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <span>Premium lunch, evening snacks, hot tea, dinner, and morning breakfast</span>
-              </div>
-              <div style={{ display: 'flex', gap: '8px' }}>
-                <Check size={14} className="glow-text-green" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <span>Dedicated Wi-Fi access & continuous power terminals</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ==========================================
-         INNOVATION TRACKS (Procedurally Visually Stunning Cards)
-         ========================================== */}
-      <section className="collection-section" id="tracks">
-        <div className="collection-header" style={{ marginBottom: '20px' }}>
-          <div className="collection-title-wrap">
-            <span className="overline">CHOOSE YOUR TARGET DOMAIN</span>
-            <h2 className="collection-main-title">EXPLORE DOMAIN TRACKS</h2>
-          </div>
-        </div>
-
-        {/* Google Scholar Idea Discovery Companion */}
-        <div className="research-assistant-panel" style={{ marginTop: '0px', marginBottom: '25px' }}>
-          <div style={{ display: 'flex', gap: '15px', alignItems: 'flex-start' }}>
-            <div style={{ background: 'rgba(0, 255, 102, 0.1)', border: '1px solid var(--accent-green)', borderRadius: '8px', padding: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 0 10px rgba(0, 255, 102, 0.15)' }}>
-              <GraduationCap size={24} style={{ color: 'var(--accent-green)' }} />
-            </div>
-            <div style={{ flex: 1 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
-                <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.1rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                  GOOGLE SCHOLAR ACADEMIC DISCOVERY COMPANION
-                </h4>
-                <span className="glow-text-green" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', background: 'rgba(0, 255, 102, 0.08)', padding: '3px 8px', borderRadius: '4px', border: '1px solid rgba(0, 255, 102, 0.2)' }}>
-                  ACTIVE ENGAGEMENT ENGINE
-                </span>
-              </div>
-              <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', marginTop: '6px', lineHeight: '1.5' }}>
-                Uncover state-of-the-art sustainable systems, IEEE/Elsevier references, and peer-reviewed prototypes. Enter an idea keyword or click a verified topic pill below to search Google Scholar and find academic evidence for your prototype!
-              </p>
-            </div>
-          </div>
-
-          <form action="https://scholar.google.com/scholar" method="get" target="_blank" className="scholar-search-wrapper">
-            <input 
-              type="text" 
-              name="q" 
-              value={scholarQuery}
-              onChange={(e) => setScholarQuery(e.target.value)}
-              className="news-input" 
-              placeholder="Search Google Scholar (e.g. smart farming microcontroller, IoT water level)..." 
-              style={{ flex: 1, margin: 0, background: 'rgba(1, 4, 2, 0.85)' }}
+          {/* ==========================================
+             PAGE 3: THEME SUSTAINABILITY
+             ========================================== */}
+          <section id="theme" style={{ width: '100%', padding: 0, position: 'relative', overflow: 'hidden' }}>
+            <img 
+              src="/src/assets/images/THEME.png" 
+              alt="Theme Sustainability" 
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+              referrerPolicy="no-referrer"
             />
-            <button type="submit" className="btn-cyber-solid" style={{ whiteSpace: 'nowrap' }}>
-              <Search size={16} style={{ marginRight: '8px' }} />
-              <span>SEARCH RESEARCH PAPERS</span>
-            </button>
-          </form>
+          </section>
 
-          <div style={{ marginTop: '16px' }}>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'rgba(255, 255, 255, 0.4)', textTransform: 'uppercase', display: 'block', marginBottom: '8px' }}>
-              SUGGESTED HIGH-VIABILITY SUSTAINABLE DOMAIN FIELDS:
-            </span>
-            <div className="scholar-pills-container">
-              {[
-                "Low-Power LoRaWAN Smart Agriculture",
-                "IoT Smart Water Grid and Quality Indexing",
-                "Esp32 Solar Photovoltaic MPPT Power Tracker",
-                "Edge ML Anomaly Detection in Smart Manufacturing",
-                "IoT Automated Aquaponics Environmental Control",
-                "Vibration Energy Harvesting for Wearable Devices",
-                "AI-Powered Municipal Waste Classification and Sorting"
-              ].map(pill => (
-                <a
-                  key={pill}
-                  href={`https://scholar.google.com/scholar?q=${encodeURIComponent(pill)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="scholar-pill"
-                  onClick={() => setScholarQuery(pill)}
-                >
-                  <BookOpen size={11} style={{ display: 'inline', marginRight: '5px', verticalAlign: 'middle' }} />
-                  {pill}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
+          {/* ==========================================
+             PAGE 4: TIMELINE
+             ========================================== */}
+          <section id="timeline" style={{ padding: '80px 8% 60px', background: 'rgba(2, 6, 3, 0.4)' }}>
+            <div className="pdf-card-container">
+              <h2 style={{ fontFamily: 'var(--font-display)', color: '#00ff66', fontSize: '2.4rem', fontWeight: 800, textTransform: 'uppercase', marginBottom: '50px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span style={{ width: '12px', height: '12px', background: '#00ff66', borderRadius: '2px', display: 'inline-block' }}></span>
+                TIMELINE
+              </h2>
 
-        {/* Filtering buttons placed AFTER Google Scholar */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '30px', width: '100%' }}>
-          <div className="collection-filters" style={{ width: 'auto', margin: '0 auto', display: 'flex', justifyContent: 'center' }}>
-            {(['all', 'rare', 'epic', 'legendary'] as const).map(tab => (
-              <button
-                key={tab}
-                className={`filter-tab ${activeFilter === tab ? 'active' : ''}`}
-                onClick={() => {
-                  playSfx('click');
-                  setActiveFilter(tab);
-                }}
-                style={{ textTransform: 'capitalize' }}
-              >
-                {tab === 'all' ? 'All Domains' : tab === 'rare' ? 'Standard Track' : tab === 'epic' ? 'Advanced Track' : 'Legendary Track'}
-              </button>
-            ))}
-          </div>
-        </div>
+              {/* Responsive Timeline Flow (Horizontal on desktop, Vertical on mobile) */}
+              <div className="timeline-container-wrapper custom-scroll">
+                <div className="timeline-grid-layout">
+                  
+                  {/* Connector Path Line */}
+                  <div className="timeline-track-line"></div>
 
-        {/* Tracks display grid */}
-        <div className="nft-grid">
-          {filteredTracks.map(track => (
-            <div 
-              key={track.id} 
-              className={`nft-card ${track.rarity}`}
-              onClick={() => {
-                setSelectedTrack(track);
-              }}
-            >
-              <div className="nft-image-container">
-                <img 
-                  src={track.img} 
-                  className="nft-thumbnail" 
-                  alt={track.name} 
-                  referrerPolicy="no-referrer"
-                />
-                <span className={`rarity-badge ${track.rarity === 'rare' ? 'rare-tag' : track.rarity === 'epic' ? 'epic-tag' : 'epic-tag glow-text-gold'}`} style={{ textTransform: 'uppercase' }}>
-                  {track.rarity === 'rare' ? 'Standard' : track.rarity === 'epic' ? 'Advanced' : 'Super Power'}
-                </span>
-              </div>
-
-              <div className="nft-info">
-                <div className="nft-name-row">
-                  <h3 className="nft-name">{track.name}</h3>
-                  <span className="nft-tag" style={{ color: 'var(--accent-green)', fontWeight: 'bold' }}>{track.tag}</span>
-                </div>
-
-                <div className="nft-stats-divider"></div>
-
-                <div className="nft-rarity-row">
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <span className="score-label" style={{ textTransform: 'uppercase', fontSize: '0.65rem', color: 'rgba(255, 255, 255, 0.4)', fontFamily: 'var(--font-mono)' }}>Core Platform</span>
-                    <span className="score-value glow-text-green" style={{ fontSize: '0.85rem', fontFamily: 'var(--font-mono)', fontWeight: 'bold' }}>
-                      {track.statCore}
-                    </span>
+                  {/* Node 1 */}
+                  <div className="timeline-sphere-node">
+                    <div className="timeline-sphere-globe active">
+                      <img 
+                        src={hologramEarthImg} 
+                        alt="Earth Node 1" 
+                        referrerPolicy="no-referrer" 
+                        className="timeline-earth-icon active"
+                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div className="timeline-node-info">
+                      <div className="timeline-node-title">Registration Starts</div>
+                      <div className="timeline-node-date">Sep 15, 2026</div>
+                    </div>
                   </div>
-                  <div className="nft-action-circle">
-                    <ArrowRight size={16} />
+
+                  {/* Node 2 */}
+                  <div className="timeline-sphere-node">
+                    <div className="timeline-sphere-globe active">
+                      <img 
+                        src={hologramEarthImg} 
+                        alt="Earth Node 2" 
+                        referrerPolicy="no-referrer" 
+                        className="timeline-earth-icon active"
+                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div className="timeline-node-info">
+                      <div className="timeline-node-title">Registration Ends</div>
+                      <div className="timeline-node-date">Oct 15, 2026</div>
+                    </div>
+                  </div>
+
+                  {/* Node 3 */}
+                  <div className="timeline-sphere-node">
+                    <div className="timeline-sphere-globe inactive">
+                      <img 
+                        src={hologramEarthImg} 
+                        alt="Earth Node 3" 
+                        referrerPolicy="no-referrer" 
+                        className="timeline-earth-icon inactive"
+                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', filter: 'grayscale(100%) opacity(40%)' }}
+                      />
+                    </div>
+                    <div className="timeline-node-info">
+                      <div className="timeline-node-title inactive">Concept Qualifier</div>
+                      <div className="timeline-node-date">Oct 18, 2026</div>
+                    </div>
+                  </div>
+
+                  {/* Node 4 */}
+                  <div className="timeline-sphere-node">
+                    <div className="timeline-sphere-globe inactive">
+                      <img 
+                        src={hologramEarthImg} 
+                        alt="Earth Node 4" 
+                        referrerPolicy="no-referrer" 
+                        className="timeline-earth-icon inactive"
+                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', filter: 'grayscale(100%) opacity(40%)' }}
+                      />
+                    </div>
+                    <div className="timeline-node-info">
+                      <div className="timeline-node-title inactive">Hardware Phase (Offline)</div>
+                      <div className="timeline-node-date">Oct 23, 2026</div>
+                    </div>
+                  </div>
+
+                  {/* Node 5 */}
+                  <div className="timeline-sphere-node">
+                    <div className="timeline-sphere-globe inactive">
+                      <img 
+                        src={hologramEarthImg} 
+                        alt="Earth Node 5" 
+                        referrerPolicy="no-referrer" 
+                        className="timeline-earth-icon inactive"
+                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', filter: 'grayscale(100%) opacity(40%)' }}
+                      />
+                    </div>
+                    <div className="timeline-node-info">
+                      <div className="timeline-node-title inactive">Software Sprint (Offline)</div>
+                      <div className="timeline-node-date">Oct 24, 2026</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ==========================================
+             GOOGLE SCHOLAR SCIENTIFIC VALIDATION SECTION
+             ========================================== */}
+          <section id="scholar-validation" style={{ padding: '80px 8% 60px', background: 'rgba(2, 6, 3, 0.65)', position: 'relative' }}>
+            <div className="pdf-card-container" style={{ borderColor: 'var(--accent-green)', boxShadow: '0 0 30px rgba(0, 255, 102, 0.15)' }}>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-7" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <h2 style={{ 
+                    fontFamily: 'var(--font-display)', 
+                    color: '#00ff66', 
+                    fontSize: '2.2rem', 
+                    fontWeight: 800, 
+                    margin: 0,
+                    textTransform: 'uppercase',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px'
+                  }}>
+                    <GraduationCap style={{ color: '#00ff66' }} size={32} />
+                    GOOGLE SCHOLAR RESEARCH ENGINE
+                  </h2>
+                  <p style={{ 
+                    color: '#f1f5f9', 
+                    fontSize: '1.1rem', 
+                    lineHeight: '1.75', 
+                    textAlign: 'left', 
+                    margin: 0,
+                    fontWeight: 400
+                  }}>
+                    To maximize feasibility and validation points from our ECE & CSE expert review panel, it is highly critical to search and verify your design against peer-reviewed research papers. Use the real-time search interface below to discover existing research on smart nodes, energy efficiency, sensor deployments, and green microcontrollers.
+                  </p>
+                </div>
+                
+                <div className="lg:col-span-5">
+                  <div style={{ background: 'rgba(5, 15, 8, 0.95)', border: '1px solid var(--accent-green)', padding: '24px', borderRadius: '12px', boxShadow: '0 0 20px rgba(0, 255, 102, 0.08)' }}>
+                    <h3 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.2rem', fontWeight: 700, margin: '0 0 15px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                      VALIDATE YOUR IDEA INSTANTLY
+                    </h3>
+                    
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                      <input 
+                        type="text" 
+                        placeholder="e.g., LoRa smart agriculture microchip STM32"
+                        className="news-input" 
+                        value={scholarQuery}
+                        onChange={(e) => setScholarQuery(e.target.value)}
+                        style={{ width: '100%', boxSizing: 'border-box', padding: '12px 16px', background: '#020603', border: '1px solid rgba(0, 255, 102, 0.35)', color: '#fff', borderRadius: '6px', fontSize: '0.95rem' }}
+                      />
+                      
+                      <a 
+                        href={`https://scholar.google.com/scholar?q=${encodeURIComponent(scholarQuery || "sustainable IoT microcontroller")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-cyber-solid"
+                        style={{ 
+                          display: 'inline-flex', 
+                          alignItems: 'center', 
+                          justifyContent: 'center', 
+                          gap: '10px',
+                          padding: '14px', 
+                          background: '#00ff66', 
+                          color: '#000', 
+                          border: 'none', 
+                          borderRadius: '6px', 
+                          textDecoration: 'none',
+                          fontWeight: 800,
+                          fontSize: '0.9rem',
+                          boxShadow: '0 0 15px rgba(0, 255, 102, 0.25)'
+                        }}
+                        onClick={() => playSfx('click')}
+                      >
+                        <Search size={16} />
+                        <span>SEARCH ON GOOGLE SCHOLAR</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="nft-card-runner"></div>
             </div>
-          ))}
-        </div>
-      </section>
+          </section>
+
+          {/* ==========================================
+             PAGE 5: PRIZES
+             ========================================== */}
+          <section id="prizes" style={{ width: '100%', padding: 0, position: 'relative', overflow: 'hidden' }}>
+            <img 
+              src={prizesBannerImg} 
+              alt="50K Prize Pool" 
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+              referrerPolicy="no-referrer"
+            />
+          </section>
+
+
+
+      <div id="swarm-copilot" style={{ display: 'none' }}></div>
+
+
 
       {/* ==========================================
          DO'S AND DON'TS / RULES SECTION
@@ -2523,523 +1879,320 @@ export default function App() {
       {/* ==========================================
          ORGANIZATIONAL TEAM DECK
          ========================================== */}
-      <section className="collection-section" id="team" style={{ background: 'rgba(4, 12, 7, 0.6)' }}>
-        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+      <section className="collection-section" id="team" style={{ background: 'rgba(4, 12, 7, 0.6)', padding: '100px 8%' }}>
+        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <span className="overline">COMMUNITY ARCHITECTS</span>
           <h2 className="collection-main-title">MEET THE FUSIONIX TEAM</h2>
         </div>
 
         {/* Faculty Advisors */}
-        <h3 style={{ fontFamily: 'var(--font-display)', color: 'var(--accent-green)', letterSpacing: '1px', fontSize: '1.2rem', marginBottom: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <h3 style={{ fontFamily: 'var(--font-display)', color: 'var(--accent-green)', letterSpacing: '1px', fontSize: '1.24rem', marginBottom: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <span>●</span> FACULTY INTEGRATORS
         </h3>
-        <div className="nft-grid" style={{ marginBottom: '60px' }}>
-          {/* Faculty 1 */}
-          <div className="team-member-card green">
-            <div className="team-card-corners" />
-            <div className="team-card-inner">
-              <div className="team-avatar-frame">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '30px', marginBottom: '80px' }}>
+          {[
+            {
+              name: "Dr. Abir Chattopadhyay",
+              role: "Faculty Coordinator",
+              src:hod,
+              initials: "AC",
+              email: "abir.chattopadhyay@uem.edu.in",
+              linkedin: "https://linkedin.com",
+              desc: "Overseeing the technical committee, curriculum validation, and academic review of top prototype entries."
+            },
+            {
+              name: "Prof. Dr. Shreya Nag",
+              role: "Faculty Coordinator",
+              src:madam,
+              initials: "SN",
+              email: "shreya.nag@uem.edu.in",
+              linkedin: "https://linkedin.com",
+              desc: "Directing institutional resource planning, department lab integrations, and logistics coordination."
+            },
+             {
+              name: "Sudipta Ghosh",
+              role: "Faculty Coordinator",
+              src:madam,
+              initials: "SN",
+              email: "shreya.nag@uem.edu.in",
+              linkedin: "https://linkedin.com",
+              desc: "Directing institutional resource planning, department lab integrations, and logistics coordination."
+            }
+          ].map((faculty, idx) => (
+            <div key={idx} className="team-member-card green" style={{ position: 'relative', width: '100%', height: 'auto', padding: 0, overflow: 'hidden' }}>
+              <div className="team-card-corners" />
+              
+              {/* Full background Avatar that sizes the card naturally */}
+              <div style={{ position: 'relative', width: '100%', height: 'auto', zIndex: 1 }}>
                 <SmartAvatar 
-                  src={man1} 
-                  alt="Dr. Abir Chattopadhyay" 
-                  initials="AC" 
+                  src={faculty.src} 
+                  alt={faculty.name} 
+                  initials={faculty.initials} 
                   accentColor="var(--accent-green)"
+                  style={{ borderRadius: '0px', width: '100%', height: 'auto', aspectRatio: '3/4', objectFit: 'cover', display: 'block' }}
                 />
               </div>
-              <div className="team-card-info-layout">
-                <h4 className="team-card-name">Dr. Abir Chattopadhyay</h4>
-                <span className="team-card-role">Faculty Coordinator</span>
-                
-                {/* Social Buttons Block */}
-                <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-                  <a 
-                    href="mailto:abir.chattopadhyay@uem.edu.in" 
-                    title="Send Email"
-                    className="team-social-btn"
-                  >
-                    <Mail size={13} />
-                  </a>
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    title="LinkedIn Profile"
-                    className="team-social-btn"
-                  >
-                    <Linkedin size={13} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+              
+              {/* Overlay gradient */}
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(to top, rgba(2, 6, 3, 0.98) 0%, rgba(2, 6, 3, 0.75) 45%, rgba(2, 6, 3, 0.15) 100%)',
+                zIndex: 2,
+                pointerEvents: 'none'
+              }} />
 
-          {/* Faculty 2 */}
-          <div className="team-member-card green">
-            <div className="team-card-corners" />
-            <div className="team-card-inner">
-              <div className="team-avatar-frame">
-                <SmartAvatar 
-                  src={man2} 
-                  alt="Prof. Dr. Shreya Nag" 
-                  initials="SN" 
-                  accentColor="var(--accent-green)"
-                />
-              </div>
-              <div className="team-card-info-layout">
-                <h4 className="team-card-name">Prof. Dr. Shreya Nag</h4>
-                <span className="team-card-role">Faculty Coordinator</span>
-                
-                {/* Social Buttons Block */}
-                <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-                  <a 
-                    href="mailto:shreya.nag@uem.edu.in" 
-                    title="Send Email"
-                    className="team-social-btn"
-                  >
+              {/* Overlaid content */}
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 3, padding: '24px', display: 'flex', flexDirection: 'column' }}>
+                <div>
+                  <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.25rem', fontWeight: 800, margin: '0 0 6px 0', textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>{faculty.name}</h4>
+                  <span style={{ color: 'var(--accent-green)', fontSize: '0.82rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)', fontWeight: 600, letterSpacing: '1px', textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}>{faculty.role}</span>
+                </div>
+
+                <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.15)', paddingTop: '15px', display: 'flex', gap: '8px', marginTop: '16px' }}>
+                  <a href={`mailto:${faculty.email}`} title="Send Email" className="team-social-btn" style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none' }}>
                     <Mail size={13} />
                   </a>
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    title="LinkedIn Profile"
-                    className="team-social-btn"
-                  >
+                  <a href={faculty.linkedin} target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" className="team-social-btn" style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none' }}>
                     <Linkedin size={13} />
                   </a>
                 </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
 
         {/* Action Button for Additional Faculty */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-35px', marginBottom: '60px' }}>
-          <button 
-            onClick={() => {
-              setViewingFacultyPage(true);
-              window.scrollTo({ top: 0, behavior: 'instant' });
-            }}
-            className="btn-cyber-solid"
-            style={{ 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '10px', 
-              cursor: 'pointer',
-              padding: '12px 24px',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.85rem',
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              boxShadow: '0 0 15px rgba(0, 255, 102, 0.25)',
-              border: '1px solid var(--accent-green)'
-            }}
-          >
-            <Users size={16} />
-            <span>DECRYPT AUXILIARY FACULTY DIRECTORY</span>
-          </button>
-        </div>
-
         {/* Student Leads */}
-        <h3 style={{ fontFamily: 'var(--font-display)', color: 'var(--accent-blue)', letterSpacing: '1px', fontSize: '1.2rem', marginBottom: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <h3 style={{ fontFamily: 'var(--font-display)', color: 'var(--accent-blue)', letterSpacing: '1px', fontSize: '1.24rem', marginBottom: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <span>●</span> CORE STUDENT LEADS
         </h3>
-        <div className="nft-grid" style={{ marginBottom: '60px' }}>
-          {/* Lead 1 */}
-          <div className="team-member-card blue">
-            <div className="team-card-corners" />
-            <div className="team-card-inner">
-              <div className="team-avatar-frame">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '30px', marginBottom: '80px' }}>
+          {[
+            {
+              name: "Abhiraj Saha",
+              role: "Organizing Lead",
+              src: abhiraj,
+              initials: "AS",
+              email: "abhiraj.saha@gmail.com",
+              linkedin: "https://linkedin.com",
+              desc: "Directing organizational sprints, team alignments, and industrial mentor linkages."
+            },
+            {
+              name: "Debdip Ghosh",
+              role: "Organizing Lead",
+              src:debdip,
+              initials: "DG",
+              email: "debdip.ghosh@gmail.com",
+              linkedin: "https://linkedin.com",
+              desc: "Commanding hardware lab operations, micro-controllers assembly setups, and dev kits distribution."
+            },
+            {
+              name: "Shibangi Bose",
+              role: "Organizing Lead",
+              src: shibangi,
+              initials: "SB",
+              email: "shibangi.bose@gmail.com",
+              linkedin: "https://linkedin.com",
+              desc: "Managing institutional collaborations, public relations campaigns, and event hosting schedules."
+            }
+          ].map((lead, idx) => (
+            <div key={idx} className="team-member-card blue" style={{ position: 'relative', width: '100%', height: 'auto', padding: 0, overflow: 'hidden' }}>
+              <div className="team-card-corners" />
+              
+              {/* Full background Avatar that sizes the card naturally */}
+              <div style={{ position: 'relative', width: '100%', height: 'auto', zIndex: 1 }}>
                 <SmartAvatar 
-                  src={man3} 
-                  alt="Abhiraj Saha" 
-                  initials="AS" 
+                  src={lead.src} 
+                  alt={lead.name} 
+                  initials={lead.initials} 
                   accentColor="var(--accent-blue)"
+                  style={{ borderRadius: '0px', width: '100%', height: 'auto', aspectRatio: '3/4', objectFit: 'cover', display: 'block' }}
                 />
               </div>
-              <div className="team-card-info-layout">
-                <h4 className="team-card-name">Abhiraj Saha</h4>
-                <span className="team-card-role">Organizing Lead</span>
-                
-                {/* Social Buttons Block */}
-                <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-                  <a 
-                    href="mailto:abhiraj.saha@gmail.com" 
-                    title="Send Email"
-                    className="team-social-btn"
-                  >
-                    <Mail size={12} />
-                  </a>
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    title="LinkedIn Profile"
-                    className="team-social-btn"
-                  >
-                    <Linkedin size={12} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+              
+              {/* Overlay gradient */}
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(to top, rgba(2, 6, 3, 0.98) 0%, rgba(2, 6, 3, 0.75) 45%, rgba(2, 6, 3, 0.15) 100%)',
+                zIndex: 2,
+                pointerEvents: 'none'
+              }} />
 
-          {/* Lead 2 */}
-          <div className="team-member-card blue">
-            <div className="team-card-corners" />
-            <div className="team-card-inner">
-              <div className="team-avatar-frame">
-                <SmartAvatar 
-                  src={man4}
-                  alt="Debdip Ghosh" 
-                  initials="DG" 
-                  accentColor="var(--accent-blue)"
-                />
-              </div>
-              <div className="team-card-info-layout">
-                <h4 className="team-card-name">Debdip Ghosh</h4>
-                <span className="team-card-role">Organizing Lead</span>
-                
-                {/* Social Buttons Block */}
-                <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-                  <a 
-                    href="mailto:debdip.ghosh@gmail.com" 
-                    title="Send Email"
-                    className="team-social-btn"
-                  >
-                    <Mail size={12} />
-                  </a>
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    title="LinkedIn Profile"
-                    className="team-social-btn"
-                  >
-                    <Linkedin size={12} />
-                  </a>
+              {/* Overlaid content */}
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 3, padding: '24px', display: 'flex', flexDirection: 'column' }}>
+                <div>
+                  <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.25rem', fontWeight: 800, margin: '0 0 6px 0', textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>{lead.name}</h4>
+                  <span style={{ color: 'var(--accent-blue)', fontSize: '0.82rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)', fontWeight: 600, letterSpacing: '1px', textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}>{lead.role}</span>
                 </div>
-              </div>
-            </div>
-          </div>
 
-          {/* Lead 3 */}
-          <div className="team-member-card blue">
-            <div className="team-card-corners" />
-            <div className="team-card-inner">
-              <div className="team-avatar-frame">
-                <SmartAvatar 
-                  src={man5} 
-                  alt="Shibangi Bose" 
-                  initials="SB" 
-                  accentColor="var(--accent-blue)"
-                />
-              </div>
-              <div className="team-card-info-layout">
-                <h4 className="team-card-name">Shibangi Bose</h4>
-                <span className="team-card-role">Organizing Lead</span>
-                
-                {/* Social Buttons Block */}
-                <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-                  <a 
-                    href="mailto:shibangi.bose@gmail.com" 
-                    title="Send Email"
-                    className="team-social-btn"
-                  >
-                    <Mail size={12} />
+                <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.15)', paddingTop: '15px', display: 'flex', gap: '8px', marginTop: '16px' }}>
+                  <a href={`mailto:${lead.email}`} title="Send Email" className="team-social-btn" style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none' }}>
+                    <Mail size={13} />
                   </a>
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    title="LinkedIn Profile"
-                    className="team-social-btn"
-                  >
-                    <Linkedin size={12} />
+                  <a href={lead.linkedin} target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" className="team-social-btn" style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none' }}>
+                    <Linkedin size={13} />
                   </a>
                 </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
 
         {/* Key Core Coordinators */}
-        <h3 style={{ fontFamily: 'var(--font-display)', color: 'var(--accent-gold)', letterSpacing: '1px', fontSize: '1.2rem', marginBottom: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <h3 style={{ fontFamily: 'var(--font-display)', color: 'var(--accent-gold)', letterSpacing: '1px', fontSize: '1.24rem', marginBottom: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <span>●</span> PROTOCOL COORDINATORS
         </h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
-          {/* Coord 1 */}
-          <div className="team-member-card gold">
-            <div className="team-card-corners" />
-            <div className="team-card-inner">
-              <div className="team-avatar-frame">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '30px' }}>
+          {[
+            {
+              name: "Subhankar Das Adhikary",
+              role: "Web Developer Exec",
+              src: subhankar,
+              initials: "SD",
+              email: "subhankardasadhikary2005@gmail.com",
+              linkedin: "https://linkedin.com/in/subhankar-das-adhikary-196144299",
+              desc: "Architecting core platform architecture, responsive system frameworks, and secure cloud handshakes."
+            },
+            {
+              name: "Rohitaswa Singha",
+              role: "Graphics Executive",
+              src: rohitaswa,
+              initials: "RS",
+              email: "rohitaswasingha@gmail.com",
+              linkedin: "https://linkedin.com",
+              desc: "Designing top tier visual interfaces, dark mode color grading schemas, vector mockups, and assets."
+            },
+            {
+              name: "Rajdeb Pal",
+              role: "Sponsorship Executive",
+              src: rajdeb,
+              initials: "RP",
+              email: "rajdebpal@gmail.com",
+              linkedin: "https://linkedin.com",
+              desc: "Coordinating strategic partner networks, resource allocations, and corporate sponsor pools."
+            },
+            {
+              name: "Raunak Dasgupta",
+              role: "Social Media Lead",
+              src: raunak,
+              initials: "RD",
+              email: "raunakdasgupta@gmail.com",
+              linkedin: "https://linkedin.com",
+              desc: "Synchronizing community outreach broadcasts, interactive social threads, and engagement tracks."
+            },
+            {
+              name: "Maupriya Pramanik",
+              role: "Decoration Lead",
+              src:maupriya,
+              initials: "MP",
+              email: "maupriyapramanik@gmail.com",
+              linkedin: "https://linkedin.com",
+              desc: "Managing offline ambient lighting blueprints, physical venue layouts, and immersive installation plans."
+            },
+            {
+              name: "Daliya Paul",
+              role: "Sponsership Manager",
+              src: dalia,
+              initials: "SC",
+              email: "sohamchatterjee@gmail.com",
+              linkedin: "https://linkedin.com",
+              desc: "Directing user experience blueprints, high contrast layout hierarchies, and accessible flows."
+            },
+            {
+              name: "Shivam Singh",
+              role: "Decoration",
+              src: shivam,
+              initials: "PS",
+              email: "piyalisen@gmail.com",
+              linkedin: "https://linkedin.com",
+              desc: "Supervising venue micro-logistics, catering syncs, hardware kits distribution, and communications."
+            },
+             {
+              name: "Akan Sarkar",
+              role: "Treasuer",
+              src:ankan,
+              initials: "PS",
+              email: "piyalisen@gmail.com",
+              linkedin: "https://linkedin.com",
+              desc: "Supervising venue micro-logistics, catering syncs, hardware kits distribution, and communications."
+            }
+          ].map((coord, idx) => (
+            <div key={idx} className="team-member-card gold" style={{ position: 'relative', width: '100%', height: 'auto', padding: 0, overflow: 'hidden' }}>
+              <div className="team-card-corners" />
+              
+              {/* Full background Avatar that sizes the card naturally */}
+              <div style={{ position: 'relative', width: '100%', height: 'auto', zIndex: 1 }}>
                 <SmartAvatar 
-                  src={man6}
-                  alt="Subhankar Das Adhikary" 
-                  initials="SD" 
+                  src={coord.src} 
+                  alt={coord.name} 
+                  initials={coord.initials} 
                   accentColor="var(--accent-gold)"
+                  style={{ borderRadius: '0px', width: '100%', height: 'auto', aspectRatio: '3/4', objectFit: 'cover', display: 'block' }}
                 />
               </div>
-              <div className="team-card-info-layout">
-                <h4 className="team-card-name" style={{ fontSize: '1.02rem' }}>Subhankar Das Adhikary</h4>
-                <span className="team-card-role">Web Developer Exec</span>
-                
-                {/* Social Buttons Block */}
-                <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-                  <a 
-                    href="mailto:subhankardasadhikary2005@gmail.com" 
-                    title="Send Email"
-                    className="team-social-btn"
-                  >
-                    <Mail size={11} />
-                  </a>
-                  <a 
-                    href="https://linkedin.com/in/subhankar-das-adhikary-196144299" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    title="LinkedIn Profile"
-                    className="team-social-btn"
-                  >
-                    <Linkedin size={11} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+              
+              {/* Overlay gradient */}
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(to top, rgba(2, 6, 3, 0.98) 0%, rgba(2, 6, 3, 0.75) 45%, rgba(2, 6, 3, 0.15) 100%)',
+                zIndex: 2,
+                pointerEvents: 'none'
+              }} />
 
-          {/* Coord 2 */}
-          <div className="team-member-card gold">
-            <div className="team-card-corners" />
-            <div className="team-card-inner">
-              <div className="team-avatar-frame">
-                <SmartAvatar 
-                  src={man7}
-                  alt="Rohitaswa Singha" 
-                  initials="RS" 
-                  accentColor="var(--accent-gold)"
-                />
-              </div>
-              <div className="team-card-info-layout">
-                <h4 className="team-card-name" style={{ fontSize: '1.02rem' }}>Rohitaswa Singha</h4>
-                <span className="team-card-role">Graphics Executive</span>
-                
-                {/* Social Buttons Block */}
-                <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-                  <a 
-                    href="mailto:rohitaswasingha@gmail.com" 
-                    title="Send Email"
-                    className="team-social-btn"
-                  >
-                    <Mail size={11} />
-                  </a>
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    title="LinkedIn Profile"
-                    className="team-social-btn"
-                  >
-                    <Linkedin size={11} />
-                  </a>
+              {/* Overlaid content */}
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 3, padding: '24px', display: 'flex', flexDirection: 'column' }}>
+                <div>
+                  <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.25rem', fontWeight: 800, margin: '0 0 6px 0', textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>{coord.name}</h4>
+                  <span style={{ color: 'var(--accent-gold)', fontSize: '0.82rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)', fontWeight: 600, letterSpacing: '1px', textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}>{coord.role}</span>
                 </div>
-              </div>
-            </div>
-          </div>
 
-          {/* Coord 3 */}
-          <div className="team-member-card gold">
-            <div className="team-card-corners" />
-            <div className="team-card-inner">
-              <div className="team-avatar-frame">
-                <SmartAvatar 
-                  src={man8}
-                  alt="Rajdeb Pal" 
-                  initials="RP" 
-                  accentColor="var(--accent-gold)"
-                />
-              </div>
-              <div className="team-card-info-layout">
-                <h4 className="team-card-name" style={{ fontSize: '1.02rem' }}>Rajdeb Pal</h4>
-                <span className="team-card-role">Sponsorship Executive</span>
-                
-                {/* Social Buttons Block */}
-                <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-                  <a 
-                    href="mailto:rajdebpal@gmail.com" 
-                    title="Send Email"
-                    className="team-social-btn"
-                  >
-                    <Mail size={11} />
-                  </a>
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    title="LinkedIn Profile"
-                    className="team-social-btn"
-                  >
-                    <Linkedin size={11} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+                <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.15)', paddingTop: '15px', display: 'flex', gap: '8px', marginTop: '16px', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', gap: '8px' }}>
+                    <a href={`mailto:${coord.email}`} title="Send Email" className="team-social-btn" style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none' }}>
+                      <Mail size={13} />
+                    </a>
+                    <a href={coord.linkedin} target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" className="team-social-btn" style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none' }}>
+                      <Linkedin size={13} />
+                    </a>
+                  </div>
 
-          {/* Coord 4 */}
-          <div className="team-member-card gold">
-            <div className="team-card-corners" />
-            <div className="team-card-inner">
-              <div className="team-avatar-frame">
-                <SmartAvatar 
-                  src={man9}
-                  alt="Raunak Dasgupta" 
-                  initials="RD" 
-                  accentColor="var(--accent-gold)"
-                />
-              </div>
-              <div className="team-card-info-layout">
-                <h4 className="team-card-name" style={{ fontSize: '1.02rem' }}>Raunak Dasgupta</h4>
-                <span className="team-card-role">Social Media Lead</span>
-                
-                {/* Social Buttons Block */}
-                <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-                  <a 
-                    href="mailto:raunakdasgupta@gmail.com" 
-                    title="Send Email"
-                    className="team-social-btn"
+                  {/* Clicking opens subordinate page */}
+                  <button 
+                    onClick={() => {
+                      setViewingSubordinateTeam({
+                        coordinatorName: coord.name,
+                        coordinatorRole: coord.role,
+                        coordinatorAvatar: coord.src,
+                        members: subordinateTeams[coord.name] || []
+                      });
+                      window.scrollTo({ top: 0, behavior: 'instant' });
+                    }}
+                    className="btn-cyber-outline"
+                    style={{
+                      padding: '6px 14px',
+                      fontSize: '0.75rem',
+                      fontWeight: 700,
+                      borderWidth: '1px',
+                      borderRadius: '4px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      color: 'var(--accent-gold)',
+                      borderColor: 'rgba(255, 183, 3, 0.4)',
+                      background: 'rgba(0, 0, 0, 0.6)',
+                      cursor: 'pointer'
+                    }}
                   >
-                    <Mail size={11} />
-                  </a>
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    title="LinkedIn Profile"
-                    className="team-social-btn"
-                  >
-                    <Linkedin size={11} />
-                  </a>
+                    <ChevronRight size={12} />
+                    <span>VIEW SQUAD</span>
+                  </button>
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Coord 5 */}
-          <div className="team-member-card gold">
-            <div className="team-card-corners" />
-            <div className="team-card-inner">
-              <div className="team-avatar-frame">
-                <SmartAvatar 
-                  src={man10} 
-                  alt="Maupriya Pramanik" 
-                  initials="MP" 
-                  accentColor="var(--accent-gold)"
-                />
-              </div>
-              <div className="team-card-info-layout">
-                <h4 className="team-card-name" style={{ fontSize: '1.02rem' }}>Maupriya Pramanik</h4>
-                <span className="team-card-role">Decoration Lead</span>
-                
-                {/* Social Buttons Block */}
-                <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-                  <a 
-                    href="mailto:maupriyapramanik@gmail.com" 
-                    title="Send Email"
-                    className="team-social-btn"
-                  >
-                    <Mail size={11} />
-                  </a>
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    title="LinkedIn Profile"
-                    className="team-social-btn"
-                  >
-                    <Linkedin size={11} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Coord 6 */}
-          <div className="team-member-card gold">
-            <div className="team-card-corners" />
-            <div className="team-card-inner">
-              <div className="team-avatar-frame">
-                <SmartAvatar 
-                  src="/input_file_10.png" 
-                  alt="Soham Chatterjee" 
-                  initials="SC" 
-                  accentColor="var(--accent-gold)"
-                />
-              </div>
-              <div className="team-card-info-layout">
-                <h4 className="team-card-name" style={{ fontSize: '1.02rem' }}>Soham Chatterjee</h4>
-                <span className="team-card-role">Design Coordinator & UX Lead</span>
-                
-                {/* Social Buttons Block */}
-                <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-                  <a 
-                    href="mailto:sohamchatterjee@gmail.com" 
-                    title="Send Email"
-                    className="team-social-btn"
-                  >
-                    <Mail size={11} />
-                  </a>
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    title="LinkedIn Profile"
-                    className="team-social-btn"
-                  >
-                    <Linkedin size={11} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Coord 7 */}
-          <div className="team-member-card gold">
-            <div className="team-card-corners" />
-            <div className="team-card-inner">
-              <div className="team-avatar-frame">
-                <SmartAvatar 
-                  src="/input_file_11.png" 
-                  alt="Piyali Sen" 
-                  initials="PS" 
-                  accentColor="var(--accent-gold)"
-                />
-              </div>
-              <div className="team-card-info-layout">
-                <h4 className="team-card-name" style={{ fontSize: '1.02rem' }}>Piyali Sen</h4>
-                <span className="team-card-role">PR & Logistics Lead</span>
-                
-                {/* Social Buttons Block */}
-                <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-                  <a 
-                    href="mailto:piyalisen@gmail.com" 
-                    title="Send Email"
-                    className="team-social-btn"
-                  >
-                    <Mail size={11} />
-                  </a>
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    title="LinkedIn Profile"
-                    className="team-social-btn"
-                  >
-                    <Linkedin size={11} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -3075,6 +2228,8 @@ export default function App() {
           })}
         </div>
       </section>
+
+
 
       {/* ==========================================
          PARTNERS & SPONSORS GRID
@@ -3520,82 +2675,277 @@ export default function App() {
 
             <div className="modal-header">
               <h3 className="modal-title" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <GraduationCap style={{ color: 'var(--accent-green)' }} size={24} />
-                <span style={{ fontSize: '1.2rem', fontWeight: '800', letterSpacing: '0.5px' }}>SUSTAINABILITY IDEA VALIDATION</span>
+                <Cpu style={{ color: 'var(--accent-green)' }} size={24} />
+                <span style={{ fontSize: '1.2rem', fontWeight: '800', letterSpacing: '0.5px' }}>REGISTRATION PORTAL</span>
               </h3>
               <button className="btn-modal-close" onClick={() => setShowScholarSuggestionModal(false)}>
                 <X size={20} />
               </button>
             </div>
 
-            <div className="modal-body" style={{ textAlign: 'center', padding: '15px' }}>
-              <div style={{ background: 'rgba(0, 255, 102, 0.03)', border: '1px solid rgba(0, 255, 102, 0.15)', borderRadius: '8px', padding: '20px', marginBottom: '20px' }}>
-                <BookOpen size={40} className="glow-text-green" style={{ marginBottom: '12px', display: 'inline-block' }} />
-                <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.15rem', fontWeight: 800, margin: '0 0 10px 0', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                  HAVE YOU CHECKED YOUR SCIENTIFIC IDEA?
-                </h4>
-                <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: '1.5', margin: 0 }}>
-                  Excellent choice to register! However, to maximize your feasibility & viability points from our expert ECE/CSE review panel, we heavily encourage you to check your project designs, IoT sensors, and microcontroller frameworks on **Google Scholar** first to gather supportive peer-reviewed research papers.
-                </p>
+            <div className="modal-body" style={{ textAlign: 'center', padding: '25px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                <div style={{ 
+                  background: 'rgba(0, 255, 102, 0.04)', 
+                  border: '1px solid rgba(0, 255, 102, 0.25)', 
+                  borderRadius: '8px', 
+                  padding: '24px', 
+                  textAlign: 'center' 
+                }}>
+                  <GraduationCap style={{ color: 'var(--accent-green)', marginBottom: '12px', display: 'inline-block' }} size={48} />
+                  <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.1rem', fontWeight: 800, margin: '0 0 10px 0', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                    VALIDATE YOUR IDEA FIRST
+                  </h4>
+                  <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)', margin: '0 0 20px 0', lineHeight: '1.4' }}>
+                    Click the button below to close this gateway and navigate straight to the interactive search engine.
+                  </p>
+                  
+                  <button 
+                    onClick={() => {
+                      playSfx('click');
+                      setShowScholarSuggestionModal(false);
+                      const element = document.getElementById("scholar-validation");
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="btn-cyber-solid"
+                    style={{ 
+                      display: 'inline-flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      gap: '10px',
+                      padding: '14px 28px', 
+                      background: 'var(--accent-green)', 
+                      color: '#000', 
+                      border: 'none', 
+                      borderRadius: '6px', 
+                      textDecoration: 'none',
+                      fontWeight: 800,
+                      fontSize: '0.9rem',
+                      cursor: 'pointer',
+                      width: '100%',
+                      boxShadow: '0 0 15px rgba(0, 255, 102, 0.25)'
+                    }}
+                  >
+                    <Search size={16} />
+                    <span>GO TO GOOGLE SCHOLAR SECTION</span>
+                  </button>
+                </div>
+
+                <div style={{ margin: '15px 0 5px', textAlign: 'center' }}>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '1.5px' }}>
+                    — OR REGISTER VIA OFFICIAL PARTNERS —
+                  </span>
+                </div>
+
+                <div className="flex flex-col gap-4 w-full">
+                  {/* Unstop Portal Button */}
+                  <a 
+                    href="https://unstop.com/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="team-member-card green w-full"
+                    style={{ 
+                      display: 'flex', 
+                      flexDirection: 'row',
+                      alignItems: 'center', 
+                      justifyContent: 'space-between', 
+                      background: 'rgba(15, 98, 254, 0.06)', 
+                      border: '1px solid rgba(15, 98, 254, 0.25)', 
+                      borderRadius: '8px', 
+                      padding: '12px 18px',
+                      textDecoration: 'none',
+                      color: '#fff',
+                      transition: 'all 0.2s',
+                      textAlign: 'left'
+                    }}
+                    onClick={() => {
+                      playSfx('click');
+                      setShowScholarSuggestionModal(false);
+                    }}
+                  >
+                    <div className="team-card-corners" />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <svg width="24" height="24" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+                        <circle cx="22" cy="22" r="20" fill="url(#unstop-gradient-sponsor-modal-compact)" />
+                        <path d="M14 22C14 17.5817 17.5817 14 22 14C26.4183 14 30 17.5817 30 22C30 26.4183 26.4183 30 22 30" stroke="white" strokeWidth="3" strokeLinecap="round" />
+                        <circle cx="22" cy="22" r="4" fill="#00ff66" />
+                        <defs>
+                          <linearGradient id="unstop-gradient-sponsor-modal-compact" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                            <stop stopColor="#0F62FE" />
+                            <stop stopColor="#0070F3" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                      <div>
+                        <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', fontWeight: 900, color: '#fff' }}>
+                          un<span style={{ color: '#00ff66' }}>stop</span>
+                        </span>
+                        <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.5)' }}>OFFICIAL PORTAL</div>
+                      </div>
+                    </div>
+                    <div className="btn-cyber-solid" style={{ background: '#0F62FE', borderColor: '#0F62FE', color: '#fff', display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '6px 12px', fontSize: '0.75rem', height: 'fit-content' }}>
+                      <span>REGISTER</span>
+                      <ArrowRight size={12} />
+                    </div>
+                  </a>
+
+                  {/* Devfolio Portal Button */}
+                  <a 
+                    href="https://devfolio.co/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="team-member-card blue w-full"
+                    style={{ 
+                      display: 'flex', 
+                      flexDirection: 'row',
+                      alignItems: 'center', 
+                      justifyContent: 'space-between', 
+                      background: 'rgba(55, 112, 255, 0.06)', 
+                      border: '1px solid rgba(55, 112, 255, 0.25)', 
+                      borderRadius: '8px', 
+                      padding: '12px 18px',
+                      textDecoration: 'none',
+                      color: '#fff',
+                      transition: 'all 0.2s',
+                      textAlign: 'left'
+                    }}
+                    onClick={() => {
+                      playSfx('click');
+                      setShowScholarSuggestionModal(false);
+                    }}
+                  >
+                    <div className="team-card-corners" />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <svg width="22" height="22" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+                        <path d="M124.2 216.2c-5.7 3.3-10.2 8.1-13 13.9L24.8 409.8c-2.8 5.8-4.2 12.1-4.2 18.5V607c0 6.4 1.4 12.7 4.2 18.5l86.4 179.7c2.8 5.8 7.3 10.6 13 13.9l173 100.1c5.7 3.3 12.1 5 18.5 5h172.8c6.4 0 12.8-1.7 18.5-5l173-100.1c5.7-3.3 10.2-8.1 13-13.9l86.4-179.7c2.8-5.8 4.2-12.1 4.2-18.5V428.3c0-6.4-1.4-12.7-4.2-18.5l-86.4-179.7c-2.8-5.8-7.3-10.6-13-13.9l-173-100.1c-5.7-3.3-12.1-5-18.5-5H315.7c-6.4 0-12.8 1.7-18.5 5l-173 100.1z" fill="#3770FF"/>
+                        <path d="M371.4 345h164c72.4 0 131 58.6 131 131s-58.6 131-131 131h-164V345z" fill="#FFFFFF"/>
+                      </svg>
+                      <div>
+                        <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', fontWeight: 900, color: '#fff' }}>
+                          DEV<span style={{ color: '#3770FF' }}>FOLIO</span>
+                        </span>
+                        <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.5)' }}>CONDUIT PORTAL</div>
+                      </div>
+                    </div>
+                    <div className="btn-cyber-solid" style={{ background: 'var(--accent-blue)', borderColor: 'var(--accent-blue)', color: '#000', display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '6px 12px', fontSize: '0.75rem', height: 'fit-content' }}>
+                      <span>REGISTER</span>
+                      <ArrowRight size={12} />
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ==========================================
+         OFFICIAL INTERACTIVE DECRYPTION MINI-GAME MODAL
+         ========================================== */}
+      {gameModalOpen && (
+        <div className="modal-overlay" onClick={() => setGameModalOpen(false)}>
+          <div className="modal-content-wrapper" style={{ maxWidth: '500px' }} onClick={(e) => e.stopPropagation()}>
+            <div className="accent-corner tl"></div>
+            <div className="accent-corner tr"></div>
+            <div className="accent-corner bl"></div>
+            <div className="accent-corner br"></div>
+
+            <div className="modal-header">
+              <h3 className="modal-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Gamepad2 size={20} className="glow-text-green" />
+                <span>FIREWALL DECRYPTION KEY</span>
+              </h3>
+              <button className="btn-modal-close" onClick={() => setGameModalOpen(false)}>
+                <X size={20} />
+              </button>
+            </div>
+
+            <div className="modal-body" style={{ textAlign: 'center' }}>
+              <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>
+                Reconfigure the ECE node by alignment. Connect 3 nodes in a line (X) to bypass secure firewall keys!
+              </p>
+
+              {/* Score indicators */}
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', marginBottom: '20px', fontFamily: 'var(--font-mono)' }}>
+                <div>
+                  <span style={{ display: 'block', fontSize: '0.7rem', color: 'var(--accent-green)' }}>HACKER SCORE</span>
+                  <span style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#fff' }}>{hackerScore}</span>
+                </div>
+                <div style={{ borderLeft: '1px solid rgba(255,255,255,0.1)', height: '40px' }} />
+                <div>
+                  <span style={{ display: 'block', fontSize: '0.7rem', color: '#ff3300' }}>MAINFRAME</span>
+                  <span style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#fff' }}>{systemScore}</span>
+                </div>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <a 
-                  href="#tracks" 
-                  className="btn-cyber-solid"
-                  style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center', 
-                    gap: '8px', 
-                    background: 'var(--accent-green)', 
-                    color: '#020603',
-                    borderColor: 'var(--accent-green)', 
-                    textDecoration: 'none',
-                    fontWeight: 800,
-                    width: '100%',
-                    padding: '14px',
-                    boxShadow: '0 0 15px rgba(0, 255, 102, 0.4)',
-                    boxSizing: 'border-box'
-                  }}
-                  onClick={() => {
-                    setShowScholarSuggestionModal(false);
-                    const element = document.getElementById("tracks");
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                >
-                  <Search size={16} style={{ flexShrink: 0 }} />
-                  <span style={{ fontSize: '0.85rem', whiteSpace: 'normal', textAlign: 'center' }}>CHECK GOOGLE SCHOLAR SECTION NOW</span>
-                </a>
+              {/* The Tic-Tac-Toe Grid */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '10px',
+                maxWidth: '280px',
+                margin: '0 auto 20px',
+              }}>
+                {board.map((cell, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleCellClick(idx)}
+                    disabled={cell !== null || !isPlayerTurn || tttWinner !== null}
+                    style={{
+                      aspectRatio: '1',
+                      background: cell === 'X' ? 'rgba(0, 255, 102, 0.1)' : cell === 'O' ? 'rgba(255, 51, 0, 0.1)' : '#020603',
+                      border: cell === 'X' ? '1px solid var(--accent-green)' : cell === 'O' ? '1px solid #ff3300' : '1px solid rgba(0, 255, 102, 0.25)',
+                      borderRadius: '4px',
+                      color: cell === 'X' ? 'var(--accent-green)' : cell === 'O' ? '#ff3300' : '#fff',
+                      fontSize: '1.8rem',
+                      fontFamily: 'var(--font-mono)',
+                      fontWeight: 'bold',
+                      cursor: (cell || !isPlayerTurn || tttWinner) ? 'not-allowed' : 'pointer',
+                      transition: 'all 0.2s',
+                      boxShadow: cell === 'X' ? '0 0 10px rgba(0, 255, 102, 0.15)' : cell === 'O' ? '0 0 10px rgba(255, 51, 0, 0.15)' : 'none'
+                    }}
+                  >
+                    {cell}
+                  </button>
+                ))}
+              </div>
 
-                <a 
-                  href="https://unstop.com/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+              {/* Status Message */}
+              <div style={{
+                background: '#020603',
+                border: '1px solid rgba(0, 255, 102, 0.15)',
+                padding: '12px',
+                borderRadius: '6px',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.8rem',
+                color: tttWinner === 'O' ? '#ff3300' : 'var(--accent-green)',
+                minHeight: '44px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '20px'
+              }}>
+                {tttMessage}
+              </div>
+
+              {/* Reset Controls */}
+              <div style={{ display: 'flex', gap: '15px', justifyContent: 'center' }}>
+                <button
                   className="btn-cyber-outline"
-                  style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center', 
-                    gap: '8px', 
-                    textDecoration: 'none', 
-                    border: '1px solid rgba(0, 255, 102, 0.4)',
-                    background: 'rgba(0, 255, 102, 0.05)',
-                    color: 'var(--accent-green)',
-                    fontWeight: 'bold',
-                    padding: '14px',
-                    width: '100%',
-                    boxSizing: 'border-box'
-                  }}
-                  onClick={() => {
-                    setShowScholarSuggestionModal(false);
-                  }}
+                  onClick={handleResetTtt}
+                  style={{ fontSize: '0.82rem', padding: '10px 20px', cursor: 'pointer' }}
                 >
-                  <span style={{ fontSize: '0.85rem', whiteSpace: 'normal', textAlign: 'center' }}>PROCEED TO UNSTOP REGISTRATION DIRECTLY</span>
-                  <ArrowRight size={16} style={{ flexShrink: 0 }} />
-                </a>
+                  REBOOT CORE
+                </button>
+                <button
+                  className="btn-cyber-solid"
+                  onClick={() => setGameModalOpen(false)}
+                  style={{ fontSize: '0.82rem', padding: '10px 20px', background: 'var(--accent-green)', color: '#000', cursor: 'pointer' }}
+                >
+                  CLOSE PORTAL
+                </button>
               </div>
             </div>
           </div>
@@ -3830,6 +3180,29 @@ export default function App() {
             )}
           </div>
         )}
+      </div>
+
+      {/* ==========================================
+         CYBER BGM BACKGROUND SOUND WIDGET
+         ========================================== */}
+      <div 
+        className="cyber-bgm-widget" 
+        onClick={toggleSound}
+        title={isPlayingSound ? "Pause Cyber Soundtrack" : "Play Cyber Soundtrack"}
+      >
+        {isPlayingSound ? (
+          <Volume2 size={16} className="glow-text-green" style={{ color: '#84ec30' }} />
+        ) : (
+          <VolumeX size={16} style={{ color: 'rgba(255,255,255,0.4)' }} />
+        )}
+        <span className="cyber-bgm-text">
+          {isPlayingSound ? "BGM: ACTIVE" : "BGM: MUTED"}
+        </span>
+        <div style={{ display: 'flex', gap: '3px', alignItems: 'flex-end', height: '15px' }}>
+          <div className={`equalizer-bar ${isPlayingSound ? 'animating' : ''}`} />
+          <div className={`equalizer-bar ${isPlayingSound ? 'animating' : ''}`} />
+          <div className={`equalizer-bar ${isPlayingSound ? 'animating' : ''}`} />
+        </div>
       </div>
     </div>
   );
