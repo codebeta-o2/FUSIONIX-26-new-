@@ -45,32 +45,32 @@ import {
 } from 'lucide-react';
 
 // Define safe URL references to static generated assets
-const roboninjaHeroImg = "/src/assets/images/roboninja_hero_1781580759799.jpg";
-const shadowXImg = "/src/assets/images/about_section_robot.png";
-const stealth07Img = "/src/assets/images/stealth_07_1781580797326.jpg";
-const nighthawkImg = "/src/assets/images/nighthawk_gold_1781580817851.jpg";
-const cyberVImg = "/src/assets/images/cyber_v_blue_1781580834832.jpg";
-const targetRobotImg = "/src/assets/images/target_robot_1781580853723.jpg";
-const hologramEarthImg = "/src/assets/images/hologram_earth_1783313760796.jpg";
-const animes = "/src/assets/images/Animes Pharikal (1).png";
-const logoImg = "/src/assets/images/logo.png";
-const madam ="/src/assets/images/madam.png";
-const hod="/src/assets/images/HOD.png";
-const abhiraj ="/src/assets/images/abhiraj.png";
-const debdip ="/src/assets/images/debdip.png";
-const shibangi ="/src/assets/images/shibangi.png";
-const subhankar ="/src/assets/images/subhankar.png";
-const rohitaswa="/src/assets/images/rohitaswa.png";
-const rajdeb ="/src/assets/images/rajdeb.png";
-const maupriya="/src/assets/images/maupriya.png";
-const raunak="/src/assets/images/raunak.png";
-const dalia="/src/assets/images/dalia.png";
-const shivam="/src/assets/images/shivam.png";
-const iem ="/src/assets/images/iem-blac.png";
-const uem="/src/assets/images/UEM-BALCK.png";
-const ankan  ="/src/assets/images/Ankan.png";
-
-const prizesBannerImg = "/src/assets/images/50K%20Prize%20Pool.png";
+import roboninjaHeroImg from "./assets/images/roboninja_hero_1781580759799.jpg";
+import shadowXImg from "./assets/images/about_section_robot.png";
+import stealth07Img from "./assets/images/stealth_07_1781580797326.jpg";
+import nighthawkImg from "./assets/images/nighthawk_gold_1781580817851.jpg";
+import cyberVImg from "./assets/images/cyber_v_blue_1781580834832.jpg";
+import targetRobotImg from "./assets/images/target_robot_1781580853723.jpg";
+import hologramEarthImg from "./assets/images/hologram_earth_1783313760796.jpg";
+import animes from "./assets/images/Animes Pharikal (1).png";
+import logoImg from "./assets/images/logo.png";
+import madam from "./assets/images/madam.png";
+import hod from "./assets/images/HOD.png";
+import abhiraj from "./assets/images/abhiraj.png";
+import debdip from "./assets/images/debdip.png";
+import shibangi from "./assets/images/shibangi.png";
+import subhankar from "./assets/images/subhankar.png";
+import rohitaswa from "./assets/images/rohitaswa.png";
+import rajdeb from "./assets/images/rajdeb.png";
+import maupriya from "./assets/images/maupriya.png";
+import raunak from "./assets/images/raunak.png";
+import dalia from "./assets/images/dalia.png";
+import shivam from "./assets/images/shivam.png";
+import iem from "./assets/images/iem-blac.png";
+import uem from "./assets/images/UEM-BALCK.png";
+import ankan from "./assets/images/Ankan.png";
+import prizesBannerImg from "./assets/images/50K Prize Pool.png";
+import introVideo from "../assets/images/intro.mp4";
 
 
 // Type definitions for Innovation Tracks
@@ -778,7 +778,7 @@ export default function App() {
       >
         {/* Full-Screen background video */}
         <video
-          src="/src/assets/images/intro.mp4"
+          src={introVideo}
           autoPlay
           loop
           muted
