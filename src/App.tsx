@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { 
   Bot, 
@@ -289,32 +289,25 @@ export default function App() {
   }, [bgAudio]);
 
   // Loading Screen & Mini-Game State
-  const [isLoading, setIsLoading] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        return !(sessionStorage.getItem('fusionix_intro_played') || localStorage.getItem('fusionix_intro_played'));
-      } catch (e) {
-        return true;
-      }
-    }
-    return true;
-  });
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const dismissIntro = () => {
-    if (typeof window !== 'undefined') {
-      try {
-        sessionStorage.setItem('fusionix_intro_played', 'true');
-        localStorage.setItem('fusionix_intro_played', 'true');
-      } catch (e) {
-        // ignore storage errors
-      }
-    }
     setIsLoading(false);
   };
+
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const [isMobileVideo, setIsMobileVideo] = useState<boolean>(
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   );
+
+  useEffect(() => {
+    if (isLoading && videoRef.current) {
+      videoRef.current.play().catch((err) => {
+        console.warn("Autoplay prevented or failed:", err);
+      });
+    }
+  }, [isLoading, isMobileVideo]);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -849,6 +842,7 @@ export default function App() {
       >
         {/* Full-Screen background video */}
         <video
+          ref={videoRef}
           key={isMobileVideo ? 'mobile' : 'desktop'}
           src={isMobileVideo ? mobileIntroVideo : introVideo}
           autoPlay
