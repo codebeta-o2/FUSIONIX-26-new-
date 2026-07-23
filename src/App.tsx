@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Bot, 
   Cpu, 
@@ -46,39 +45,35 @@ import {
 } from 'lucide-react';
 
 // Define safe URL references to static generated assets
-const bg = "/src/assets/images/roboninja_hero_1781580759799.jpg";
-const shadowXImg = "/src/assets/images/about_section_robot.png";
-const stealth07Img = "/src/assets/images/stealth_07_1781580797326.jpg";
-const nighthawkImg = "/src/assets/images/nighthawk_gold_1781580817851.jpg";
-const cyberVImg = "/src/assets/images/cyber_v_blue_1781580834832.jpg";
-const targetRobotImg = "/src/assets/images/target_robot_1781580853723.jpg";
-const hologramEarthImg = "/src/assets/images/hologram_earth_1783313760796.jpg";
-const animes = "/src/assets/images/Animes Pharikal (1).png";
-const logoImg = "/src/assets/images/logo.png";
-const madam ="/src/assets/images/madam.png";
-const sudip ="/src/assets/images/sudip.jpg";
-const hod="/src/assets/images/HOD.png";
-const abhiraj ="/src/assets/images/abhiraj.png";
-const debdip ="/src/assets/images/debdip.png";
-const shibangi ="/src/assets/images/shibangi.png";
-const subhankar ="/src/assets/images/subhankar.png";
-const rohitaswa="/src/assets/images/rohitaswa.png";
-const rajdeb ="/src/assets/images/rajdeb.png";
-const maupriya="/src/assets/images/maupriya.png";
-const raunak="/src/assets/images/raunak.png";
-const dalia="/src/assets/images/dalia.png";
-const shivam="/src/assets/images/shivam.png";
-const iem ="/src/assets/images/iem-blac.png";
-const uem="/src/assets/images/UEM-BALCK.png";
-const ankan  ="/src/assets/images/Ankan.png";
-const roboninjaHeroImg ="/src/assets/images/Bg.png";
-
-const prizesBannerImg = "/src/assets/images/30k.jpg";
-const footerLogoImg = "/src/assets/images/foter-logo.jpeg";
-const timerBgImg = "/src/assets/images/timerBackgroun.jpeg";
-
-const introVideo = "/src/assets/images/intro.mp4";
-const mobileIntroVideo = "/src/assets/images/intro_mobil.mp4";
+import roboninjaHeroImg from "./assets/images/Bg.png";
+import shadowXImg from "./assets/images/about_section_robot.png";
+import stealth07Img from "./assets/images/stealth_07_1781580797326.jpg";
+import nighthawkImg from "./assets/images/nighthawk_gold_1781580817851.jpg";
+import cyberVImg from "./assets/images/cyber_v_blue_1781580834832.jpg";
+import targetRobotImg from "./assets/images/target_robot_1781580853723.jpg";
+import hologramEarthImg from "./assets/images/hologram_earth_1783313760796.jpg";
+import animes from "./assets/images/Animes Pharikal (1).png";
+import logoImg from "./assets/images/logo.png";
+import madam from "./assets/images/madam.png";
+import hod from "./assets/images/HOD.png";
+import abhiraj from "./assets/images/abhiraj.png";
+import debdip from "./assets/images/debdip.png";
+import shibangi from "./assets/images/shibangi.png";
+import subhankar from "./assets/images/subhankar.png";
+import rohitaswa from "./assets/images/rohitaswa.png";
+import rajdeb from "./assets/images/rajdeb.png";
+import maupriya from "./assets/images/maupriya.png";
+import raunak from "./assets/images/raunak.png";
+import dalia from "./assets/images/dalia.png";
+import shivam from "./assets/images/shivam.png";
+import iem from "./assets/images/iem-blac.png";
+import uem from "./assets/images/UEM-BALCK.png";
+import ankan from "./assets/images/Ankan.png";
+import prizesBannerImg from "./assets/images/30k.jpg";
+import introVideo from "./assets/images/intro.mp4";
+import mobileIntroVideo from "./assets/images/intro_mobil.mp4";
+import sudip from "./assets/images/sudip.jpg";
+import them from "./assets/images/THEME.png";
 // Type definitions for Innovation Tracks
 interface InnovationTrack {
   id: string;
@@ -194,18 +189,25 @@ function SmartLogo({ src, alt, fallbackText, className, style }: SmartLogoProps)
 
 const subordinateTeams: Record<string, Array<{ name: string; role: string; email: string; initials: string }>> = {
   "Subhankar Das Adhikary": [
-    { name: "Harsh Gaurav", role: "Assistant Web Developer", email: "aritra.sen@uem.edu.in", initials: "AS" },
+    { name: "Hars Gourav", role: "Assistant Web Developer", email: "aritra.sen@uem.edu.in", initials: "AS" },
     { name: "Vivak Kumar Shaw", role: "Assistant Web Developer", email: "srinjoy.dutta@uem.edu.in", initials: "SD" },
-    { name: "Sandip jana", role: "Assistant Web Developer", email: "srinjoy.dutta@uem.edu.in", initials: "SD" }
+    { name: "Sondip jana", role: "Assistant Web Developer", email: "srinjoy.dutta@uem.edu.in", initials: "SD" }
   ],
   "Rohitaswa Singha": [
-    { name: "Riddhiman Roy", role: "Lead Graphic Artist", email: "riddhiman.roy@uem.edu.in", initials: "RR" },
-    { name: "Anjali Sharma", role: "UI Illustrator", email: "anjali.sharma@uem.edu.in", initials: "AS" }
-  ],
-  "Rajdeb Pal": [
-    { name: "Sourav Das", role: "Corporate Relations Manager", email: "sourav.das@uem.edu.in", initials: "SD" },
-    { name: "Preeti Kumari", role: "Sponsor Liaison Officer", email: "preeti.kumari@uem.edu.in", initials: "PK" }
-  ],
+  { name: "Souhardya Majumder", role: "Student Coordinator", email: "", initials: "SM" },
+  { name: "Jiya Sarkar", role: "Student Coordinator", email: "", initials: "JS" },
+  { name: "Sandipan Saha", role: "Student Coordinator", email: "", initials: "SS" },
+  { name: "Debojeet Bannerjee", role: "Student Coordinator", email: "", initials: "DB" },
+  { name: "Soumi Deb Singha", role: "Student Coordinator", email: "", initials: "SDS" }
+],
+  "Rajdeb Pal":  [
+  { name: "Debarshi Kar", role: "Volunteer", email: "", initials: "DK" },
+  { name: "Subhodeep Nandy", role: "Volunteer", email: "", initials: "SN" },
+  { name: "Preyashi Dutta", role: "Volunteer", email: "", initials: "PD" },
+  { name: "Sagnik Saha", role: "Volunteer", email: "", initials: "SS" },
+  { name: "Kaustav Sarkar", role: "Volunteer", email: "", initials: "KS" },
+  { name: "Ishita Singh", role: "Volunteer", email: "", initials: "IS" }
+],
   "Raunak Dasgupta": [
     { name: "Aditya Sen", role: "Social Media Specialist", email: "aditya.sen@uem.edu.in", initials: "AS" },
     { name: "Riya Ghosh", role: "Engagement Coordinator", email: "riya.ghosh@uem.edu.in", initials: "RG" }
@@ -221,7 +223,25 @@ const subordinateTeams: Record<string, Array<{ name: string; role: string; email
   "Piyali Sen": [
     { name: "Arunima Chowdhury", role: "Public Relations Executive", email: "arunima.chowdhury@uem.edu.in", initials: "AC" },
     { name: "Rahul Bose", role: "Venue Logistics Coordinator", email: "rahul.bose@uem.edu.in", initials: "RB" }
-  ]
+  ],
+
+  "Shivam Singh":[
+  { name: "Anik Nath", role: "Volunteer", email: "", initials: "AN" },
+  { name: "Anusua Roy", role: "Volunteer", email: "", initials: "AR" },
+  { name: "Archisman Parua", role: "Volunteer", email: "", initials: "AP" },
+  { name: "Asmita Hazra", role: "Volunteer", email: "", initials: "AH" },
+  { name: "Bidisha Dutta", role: "Volunteer", email: "", initials: "BD" },
+  { name: "Bidipta Manna", role: "Volunteer", email: "", initials: "BM" },
+  { name: "Debalina Banerjee", role: "Volunteer", email: "", initials: "DB" },
+  { name: "Debayan Banerjee", role: "Volunteer", email: "", initials: "DB" },
+  { name: "Debojoyti Poddar", role: "Volunteer", email: "", initials: "DP" },
+  { name: "Ishan Ghosh", role: "Volunteer", email: "", initials: "IG" },
+  { name: "Krish Shah", role: "Volunteer", email: "", initials: "KS" },
+  { name: "Sataparna Banerjee", role: "Volunteer", email: "", initials: "SB" },
+  { name: "Sourjyodeep Das", role: "Volunteer", email: "", initials: "SD" },
+  { name: "Srijita Roy", role: "Volunteer", email: "", initials: "SR" },
+  { name: "Maupiya Pramanik", role: "Volunteer", email: "", initials: "MP" }
+]
 };
 
 function playSfx(type: 'snap' | 'destroy' | 'click') {
@@ -289,32 +309,11 @@ export default function App() {
   }, [bgAudio]);
 
   // Loading Screen & Mini-Game State
-  const [isLoading, setIsLoading] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        return !(sessionStorage.getItem('fusionix_intro_played') || localStorage.getItem('fusionix_intro_played'));
-      } catch (e) {
-        return true;
-      }
-    }
-    return true;
-  });
-
-  const dismissIntro = () => {
-    if (typeof window !== 'undefined') {
-      try {
-        sessionStorage.setItem('fusionix_intro_played', 'true');
-        localStorage.setItem('fusionix_intro_played', 'true');
-      } catch (e) {
-        // ignore storage errors
-      }
-    }
-    setIsLoading(false);
-  };
-
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isMobileVideo, setIsMobileVideo] = useState<boolean>(
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   );
+  const introVideoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -323,6 +322,46 @@ export default function App() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (!isLoading) return;
+
+    const timer = window.setTimeout(() => {
+      setIsLoading(false);
+    }, 6000);
+
+    return () => window.clearTimeout(timer);
+  }, [isLoading]);
+
+  useEffect(() => {
+    const video = introVideoRef.current;
+    if (!video) return;
+
+    const startIntroVideo = () => {
+      video.muted = false;
+      video.volume = 1;
+      video.play().catch((err) => {
+        console.warn('Intro video autoplay was blocked by the browser. The video will still try to play on focus.', err);
+        video.muted = true;
+      });
+    };
+
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        video.play().catch(() => {});
+      }
+    };
+
+    startIntroVideo();
+
+    document.addEventListener('visibilitychange', handleVisibility);
+    window.addEventListener('focus', handleVisibility);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('focus', handleVisibility);
+    };
   }, []);
 
   const [bypassCountdown, setBypassCountdown] = useState<number>(7);
@@ -341,7 +380,7 @@ export default function App() {
       setBypassCountdown((prev) => {
         if (prev <= 1) {
           clearInterval(interval);
-          dismissIntro();
+          setIsLoading(false);
           return 0;
         }
         return prev - 1;
@@ -361,31 +400,6 @@ export default function App() {
     coordinatorAvatar: string;
     members: Array<{ name: string; role: string; email: string; initials: string }>;
   } | null>(null);
-
-  const handleNavClick = (sectionId: string, event?: React.MouseEvent) => {
-    if (event) {
-      event.preventDefault();
-    }
-    setActiveMenu(sectionId);
-    setMobileMenuOpen(false);
-    setViewingSponsorsPage(false);
-    setViewingFacultyPage(false);
-    setViewingSubordinateTeam(null);
-    
-    setTimeout(() => {
-      let targetId = sectionId;
-      if (sectionId === 'teams') targetId = 'team';
-      const element = document.getElementById(targetId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else if (sectionId === 'tracks') {
-        const scholar = document.getElementById('scholar-validation');
-        if (scholar) {
-          scholar.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    }, 150);
-  };
 
   // Filter state for innovation tracks
   const [activeFilter, setActiveFilter] = useState<'all' | 'rare' | 'epic' | 'legendary'>('all');
@@ -472,26 +486,24 @@ export default function App() {
   const [newsletterEmail, setNewsletterEmail] = useState<string>('');
   const [newsletterSubscribed, setNewsletterSubscribed] = useState<boolean>(false);
 
-  // Real-time dynamic countdown to FusioniX 2026 (Sep 11, 2026)
-  const [nowTime, setNowTime] = useState<Date>(new Date());
+  // Real-time dynamic countdown to FusioniX 2026 (Oct 23, 2026)
   const [pdfTimeLeft, setPdfTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
+    days: 152,
+    hours: 14,
+    minutes: 24,
+    seconds: 35
   });
 
   useEffect(() => {
-    // Target date for main FusioniX Hardware Phase (Offline): Sep 11, 2026 09:00:00
-    const targetDate = new Date('2026-09-11T09:00:00').getTime();
+    const targetDate = new Date('2026-10-23T09:00:00').getTime();
     
     const calculateTime = () => {
-      const now = new Date();
-      setNowTime(now);
-      const diff = targetDate - now.getTime();
+      const now = new Date().getTime();
+      const diff = targetDate - now;
       
       if (diff <= 0) {
-        setPdfTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        // Dynamic simulated countdown fallback in case of past dates
+        setPdfTimeLeft({ days: 152, hours: 14, minutes: 24, seconds: 35 });
         return;
       }
       
@@ -551,6 +563,14 @@ export default function App() {
   // Modals for Redesign 2 layout integration
   const [sponsorsModalOpen, setSponsorsModalOpen] = useState<boolean>(false);
   const [teamsModalOpen, setTeamsModalOpen] = useState<boolean>(false);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const y = element.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
   const [rulesModalOpen, setRulesModalOpen] = useState<boolean>(false);
   const [faqModalOpen, setFaqModalOpen] = useState<boolean>(false);
   const [gameModalOpen, setGameModalOpen] = useState<boolean>(false);
@@ -780,7 +800,7 @@ export default function App() {
       setHackerScore(p => p + 1);
       setTttMessage('✓ ACCESS GRANTED! System security compromised backfire channels decrypted.');
       setTimeout(() => {
-        dismissIntro();
+        setIsLoading(false);
       }, 1400);
       return;
     } else if (isFull) {
@@ -845,15 +865,20 @@ export default function App() {
           overflow: 'hidden',
           cursor: 'pointer'
         }}
-        onClick={dismissIntro}
+        onClick={() => setIsLoading(false)}
       >
         {/* Full-Screen background video */}
         <video
+          ref={introVideoRef}
           key={isMobileVideo ? 'mobile' : 'desktop'}
           src={isMobileVideo ? mobileIntroVideo : introVideo}
           autoPlay
-          muted
+          loop
+          muted={false}
           playsInline
+          preload="auto"
+          volume={1}
+          onLoadedData={() => introVideoRef.current?.play().catch(() => {})}
           style={{
             position: 'absolute',
             top: 0,
@@ -863,7 +888,6 @@ export default function App() {
             objectFit: 'cover',
             zIndex: 1
           }}
-          onEnded={dismissIntro}
         />
       </div>
     );
@@ -1043,7 +1067,7 @@ export default function App() {
           transition: 'top 0.3s ease'
         }}
       >
-        <a href="#home" className="nav-brand" onClick={(e) => handleNavClick('home', e)}>
+        <a href="#home" className="nav-brand" onClick={() => { setActiveMenu('home'); setViewingSponsorsPage(false); setViewingFacultyPage(false); setViewingSubordinateTeam(null); }}>
           <img 
             src={logoImg} 
             alt="FusioniX Logo" 
@@ -1065,7 +1089,7 @@ export default function App() {
             <a 
               href="#home" 
               className={`nav-link ${activeMenu === 'home' ? 'active nav-underlined-active' : ''}`}
-              onClick={(e) => handleNavClick('home', e)}
+              onClick={() => { setActiveMenu('home'); setMobileMenuOpen(false); setViewingSponsorsPage(false); setViewingSubordinateTeam(null); }}
             >
               Home
             </a>
@@ -1074,7 +1098,7 @@ export default function App() {
             <a 
               href="#about" 
               className={`nav-link ${activeMenu === 'about' ? 'active nav-underlined-active' : ''}`}
-              onClick={(e) => handleNavClick('about', e)}
+              onClick={() => { setActiveMenu('about'); setMobileMenuOpen(false); setViewingSponsorsPage(false); setViewingSubordinateTeam(null); }}
             >
               About Us
             </a>
@@ -1083,7 +1107,15 @@ export default function App() {
             <a 
               href="#timeline" 
               className={`nav-link ${activeMenu === 'timeline' ? 'active nav-underlined-active' : ''}`}
-              onClick={(e) => handleNavClick('timeline', e)}
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveMenu('timeline');
+                setMobileMenuOpen(false);
+                setViewingSponsorsPage(false);
+                setViewingFacultyPage(false);
+                setViewingSubordinateTeam(null);
+                scrollToSection('timeline');
+              }}
             >
               Timeline
             </a>
@@ -1092,28 +1124,36 @@ export default function App() {
             <a 
               href="#prizes" 
               className={`nav-link ${activeMenu === 'prizes' ? 'active nav-underlined-active' : ''}`}
-              onClick={(e) => handleNavClick('prizes', e)}
+              onClick={() => { setActiveMenu('prizes'); setMobileMenuOpen(false); setViewingSponsorsPage(false); setViewingSubordinateTeam(null); }}
             >
               Prizes
             </a>
           </li>
           <li>
-            <a 
-              href="#sponsors" 
-              className={`nav-link ${activeMenu === 'sponsors' ? 'active nav-underlined-active' : ''}`}
-              onClick={(e) => handleNavClick('sponsors', e)}
+            <button 
+              className="nav-link"
+              style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-body)', fontSize: '1.15rem' }}
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveMenu('sponsors');
+                setMobileMenuOpen(false);
+                setViewingSponsorsPage(false);
+                setViewingFacultyPage(false);
+                setViewingSubordinateTeam(null);
+                scrollToSection('sponsors');
+              }}
             >
               Sponsors
-            </a>
+            </button>
           </li>
           <li>
-            <a 
-              href="#team" 
-              className={`nav-link ${activeMenu === 'team' || activeMenu === 'teams' ? 'active nav-underlined-active' : ''}`}
-              onClick={(e) => handleNavClick('team', e)}
+            <button 
+              className="nav-link"
+              style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-body)', fontSize: '1.15rem' }}
+              onClick={() => { setTeamsModalOpen(true); setMobileMenuOpen(false); }}
             >
               Teams
-            </a>
+            </button>
           </li>
           {mobileMenuOpen && (
             <li style={{ marginTop: '20px' }}>
@@ -1309,7 +1349,7 @@ export default function App() {
               height: '100%',
               backgroundImage: `url(${roboninjaHeroImg})`,
               backgroundSize: 'cover',
-              backgroundPosition: 'center center',
+              backgroundPosition: 'center 20%',
               zIndex: 0,
             }} />
             
@@ -1370,16 +1410,9 @@ export default function App() {
               <div />
             </div>
 
-            {/* Countdown timer card centered at the bottom of hero - Beautiful dual-layer trapezoid shape exactly like image.png */}
-            <div className="hero-timer-wrapper">
+            <div style={{ width: '100%', maxWidth: '1000px', margin: '60px auto 0', zIndex: 12, position: 'relative' }}>
               <div className="countdown-trapezoid-outer">
-                <div 
-                  className="countdown-trapezoid-inner"
-                  style={{ 
-                    minHeight: 'clamp(80px, 18vw, 184.8px)',
-                    background: `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(${timerBgImg}) no-repeat center center / cover` 
-                  }}
-                >
+                <div className="countdown-trapezoid-inner">
                   <div className="countdown-column">
                     <div className="countdown-number" style={{ color: '#ffffff', textShadow: 'none', fontWeight: 800 }}>
                       {pdfTimeLeft.days.toString().padStart(2, '0')}
@@ -1554,22 +1587,11 @@ export default function App() {
         </div>
 
         {/* Image */}
-        <div className="about-image" style={{
-          height: '322.95px',
-          marginLeft: '-3px',
-          marginRight: '-78px',
-          paddingLeft: '0px',
-          marginBottom: '1px',
-          marginTop: '9px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
+        <div className="about-image">
           <img
             src={shadowXImg}
             alt="FusioniX Cyber Scout Mascot"
             referrerPolicy="no-referrer"
-            style={{ height: '100%', width: 'auto', objectFit: 'contain' }}
           />
         </div>
       </div>
@@ -1579,136 +1601,116 @@ export default function App() {
           {/* ==========================================
              PAGE 3: THEME SUSTAINABILITY
              ========================================== */}
-          <section id="theme" style={{ width: '100%', padding: '0px 20px', position: 'relative', overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <motion.img 
-              src="/src/assets/images/THEME.png" 
+          <section id="theme" style={{ width: '100%', padding: 0, position: 'relative', overflow: 'hidden' }}>
+            <img 
+              src={them} 
               alt="Theme Sustainability" 
-              style={{ width: '100%', maxWidth: '1200px', height: 'auto', maxHeight: '550px', display: 'block', objectFit: 'contain', margin: '0 auto' }}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
               referrerPolicy="no-referrer"
-              initial={{ opacity: 0, y: 60, scale: 0.98 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ type: "spring", stiffness: 80, damping: 14, mass: 0.8 }}
             />
           </section>
 
           {/* ==========================================
-             PAGE 4: TIMELINE (Real-Time Dynamic Timeline)
+             PAGE 4: TIMELINE
              ========================================== */}
-          <section id="timeline" style={{ padding: '80px 8% 60px', background: 'rgba(2, 6, 3, 0.4)' }}>
+          <section id="timeline" style={{ padding: '80px 8% 60px', background: 'rgba(2, 6, 3, 0.4)', scrollMarginTop: '90px' }}>
             <div className="pdf-card-container">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px', marginBottom: '40px' }}>
-                <h2 style={{ fontFamily: 'var(--font-display)', color: '#00ff66', fontSize: '2.4rem', fontWeight: 800, textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '10px', margin: 0 }}>
-                  <span style={{ width: '12px', height: '12px', background: '#00ff66', borderRadius: '2px', display: 'inline-block' }}></span>
-                  TIMELINE
-                </h2>
-                <div style={{ background: 'rgba(0, 255, 102, 0.08)', border: '1px solid rgba(0, 255, 102, 0.25)', padding: '6px 14px', borderRadius: '20px', color: '#84ec30', fontSize: '0.82rem', fontFamily: 'monospace', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#84ec30', boxShadow: '0 0 10px #84ec30' }}></span>
-                  REAL-TIME SYNC: {nowTime.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} {nowTime.toLocaleTimeString()}
-                </div>
-              </div>
+              <h2 style={{ fontFamily: 'var(--font-display)', color: '#00ff66', fontSize: '2.4rem', fontWeight: 800, textTransform: 'uppercase', marginBottom: '50px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span style={{ width: '12px', height: '12px', background: '#00ff66', borderRadius: '2px', display: 'inline-block' }}></span>
+                TIMELINE
+              </h2>
 
-              {/* Responsive Timeline Flow */}
+              {/* Responsive Timeline Flow (Horizontal on desktop, Vertical on mobile) */}
               <div className="timeline-container-wrapper custom-scroll">
                 <div className="timeline-grid-layout">
                   
                   {/* Connector Path Line */}
                   <div className="timeline-track-line"></div>
 
-                  {[
-                    {
-                      id: 1,
-                      title: "Registration Starts",
-                      dateStr: "Live Now (Website Launch)",
-                      start: new Date('2026-07-01T00:00:00'),
-                      end: new Date('2026-08-15T00:00:00')
-                    },
-                    {
-                      id: 2,
-                      title: "Last Date of PPT Submission",
-                      dateStr: "Aug 15, 2026",
-                      start: new Date('2026-08-15T00:00:00'),
-                      end: new Date('2026-08-15T23:59:59')
-                    },
-                    {
-                      id: 3,
-                      title: "1st Round Result Announcement",
-                      dateStr: "Aug 26, 2026",
-                      start: new Date('2026-08-26T00:00:00'),
-                      end: new Date('2026-08-26T23:59:59')
-                    },
-                    {
-                      id: 4,
-                      title: "Finalist Team Reveal",
-                      dateStr: "Sep 5, 2026",
-                      start: new Date('2026-09-05T00:00:00'),
-                      end: new Date('2026-09-05T23:59:59')
-                    },
-                    {
-                      id: 5,
-                      title: "Offline Hacking Starts",
-                      dateStr: "Sep 11, 2026",
-                      start: new Date('2026-09-11T09:00:00'),
-                      end: new Date('2026-09-11T23:59:59')
-                    },
-                    {
-                      id: 6,
-                      title: "Hacking Ends",
-                      dateStr: "Sep 12, 2026",
-                      start: new Date('2026-09-12T09:00:00'),
-                      end: new Date('2026-09-12T23:59:59')
-                    }
-                  ].map((item) => {
-                    const nowMs = nowTime.getTime();
-                    const isCompleted = nowMs > item.end.getTime();
-                    const isActive = nowMs >= item.start.getTime() && nowMs <= item.end.getTime();
-                    const isUpcoming = nowMs < item.start.getTime();
+                  {/* Node 1 */}
+                  <div className="timeline-sphere-node">
+                    <div className="timeline-sphere-globe active">
+                      <img 
+                        src={hologramEarthImg} 
+                        alt="Earth Node 1" 
+                        referrerPolicy="no-referrer" 
+                        className="timeline-earth-icon active"
+                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div className="timeline-node-info">
+                      <div className="timeline-node-title">Registration Starts</div>
+                      <div className="timeline-node-date">Sep 15, 2026</div>
+                    </div>
+                  </div>
 
-                    return (
-                      <div className="timeline-sphere-node" key={item.id}>
-                        <div className={`timeline-sphere-globe ${isCompleted || isActive ? 'active' : 'inactive'}`} style={isActive ? { boxShadow: '0 0 20px #00ff66', border: '2px solid #00ff66' } : {}}>
-                          <img 
-                            src={hologramEarthImg} 
-                            alt={item.title} 
-                            referrerPolicy="no-referrer" 
-                            className={`timeline-earth-icon ${isCompleted || isActive ? 'active' : 'inactive'}`}
-                            style={{ 
-                              width: '100%', 
-                              height: '100%', 
-                              borderRadius: '50%', 
-                              objectFit: 'cover',
-                              filter: isUpcoming ? 'grayscale(100%) opacity(40%)' : 'none' 
-                            }}
-                          />
-                        </div>
-                        <div className="timeline-node-info" style={{ marginTop: '12px' }}>
-                          <div className={`timeline-node-title ${isUpcoming ? 'inactive' : ''}`} style={{ color: isActive ? '#00ff66' : isCompleted ? '#ffffff' : '#888', fontWeight: isActive ? 800 : 600 }}>
-                            {item.title}
-                          </div>
-                          <div className="timeline-node-date" style={{ color: isActive ? '#84ec30' : '#aaa' }}>
-                            {item.dateStr}
-                          </div>
-                          <div style={{ marginTop: '4px' }}>
-                            {isCompleted && (
-                              <span style={{ fontSize: '0.68rem', padding: '2px 8px', borderRadius: '10px', background: 'rgba(0,255,102,0.12)', color: '#00ff66', border: '1px solid rgba(0,255,102,0.3)', fontWeight: 700 }}>
-                                ✓ COMPLETED
-                              </span>
-                            )}
-                            {isActive && (
-                              <span style={{ fontSize: '0.68rem', padding: '2px 8px', borderRadius: '10px', background: 'rgba(132,236,48,0.25)', color: '#84ec30', border: '1px solid #84ec30', fontWeight: 800 }}>
-                                ● LIVE NOW
-                              </span>
-                            )}
-                            {isUpcoming && (
-                              <span style={{ fontSize: '0.68rem', padding: '2px 8px', borderRadius: '10px', background: 'rgba(255,255,255,0.05)', color: '#777', border: '1px solid rgba(255,255,255,0.1)' }}>
-                                UPCOMING
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
+                  {/* Node 2 */}
+                  <div className="timeline-sphere-node">
+                    <div className="timeline-sphere-globe active">
+                      <img 
+                        src={hologramEarthImg} 
+                        alt="Earth Node 2" 
+                        referrerPolicy="no-referrer" 
+                        className="timeline-earth-icon active"
+                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div className="timeline-node-info">
+                      <div className="timeline-node-title">Registration Ends</div>
+                      <div className="timeline-node-date">Oct 15, 2026</div>
+                    </div>
+                  </div>
+
+                  {/* Node 3 */}
+                  <div className="timeline-sphere-node">
+                    <div className="timeline-sphere-globe inactive">
+                      <img 
+                        src={hologramEarthImg} 
+                        alt="Earth Node 3" 
+                        referrerPolicy="no-referrer" 
+                        className="timeline-earth-icon inactive"
+                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', filter: 'grayscale(100%) opacity(40%)' }}
+                      />
+                    </div>
+                    <div className="timeline-node-info">
+                      <div className="timeline-node-title inactive">Concept Qualifier</div>
+                      <div className="timeline-node-date">Oct 18, 2026</div>
+                    </div>
+                  </div>
+
+                  {/* Node 4 */}
+                  <div className="timeline-sphere-node">
+                    <div className="timeline-sphere-globe inactive">
+                      <img 
+                        src={hologramEarthImg} 
+                        alt="Earth Node 4" 
+                        referrerPolicy="no-referrer" 
+                        className="timeline-earth-icon inactive"
+                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', filter: 'grayscale(100%) opacity(40%)' }}
+                      />
+                    </div>
+                    <div className="timeline-node-info">
+                      <div className="timeline-node-title inactive">Hardware Phase (Offline)</div>
+                      <div className="timeline-node-date">Oct 23, 2026</div>
+                    </div>
+                  </div>
+
+                  {/* Node 5 */}
+                  <div className="timeline-sphere-node">
+                    <div className="timeline-sphere-globe inactive">
+                      <img 
+                        src={hologramEarthImg} 
+                        alt="Earth Node 5" 
+                        referrerPolicy="no-referrer" 
+                        className="timeline-earth-icon inactive"
+                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', filter: 'grayscale(100%) opacity(40%)' }}
+                      />
+                    </div>
+                    <div className="timeline-node-info">
+                      <div className="timeline-node-title inactive">Software Sprint (Offline)</div>
+                      <div className="timeline-node-date">Oct 24, 2026</div>
+                    </div>
+                  </div>
 
                 </div>
               </div>
@@ -1799,11 +1801,11 @@ export default function App() {
           {/* ==========================================
              PAGE 5: PRIZES
              ========================================== */}
-          <section id="prizes" style={{ width: '100%', padding: '0px 20px', position: 'relative', overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <section id="prizes" style={{ width: '100%', padding: 0, position: 'relative', overflow: 'hidden' }}>
             <img 
               src={prizesBannerImg} 
               alt="30K Prize Pool" 
-              style={{ width: '100%', maxWidth: '1000px', height: 'auto', maxHeight: '450px', display: 'block', objectFit: 'contain', margin: '0 auto' }}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
               referrerPolicy="no-referrer"
             />
           </section>
@@ -2035,6 +2037,15 @@ export default function App() {
                   <h4 style={{ fontFamily: 'var(--font-display)', color: '#fff', fontSize: '1.25rem', fontWeight: 800, margin: '0 0 6px 0', textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>{faculty.name}</h4>
                   <span style={{ color: 'var(--accent-green)', fontSize: '0.82rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)', fontWeight: 600, letterSpacing: '1px', textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}>{faculty.role}</span>
                 </div>
+
+                <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.15)', paddingTop: '15px', display: 'flex', gap: '8px', marginTop: '16px' }}>
+                  <a href={`mailto:${faculty.email}`} title="Send Email" className="team-social-btn" style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none' }}>
+                    <Mail size={13} />
+                  </a>
+                  <a href={faculty.linkedin} target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" className="team-social-btn" style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none' }}>
+                    <Linkedin size={13} />
+                  </a>
+                </div>
               </div>
             </div>
           ))}
@@ -2049,11 +2060,28 @@ export default function App() {
                 coordinatorName: "OUR ANOTHER FACULTY",
                 coordinatorRole: "Faculty Integrator",
                 coordinatorAvatar: "",
-                members: [
-                  { name: "Dr. Rajeev Kumar", role: "Faculty Integrator", email: "rajeev.kumar@uem.edu.in", initials: "RK" },
-                  { name: "Prof. Dr. Mohua Bej", role: "Faculty Integrator", email: "mohua.bej@uem.edu.in", initials: "MB" },
-                  { name: "Dr. Sudipta Das", role: "Faculty Integrator", email: "sudipta.das@uem.edu.in", initials: "SD" }
-                ]
+               members: [
+ 
+  { name: "Prof. (Dr.) Arpita Das", role: "Faculty Integrator", email: "", initials: "APD" },
+ 
+  { name: "Prof. Debanjana Ghosh", role: "Faculty Integrator", email: "", initials: "DG" },
+  { name: "Prof. Rimi Sengupta", role: "Faculty Integrator", email: "", initials: "RSG" },
+  { name: "Prof. Karunamayee Dey", role: "Faculty Integrator", email: "", initials: "KD" },
+  { name: "Prof. Sohom Chakraborty", role: "Faculty Integrator", email: "", initials: "SCH" },
+  { name: "Prof. Mandar Chakrabarti", role: "Faculty Integrator", email: "", initials: "MNC" },
+  { name: "Prof. (Dr.) Maumita Das", role: "Faculty Integrator", email: "", initials: "MMD" },
+  { name: "Prof. (Dr.) Ayan Chatterjee", role: "Faculty Integrator", email: "", initials: "AYC" },
+  { name: "Prof. (Dr.) Sudipta Ghosh", role: "Faculty Integrator", email: "", initials: "SGH" },
+  { name: "Prof. (Dr.) Subhajit Das", role: "Faculty Integrator", email: "", initials: "SBD" },
+  { name: "Prof. Prakash Banerjee", role: "Faculty Integrator", email: "", initials: "PB" },
+  { name: "Prof. (Dr.) Rijhi Dey", role: "Faculty Integrator", email: "", initials: "RJD" },
+  { name: "Prof. Somnath Garai", role: "Faculty Integrator", email: "", initials: "SG" },
+  { name: "Sanchita Sarkar", role: "Faculty Integrator", email: "", initials: "SCS" },
+  { name: "Prof. Saikat Biswas", role: "Faculty Integrator", email: "", initials: "SKB" },
+  { name: "Prof. (Dr.) Pramita Nath", role: "Faculty Integrator", email: "", initials: "PRN" },
+  { name: "Prof. (Dr.) Arpita Biswas", role: "Faculty Integrator", email: "", initials: "ARB" }
+  
+]
               });
               window.scrollTo({ top: 0, behavior: 'instant' });
             }}
@@ -2091,17 +2119,17 @@ export default function App() {
               role: "Organizing Lead",
               src: abhiraj,
               initials: "AS",
-              instagram: "https://www.instagram.com/ig__abhirajsaha/",
-              linkedin: "http://www.linkedin.com/in/abhirajsaha",
+              email: "abhirajsaha543@gmail.com",
+              linkedin: "https://linkedin.com",
               desc: "Directing organizational sprints, team alignments, and industrial mentor linkages."
             },
             {
               name: "Debdip Ghosh",
               role: "Organizing Lead",
-              src: debdip,
+              src:debdip,
               initials: "DG",
-              instagram: "https://www.instagram.com/chiiku_x?igsh=aW9hbWtzM3hlcmFu",
-              linkedin: "https://www.linkedin.com/in/debdipghosh28?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+              email: "debdip.ghosh@gmail.com",
+              linkedin: "https://linkedin.com",
               desc: "Commanding hardware lab operations, micro-controllers assembly setups, and dev kits distribution."
             },
             {
@@ -2109,7 +2137,7 @@ export default function App() {
               role: "Organizing Lead",
               src: shibangi,
               initials: "SB",
-              instagram: "https://instagram.com",
+              email: "shibangi.bose@gmail.com",
               linkedin: "https://linkedin.com",
               desc: "Managing institutional collaborations, public relations campaigns, and event hosting schedules."
             }
@@ -2145,26 +2173,10 @@ export default function App() {
                 </div>
 
                 <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.15)', paddingTop: '15px', display: 'flex', gap: '8px', marginTop: '16px' }}>
-                  <a 
-                    href={(lead as Record<string, any>).instagram || "https://instagram.com"} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    title="Instagram Profile" 
-                    className="team-social-btn" 
-                    style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none', cursor: 'pointer', zIndex: 10 }}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <Instagram size={13} />
+                  <a href={`mailto:${lead.email}`} title="Send Email" className="team-social-btn" style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none' }}>
+                    <Mail size={13} />
                   </a>
-                  <a 
-                    href={lead.linkedin.startsWith('http') ? lead.linkedin : `https://${lead.linkedin}`} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    title="LinkedIn Profile" 
-                    className="team-social-btn" 
-                    style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none', cursor: 'pointer', zIndex: 10 }}
-                    onClick={(e) => e.stopPropagation()}
-                  >
+                  <a href={lead.linkedin} target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" className="team-social-btn" style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none' }}>
                     <Linkedin size={13} />
                   </a>
                 </div>
@@ -2181,11 +2193,11 @@ export default function App() {
           {[
             {
               name: "Subhankar Das Adhikary",
-              role: "Web Development Executive",
+              role: "Web Developer Executive",
               src: subhankar,
               initials: "SD",
-              instagram: "https://instagram.com",
-              linkedin: "https://linkedin.com/in/subhankar-das-adhikary-196144299",
+              email: "subhankardasadhikary2005@gmail.com",
+              linkedin: "https://www.linkedin.com/in/subhankar-das-adhikary-a4b555320/",
               desc: "Architecting core platform architecture, responsive system frameworks, and secure cloud handshakes."
             },
             {
@@ -2193,8 +2205,8 @@ export default function App() {
               role: "Graphics Executive",
               src: rohitaswa,
               initials: "RS",
-              instagram: "https://www.instagram.com/measuredwrath?igsh=MWI3c2piYWgzMGZoOA==",
-              linkedin: "https://www.linkedin.com/in/rohitaswa-singha-b46ba4318?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+              email: "rohitaswa.singha2024@uem.edu.in",
+              linkedin: "https://www.linkedin.com/in/rohitaswa-singha-b46ba4318/",
               desc: "Designing top tier visual interfaces, dark mode color grading schemas, vector mockups, and assets."
             },
             {
@@ -2202,44 +2214,53 @@ export default function App() {
               role: "Sponsorship Executive",
               src: rajdeb,
               initials: "RP",
-              instagram: "https://www.instagram.com/pixelcoder_raj?igsh=MTZlNzUxam8zbXQ=",
-              linkedin: "https://www.linkedin.com/in/rajdeb-pal-716249288?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+              email: "rajdebpal@gmail.com",
+              linkedin: "https://linkedin.com",
               desc: "Coordinating strategic partner networks, resource allocations, and corporate sponsor pools."
             },
             {
               name: "Raunak Dasgupta",
-              role: "Social Media Executive",
+              role: "Social Media Lead",
               src: raunak,
               initials: "RD",
-              instagram: "https://www.instagram.com/raunak.dg?igsh=Mml5cnZjZHdhYWow",
-              linkedin: "https://www.linkedin.com/in/raunak-dasgupta-3817b631a?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+              email: "raunak.dasgupta2024@uem.edu.in",
+              linkedin: "https://www.instagram.com/shivamsingh_6439?igsh=MWg4am5yd2RyYjh5bg==",
               desc: "Synchronizing community outreach broadcasts, interactive social threads, and engagement tracks."
+            },
+            // {
+            //   name: "Maupriya Pramanik",
+            //   role: "Decoration Lead",
+            //   src:maupriya,
+            //   initials: "MP",
+            //   email: "maupriyapramanik@gmail.com",
+            //   linkedin: "https://linkedin.com",
+            //   desc: "Managing offline ambient lighting blueprints, physical venue layouts, and immersive installation plans."
+            // },
+            {
+              name: "Daliya Paul",
+              role: "Sponsership Manager",
+              src: dalia,
+              initials: "SC",
+              email: "Daliyapaul05@gmail.com ",
+              linkedin: "https://www.linkedin.com/in/daliya-paul-4b80393a9?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+              desc: "Directing user experience blueprints, high contrast layout hierarchies, and accessible flows."
             },
             {
               name: "Shivam Singh",
-              role: "Decoration Executive",
+              role: "Decoration",
               src: shivam,
               initials: "PS",
-              instagram: "https://www.instagram.com/shivamsingh_6439/?__pwa=1",
-              linkedin: "https://www.linkedin.com/in/shivam-singh-2638a4308/",
+              email: "shivam54singh1@gmail.com ",
+              linkedin: "https://www.linkedin.com/in/shivam-singh-2638a4308?utm_source=share_via&utm_content=profile&utm_medium=member_android",
               desc: "Supervising venue micro-logistics, catering syncs, hardware kits distribution, and communications."
             },
-            {
+             {
               name: "Akan Sarkar",
-              role: "Treasurer",
-              src: ankan,
+              role: "Treasuer",
+              src:ankan,
               initials: "PS",
-              instagram: "https://instagram.com",
-              linkedin: "https://www.linkedin.com/in/ankan-sarkar-391005325",
-              desc: "Supervising venue micro-logistics, catering syncs, hardware kits distribution, and communications."
-            },
-            {
-              name: "Daliya Paul ",
-              role: "sponsorship manager",
-              src: dalia,
-              initials: "PS",
-              instagram: "https://www.instagram.com/_daliya_here?igsh=MXZqb3E1Y2EweHprbA==",
-              linkedin: "https://www.linkedin.com/in/daliya-paul-4b80393a9?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+              email: "ankan28aug@gmail.com",
+              linkedin: " https://www.linkedin.com/in/ankan-sarkar-391005325/",
               desc: "Supervising venue micro-logistics, catering syncs, hardware kits distribution, and communications."
             }
           ].map((coord, idx) => (
@@ -2275,26 +2296,10 @@ export default function App() {
 
                 <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.15)', paddingTop: '15px', display: 'flex', gap: '8px', marginTop: '16px', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ display: 'flex', gap: '8px' }}>
-                    <a 
-                      href={(coord as Record<string, any>).instagram || "https://instagram.com"} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      title="Instagram Profile" 
-                      className="team-social-btn" 
-                      style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none', cursor: 'pointer', zIndex: 10 }}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Instagram size={13} />
+                    <a href={`mailto:${coord.email}`} title="Send Email" className="team-social-btn" style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none' }}>
+                      <Mail size={13} />
                     </a>
-                    <a 
-                      href={coord.linkedin.startsWith('http') ? coord.linkedin : `https://${coord.linkedin}`} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      title="LinkedIn Profile" 
-                      className="team-social-btn" 
-                      style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none', cursor: 'pointer', zIndex: 10 }}
-                      onClick={(e) => e.stopPropagation()}
-                    >
+                    <a href={coord.linkedin} target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" className="team-social-btn" style={{ background: 'rgba(0, 0, 0, 0.6)', border: 'none' }}>
                       <Linkedin size={13} />
                     </a>
                   </div>
@@ -2374,7 +2379,7 @@ export default function App() {
       {/* ==========================================
          PARTNERS & SPONSORS GRID
          ========================================== */}
-      <section className="benefit-rail" id="sponsors" style={{ background: 'rgba(5, 15, 8, 0.45)' }}>
+      <section id="sponsors" className="benefit-rail" style={{ background: 'rgba(5, 15, 8, 0.45)', scrollMarginTop: '90px' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '45px' }}>
             <span className="overline">ECOSYSTEM SUPPORT</span>
@@ -2428,14 +2433,6 @@ export default function App() {
         <div className="footer-grid" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
           {/* Contacts Block */}
           <div className="footer-news" style={{ gap: '15px' }}>
-            <div style={{ marginBottom: '5px' }}>
-              <img 
-                src={footerLogoImg} 
-                alt="FusioniX Footer Logo" 
-                style={{ height: '70px', width: 'auto', display: 'block', objectFit: 'contain', filter: 'none', boxShadow: 'none' }}
-                referrerPolicy="no-referrer"
-              />
-            </div>
             <h3 className="news-title" style={{ color: 'var(--accent-green)' }}>FUSIONIX EVENT HELPLINE</h3>
             <p className="news-desc">
               Have critical inquiries regarding kits, streams, guidelines, or accommodations? Reach out straight to our organizing chairs:
@@ -2444,15 +2441,15 @@ export default function App() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.90rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Phone size={14} className="glow-text-green" />
-                <span><strong>Abhiraj Saha:</strong> +91 6003150816</span>
+                <span><strong>Abhiraj Saha:</strong> +91 70631 94265</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Phone size={14} className="glow-text-green" />
-                <span><strong>Debdip Ghosh:</strong> +91 9883923300</span>
+                <span><strong>Debdip Ghosh:</strong> +91 98765 43210</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Phone size={14} className="glow-text-green" />
-                <span><strong>Shibangi Bose:</strong> +91 9474387252</span>
+                <span><strong>Shibangi Bose:</strong> +91 91234 56789</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--accent-blue)' }}>
                 <Mail size={14} />
@@ -2466,18 +2463,18 @@ export default function App() {
             <div className="links-group">
               <h4 className="links-title">EVENT LINKS</h4>
               <ul className="footer-link-list">
-                <li><a href="#home" onClick={(e) => handleNavClick('home', e)}>Home Base</a></li>
-                <li><a href="#about" onClick={(e) => handleNavClick('about', e)}>About Hub</a></li>
-                <li><a href="#tracks" onClick={(e) => handleNavClick('tracks', e)}>Domain Tracks</a></li>
-                <li><a href="#rules" onClick={(e) => handleNavClick('rules', e)}>Participation Code</a></li>
+                <li><a href="#home">Home Base</a></li>
+                <li><a href="#about">About Hub</a></li>
+                <li><a href="#tracks">Domain Tracks</a></li>
+                <li><a href="#rules">Participation Code</a></li>
               </ul>
             </div>
             <div className="links-group">
               <h4 className="links-title">RESOURCES</h4>
               <ul className="footer-link-list">
-                <li><a href="#timeline" onClick={(e) => handleNavClick('timeline', e)}>Chronogram</a></li>
-                <li><a href="#team" onClick={(e) => handleNavClick('team', e)}>Teamintegrators</a></li>
-                <li><a href="#faq" onClick={(e) => handleNavClick('faq', e)}>FAQ Hub</a></li>
+                <li><a href="#timeline">Chronogram</a></li>
+                <li><a href="#team">Teamintegrators</a></li>
+                <li><a href="#faq">FAQ Hub</a></li>
                 <li><a href="#home" onClick={(e) => { e.preventDefault(); alert("FusioniX Sustainable Whitepaper Draft mapped safely."); }}>Sustech Sheet</a></li>
               </ul>
             </div>
@@ -2486,14 +2483,14 @@ export default function App() {
           {/* Google Iframe Map block */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
             <h4 className="news-title">VENUE SCHEMATIC MAP</h4>
-            <div style={{ width: '100%', height: '160px', borderRadius: '6px', overflow: 'hidden', border: '1px solid rgba(0, 255, 102, 0.25)' }}>
+            <div style={{ width: '100%', height: '140px', borderRadius: '6px', overflow: 'hidden', border: '1px solid rgba(0, 255, 102, 0.25)' }}>
               <iframe 
                 title="UEM Kolkata Campus Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7050975.039442342!2d76.8005661631284!3d24.792843495139202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a020b267a3cdc13%3A0xb3b21d652126f40!2sUniversity%20of%20Engineering%20%26%20Management%2C%20Kolkata%20(UEM)!5e1!3m2!1sen!2sin!4v1784659877883!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.2811197945763!2d88.48774787597148!3d22.56860363312015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1m3!1d3684!2d88.4903332!3d22.5685833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!1m3!2m1!2sUniversity%20of%20Engineering%20%26%20Management%20Kolkata!5e0!3m2!1sen!2sin!4v1714589254321!5m2!1sen!2sin" 
                 style={{ border: 'none', width: '100%', height: '100%', filter: 'invert(90%) hue-rotate(120deg) contrast(110%) brightness(95%)' }}
-                allowFullScreen={true} 
+                allowFullScreen={false} 
                 loading="lazy" 
-                referrerPolicy="strict-origin-when-cross-origin"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
             <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
@@ -2508,7 +2505,7 @@ export default function App() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             <div style={{ display: 'flex', gap: '15px' }}>
               <a 
-                href="https://www.instagram.com/fusionix.26" 
+                href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 title="Instagram"
@@ -2524,7 +2521,7 @@ export default function App() {
                 <Instagram size={18} />
               </a>
               <a 
-                href="https://www.linkedin.com/company/fusionix-26/" 
+                href="https://linkedin.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 title="LinkedIn"
