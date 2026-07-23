@@ -1828,6 +1828,29 @@ body {
   width: 100%;
 }
 
+.team-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.85);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  z-index: 10;
+}
+
+.team-social-btn:hover {
+  background: #e1306c !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) scale(1.08);
+  box-shadow: 0 0 10px rgba(225, 48, 108, 0.5);
+}
+
 /* Corner bracket elements */
 .team-card-corners::before,
 .team-card-corners::after {
@@ -2277,17 +2300,17 @@ body {
 
 .timeline-grid-layout {
   display: grid;
-  grid-template-columns: repeat(5, minmax(180px, 1fr));
-  gap: 24px;
-  min-width: 1000px;
+  grid-template-columns: repeat(6, minmax(160px, 1fr));
+  gap: 20px;
+  min-width: 1100px;
   position: relative;
 }
 
 .timeline-track-line {
   position: absolute;
   top: 25px; /* Center aligned vertically with the 50px sphere */
-  left: 10%;
-  right: 10%;
+  left: 8%;
+  right: 8%;
   height: 3px;
   background: linear-gradient(90deg, #00ff66 0%, #22c55e 50%, rgba(255, 255, 255, 0.15) 100%);
   z-index: 1;
@@ -2449,12 +2472,27 @@ body {
   transition: all 0.3s ease;
 }
 
+/* Hero Countdown Timer Wrapper */
+.hero-timer-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 180px auto 0;
+  z-index: 12;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .hero-timer-wrapper {
+    margin: 30px auto 0;
+  }
+}
+
 /* Responsive Countdown Trapezoid Wrapper */
 .countdown-trapezoid-outer {
-  background: #84ec30; /* Neon green border background */
+  background: transparent; /* Removed border background */
   clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-  padding: 2px;
-  box-shadow: 0 0 35px rgba(132, 236, 48, 0.35);
+  padding: 0px;
+  box-shadow: none;
   transition: all 0.3s ease;
 }
 
@@ -2471,24 +2509,51 @@ body {
 }
 
 @media (max-width: 768px) {
+  .hero-timer-wrapper {
+    margin: 24px auto 0;
+    padding: 0 10px;
+  }
+  .countdown-trapezoid-outer {
+    clip-path: polygon(0 0, 100% 0, 97% 100%, 3% 100%);
+  }
+  .countdown-trapezoid-inner {
+    clip-path: polygon(0 0, 100% 0, 97% 100%, 3% 100%);
+    padding: 12px 8px;
+    height: auto !important;
+  }
+  .countdown-number {
+    font-size: clamp(1.2rem, 5vw, 1.8rem) !important;
+    line-height: 1.1 !important;
+  }
+  .countdown-label {
+    font-size: clamp(0.58rem, 2.3vw, 0.8rem) !important;
+    letter-spacing: 0.3px !important;
+    margin-top: 2px !important;
+  }
+  .countdown-column:not(:last-child)::after {
+    top: 10%;
+    bottom: 10%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-timer-wrapper {
+    margin: 18px auto 0;
+    padding: 0 6px;
+  }
   .countdown-trapezoid-outer {
     clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
   }
   .countdown-trapezoid-inner {
     clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
-    padding: 12px 3%;
+    padding: 10px 4px;
   }
   .countdown-number {
-    font-size: clamp(1.2rem, 5vw, 1.8rem) !important;
+    font-size: clamp(1.05rem, 4.8vw, 1.35rem) !important;
   }
   .countdown-label {
-    font-size: clamp(0.55rem, 2.2vw, 0.75rem) !important;
-    letter-spacing: 0.5px !important;
-    margin-top: 2px !important;
-  }
-  .countdown-column:not(:last-child)::after {
-    top: 25%;
-    bottom: 25%;
+    font-size: clamp(0.52rem, 2.2vw, 0.7rem) !important;
+    letter-spacing: 0px !important;
   }
 }
 
