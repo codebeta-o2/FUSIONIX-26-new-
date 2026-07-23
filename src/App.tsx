@@ -76,6 +76,7 @@ import roboninjaHeroImg from "./assets/images/Bg.png";
 import prizesBannerImg from "./assets/images/30k.jpg";
 import timerBgImg from "./assets/images/timerBackgroun.jpeg";
 import footerLogoImg from "./assets/images/foter-logo.jpeg";
+import them from "/src/assets/images/THEME.png";
 
 import introVideo from "./assets/images/intro.mp4";
 import mobileIntroVideo from "./assets/images/intro_mobil.mp4";
@@ -1575,7 +1576,7 @@ export default function App() {
              ========================================== */}
           <section id="theme" style={{ width: '100%', padding: '0px 20px', position: 'relative', overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <motion.img 
-              src="/src/assets/images/THEME.png" 
+              src={them} 
               alt="Theme Sustainability" 
               style={{ width: '100%', maxWidth: '1200px', height: 'auto', maxHeight: '550px', display: 'block', objectFit: 'contain', margin: '0 auto' }}
               referrerPolicy="no-referrer"
