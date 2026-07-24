@@ -45,41 +45,45 @@ import {
   VolumeX
 } from 'lucide-react';
 
-// Define safe URL references to static generated assets
-import bg from "./assets/images/roboninja_hero_1781580759799.jpg";
-import shadowXImg from "./assets/images/about_section_robot.png";
-import stealth07Img from "./assets/images/stealth_07_1781580797326.jpg";
-import nighthawkImg from "./assets/images/nighthawk_gold_1781580817851.jpg";
-import cyberVImg from "./assets/images/cyber_v_blue_1781580834832.jpg";
-import targetRobotImg from "./assets/images/target_robot_1781580853723.jpg";
-import hologramEarthImg from "./assets/images/hologram_earth_1783313760796.jpg";
-import animes from "./assets/images/Animes Pharikal (1).png";
-import logoImg from "./assets/images/logo.png";
-import madam from "./assets/images/madam.png";
-import sudip from "./assets/images/sudip.jpg";
-import hod from "./assets/images/HOD.png";
-import abhiraj from "./assets/images/abhiraj.png";
-import debdip from "./assets/images/debdip.png";
-import shibangi from "./assets/images/shibangi.png";
-import subhankar from "./assets/images/subhankar.png";
-import rohitaswa from "./assets/images/rohitaswa.png";
-import rajdeb from "./assets/images/rajdeb.png";
-import maupriya from "./assets/images/maupriya.png";
-import raunak from "./assets/images/raunak.png";
-import dalia from "./assets/images/dalia.png";
-import shivam from "./assets/images/shivam.png";
-import iem from "./assets/images/iem-blac.png";
-import uem from "./assets/images/UEM-BALCK.png";
-import ankan from "./assets/images/Ankan.png";
-import roboninjaHeroImg from "./assets/images/Bg.png";
+import shadowXImg from './assets/images/about_section_robot.png';
+import bg from './assets/images/roboninja_hero_1781580759799.jpg';
+import hologramEarthImg from './assets/images/hologram_earth_1783313760796.jpg';
+import animes from './assets/images/Animes Pharikal (1).png';
+import logoImg from './assets/images/logo.png';
+import madam from './assets/images/madam.png';
+import sudip from './assets/images/sudip.jpg';
+import hod from './assets/images/HOD.png';
+import abhiraj from './assets/images/abhiraj.png';
+import debdip from './assets/images/debdip.png';
+import shibangi from './assets/images/shibangi.png';
+import subhankar from './assets/images/subhankar.png';
+import rohitaswa from './assets/images/rohitaswa.png';
+import rajdeb from './assets/images/rajdeb.png';
+import maupriya from './assets/images/maupriya.png';
+import raunak from './assets/images/raunak.png';
+import dalia from './assets/images/dalia.png';
+import shivam from './assets/images/shivam.png';
+import iem from './assets/images/iem-blac.png';
+import uem from './assets/images/UEM-BALCK.png';
+import ankan from './assets/images/souhardya.png';
+import roboninjaHeroImg from './assets/images/Bg.png';
 
-import prizesBannerImg from "./assets/images/30k.jpg";
-import timerBgImg from "./assets/images/timerBackgroun.jpeg";
-import footerLogoImg from "./assets/images/foter-logo.jpeg";
-import them from "/src/assets/images/THEME.png";
+import prizesBannerImg from './assets/images/30k.jpg';
+import timerBackgroun from './assets/images/timerBackgroun.jpeg';
+import foterLogo from './assets/images/foter-logo.jpeg';
+import brochurePdf from './assets/images/borocer.pdf';
+import themeImg from './assets/images/THEME.png';
 
-import introVideo from "./assets/images/intro.mp4";
-import mobileIntroVideo from "./assets/images/intro_mobil.mp4";
+import introVideo from './assets/images/intro.mp4';
+import mobileIntroVideo from './assets/images/intro_mobil.mp4';
+
+const stealth07Img = roboninjaHeroImg;
+const nighthawkImg = hologramEarthImg;
+const cyberVImg = bg;
+const targetRobotImg = shadowXImg;
+
+const footerLogoImg = foterLogo;
+const timerBgImg = timerBackgroun;
 // Type definitions for Innovation Tracks
 interface InnovationTrack {
   id: string;
@@ -195,34 +199,53 @@ function SmartLogo({ src, alt, fallbackText, className, style }: SmartLogoProps)
 
 const subordinateTeams: Record<string, Array<{ name: string; role: string; email: string; initials: string }>> = {
   "Subhankar Das Adhikary": [
-    { name: "Harsh Gaurav", role: "Assistant Web Developer", email: "aritra.sen@uem.edu.in", initials: "AS" },
-    { name: "Vivak Kumar Shaw", role: "Assistant Web Developer", email: "srinjoy.dutta@uem.edu.in", initials: "SD" },
-    { name: "Sandip jana", role: "Assistant Web Developer", email: "srinjoy.dutta@uem.edu.in", initials: "SD" }
-  ],
+  { name: "Sandip Jana", role: "Web Developer", email: "", initials: "SJ" },
+  { name: "Vivek Kumar Shaw", role: "Web Developer", email: "", initials: "VKS" },
+  { name: "Harsh Gaurav", role: "Web Developer", email: "", initials: "HG" }
+],
   "Rohitaswa Singha": [
-    { name: "Riddhiman Roy", role: "Lead Graphic Artist", email: "riddhiman.roy@uem.edu.in", initials: "RR" },
-    { name: "Anjali Sharma", role: "UI Illustrator", email: "anjali.sharma@uem.edu.in", initials: "AS" }
-  ],
+  { name: "Jiya Sarkar", role: "Graphics Team", email: "", initials: "JS" },
+  { name: "Souhardya Majumdar", role: "Graphics Team", email: "", initials: "SM" },
+  { name: "Soumi Deb Singha", role: "Graphics Team", email: "", initials: "SDS" },
+  { name: "Sandipan Saha", role: "Graphics Team", email: "", initials: "SS" },
+  { name: "Debojeet Banerjee", role: "Graphics Team", email: "", initials: "DB" }
+
+],
   "Rajdeb Pal": [
-    { name: "Sourav Das", role: "Corporate Relations Manager", email: "sourav.das@uem.edu.in", initials: "SD" },
-    { name: "Preeti Kumari", role: "Sponsor Liaison Officer", email: "preeti.kumari@uem.edu.in", initials: "PK" }
-  ],
+  { name: "Debarshi Kar", role: "Student Volunteer", email: "", initials: "DK" },
+  { name: "Subhodeep Nandy", role: "Student Volunteer", email: "", initials: "SN" },
+  { name: "Preyashi Dutta", role: "Student Volunteer", email: "", initials: "PD" },
+  { name: "Sagnik Saha", role: "Student Volunteer", email: "", initials: "SS" },
+  { name: "Kaustav Sarkar", role: "Student Volunteer", email: "", initials: "KS" },
+  { name: "Ishita Singh", role: "Student Volunteer", email: "", initials: "IS" }
+],
   "Raunak Dasgupta": [
-    { name: "Aditya Sen", role: "Social Media Specialist", email: "aditya.sen@uem.edu.in", initials: "AS" },
-    { name: "Riya Ghosh", role: "Engagement Coordinator", email: "riya.ghosh@uem.edu.in", initials: "RG" }
-  ],
-  "Maupriya Pramanik": [
-    { name: "Sohini Roy", role: "Venue Design Assistant", email: "sohini.roy@uem.edu.in", initials: "SR" },
-    { name: "Vikram Malhotra", role: "Material Logistics Executive", email: "vikram.malhotra@uem.edu.in", initials: "VM" }
-  ],
-  "Soham Chatterjee": [
-    { name: "Tamoghna Banerjee", role: "UX Researcher", email: "tamoghna.banerjee@uem.edu.in", initials: "TB" },
-    { name: "Sohini Basu", role: "Product Interaction Designer", email: "sohini.basu@uem.edu.in", initials: "SB" }
-  ],
-  "Piyali Sen": [
-    { name: "Arunima Chowdhury", role: "Public Relations Executive", email: "arunima.chowdhury@uem.edu.in", initials: "AC" },
-    { name: "Rahul Bose", role: "Venue Logistics Coordinator", email: "rahul.bose@uem.edu.in", initials: "RB" }
-  ]
+  { name: "Rongon Das", role: "Social Media & Content", email: "", initials: "RD" },
+  { name: "Purbasha Mallik", role: "Social Media & Content", email: "", initials: "PM" },
+  { name: "Aritra Saha", role: "Social Media & Content", email: "", initials: "AS" },
+  { name: "Rohitaswa Singha", role: "Social Media & Content", email: "", initials: "RS" },
+  { name: "Arpit Mandal", role: "Social Media & Content", email: "", initials: "AM" },
+  { name: "Ankush Sarkar", role: "Social Media & Content", email: "", initials: "AS" },
+  { name: "Mahi Singh", role: "Social Media & Content", email: "", initials: "MS" },
+  { name: "Srijon Iqbal", role: "Social Media & Content", email: "", initials: "SI" },
+  { name: "Ritam Das", role: "Social Media & Content", email: "", initials: "RD" }
+],
+
+  "Shivam Singh":  [
+  { name: "Ishan Ghosh", role: "Decoration Team", email: "", initials: "IG" },
+  { name: "Bidipta Manna", role: "Decoration Team", email: "", initials: "BM" },
+  { name: "Anik Nath", role: "Decoration Team", email: "", initials: "AN" },
+  { name: "Anusua Ray", role: "Decoration Team", email: "", initials: "AR" },
+  { name: "Archisman Parua", role: "Decoration Team", email: "", initials: "AP" },
+  { name: "Srijita Roy", role: "Decoration Team", email: "", initials: "SR" },
+  { name: "Saptaparna Banerjee", role: "Decoration Team", email: "", initials: "SB" },
+  { name: "Debayan Chowdhury", role: "Decoration Team", email: "", initials: "DC" },
+  { name: "Debojyoti Poddar", role: "Decoration Team", email: "", initials: "DP" },
+  { name: "Maupiya Pramanik", role: "Decoration Team", email: "", initials: "MP" },
+  { name: "Bidisha Dutta", role: "Decoration Team", email: "", initials: "BD" },
+  { name: "Roky Ghosh", role: "Decoration Team", email: "", initials: "RG" }
+]
+  
 };
 
 function playSfx(type: 'snap' | 'destroy' | 'click') {
@@ -369,6 +392,7 @@ export default function App() {
     setTimeout(() => {
       let targetId = sectionId;
       if (sectionId === 'teams') targetId = 'team';
+      if (sectionId === 'contact' || sectionId === 'rules-contact-link') targetId = 'contact';
       const element = document.getElementById(targetId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1110,6 +1134,27 @@ export default function App() {
               Teams
             </a>
           </li>
+          <li>
+            <a 
+              href="#contact" 
+              className={`nav-link ${activeMenu === 'contact' ? 'active nav-underlined-active' : ''}`}
+              onClick={(e) => handleNavClick('contact', e)}
+            >
+              Contact Us
+            </a>
+          </li>
+          <li>
+            <a 
+              href={brochurePdf} 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-link"
+              style={{ color: '#ffb703', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', gap: '5px' }}
+            >
+              <FileText size={14} />
+              <span>Brochure</span>
+            </a>
+          </li>
           {mobileMenuOpen && (
             <li style={{ marginTop: '20px' }}>
               <a 
@@ -1316,41 +1361,46 @@ export default function App() {
                   FUSION<span className="glow-text-green">IX'26</span>
                 </h1>
                 <h3 style={{ fontSize: 'clamp(1.3rem, 3vw, 2.2rem)', color: '#00ff66', fontFamily: "'Space Grotesk', sans-serif", fontWeight: 'bold', textShadow: '0 0 10px rgba(0, 255, 102, 0.4)', marginBottom: '15px' }}>
-                  A 24 HOUR HACKATHON
+                  24-HOUR HACKATHON
                 </h3>
                 <p className="hero-desc" style={{ fontSize: '1.25rem', color: '#e2e8f0', maxWidth: '600px', lineHeight: '1.6', marginBottom: '10px' }}>
-                  The Ultimate Sustainable ECE & IOT Innovation Hackathon
+                  
                 </p>
                 <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.98rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '35px', borderLeft: '3px solid var(--accent-green)', paddingLeft: '12px' }}>
                   Organized by: Department Of ECE & CSE ( IOT )
                 </p>
 
-                <div className="hero-btn-group" style={{ flexWrap: 'wrap', gap: '20px' }}>
+                <div className="hero-btn-group" style={{ flexWrap: 'wrap', gap: '15px' }}>
                   <button 
                     className="btn-cyber-solid"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', padding: '15px 35px', fontSize: '1rem', fontWeight: 'bold', background: '#00ff66', color: '#000', border: 'none', borderRadius: '4px', cursor: 'pointer', boxShadow: '0 0 15px rgba(0, 255, 102, 0.45)' }}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', padding: '15px 30px', fontSize: '1rem', fontWeight: 'bold', background: '#00ff66', color: '#000', border: 'none', borderRadius: '4px', cursor: 'pointer', boxShadow: '0 0 15px rgba(0, 255, 102, 0.45)' }}
                     onClick={() => setShowScholarSuggestionModal(true)}
                   >
                     <span>REGISTER</span>
                     <ArrowRight size={18} />
                   </button>
                   <a 
-                    href="#rules-contact-link"
-                    className="btn-cyber-outline"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const footerElement = document.getElementById('rules-contact-link');
-                      if (footerElement) {
-                        footerElement.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 35px', fontSize: '1rem', fontWeight: 'bold', color: '#00ff66', border: '1px solid #00ff66', background: 'rgba(0, 255, 102, 0.05)', borderRadius: '4px', textDecoration: 'none' }}
+                    href={brochurePdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-cyber-solid"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 30px', fontSize: '1rem', fontWeight: 'bold', background: 'rgba(255, 183, 3, 0.15)', color: '#ffb703', border: '1px solid #ffb703', borderRadius: '4px', textDecoration: 'none', boxShadow: '0 0 15px rgba(255, 183, 3, 0.3)', cursor: 'pointer' }}
                   >
+                    <FileText size={18} />
+                    <span>EVENT BROCHURE</span>
+                  </a>
+                  <a 
+                    href="#contact"
+                    className="btn-cyber-outline"
+                    onClick={(e) => handleNavClick('contact', e)}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 30px', fontSize: '1rem', fontWeight: 'bold', color: '#00ff66', border: '1px solid #00ff66', background: 'rgba(0, 255, 102, 0.05)', borderRadius: '4px', textDecoration: 'none', cursor: 'pointer' }}
+                  >
+                    <Phone size={16} />
                     <span>CONTACT US</span>
                   </a>
                   <button 
                     className="btn-cyber-solid"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 35px', fontSize: '1rem', fontWeight: 'bold', background: 'rgba(0, 229, 255, 0.15)', color: 'var(--accent-blue)', border: '1px solid var(--accent-blue)', borderRadius: '4px', cursor: 'pointer', boxShadow: '0 0 15px rgba(0, 229, 255, 0.3)' }}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 30px', fontSize: '1rem', fontWeight: 'bold', background: 'rgba(0, 229, 255, 0.15)', color: 'var(--accent-blue)', border: '1px solid var(--accent-blue)', borderRadius: '4px', cursor: 'pointer', boxShadow: '0 0 15px rgba(0, 229, 255, 0.3)' }}
                     onClick={() => {
                       playSfx('click');
                       setGameModalOpen(true);
@@ -1538,12 +1588,12 @@ export default function App() {
             FusioniX is a 24-hour hackathon by the Departments of ECE and CSE
             (IoT) at the University of Engineering & Management, Kolkata where
             participants transform ideas into real-world solutions through
-            integrated hardware and software innovation. With no fixed domain—
+            integrated hardware and software innovation. With no fixed domain 
             spanning intelligent systems, environmental monitoring, industrial
-            safety, and beyond—teams ideate, design, and prototype across
+            safety, and beyond teams ideate, design, and prototype across
             multiple competitive rounds. Judged on creativity and real-world
             impact, top performers win prizes and cash rewards alongside
-            valuable feedback from industry experts. Full meals provided. At
+            valuable feedback from industry experts. At
             FusioniX, innovation is expected where ideas become solutions.
           </p>
         </div>
@@ -1576,7 +1626,7 @@ export default function App() {
              ========================================== */}
           <section id="theme" style={{ width: '100%', padding: '0px 20px', position: 'relative', overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <motion.img 
-              src={them} 
+              src={themeImg} 
               alt="Theme Sustainability" 
               style={{ width: '100%', maxWidth: '1200px', height: 'auto', maxHeight: '550px', display: 'block', objectFit: 'contain', margin: '0 auto' }}
               referrerPolicy="no-referrer"
@@ -2045,10 +2095,27 @@ export default function App() {
                 coordinatorRole: "Faculty Integrator",
                 coordinatorAvatar: "",
                 members: [
-                  { name: "Dr. Rajeev Kumar", role: "Faculty Integrator", email: "rajeev.kumar@uem.edu.in", initials: "RK" },
-                  { name: "Prof. Dr. Mohua Bej", role: "Faculty Integrator", email: "mohua.bej@uem.edu.in", initials: "MB" },
-                  { name: "Dr. Sudipta Das", role: "Faculty Integrator", email: "sudipta.das@uem.edu.in", initials: "SD" }
-                ]
+  { name: "Prof.(Dr.) Abir Chatterjee", role: "Faculty Integrator", email: "", initials: "AC" },
+  { name: "Prof.(Dr.) Arpita Das", role: "Faculty Integrator", email: "", initials: "APD" },
+  { name: "Prof.(Dr.) Shreya Nag", role: "Faculty Integrator", email: "", initials: "SRN" },
+  { name: "Prof. Debanjana Ghosh", role: "Faculty Integrator", email: "", initials: "DG" },
+  { name: "Prof. Rimi Sengupta", role: "Faculty Integrator", email: "", initials: "RSG" },
+  { name: "Prof. Karunamayee Dey", role: "Faculty Integrator", email: "", initials: "KD" },
+  { name: "Prof. Sohom Chakraborty", role: "Faculty Integrator", email: "", initials: "SCH" },
+  { name: "Prof. Mandar Chakrabarti", role: "Faculty Integrator", email: "", initials: "MNC" },
+  { name: "Prof.(Dr.) Maumita Das", role: "Faculty Integrator", email: "", initials: "MMD" },
+  { name: "Prof.(Dr.) Ayan Chatterjee", role: "Faculty Integrator", email: "", initials: "AYC" },
+  { name: "Prof.(Dr.) Sudipta Ghosh", role: "Faculty Integrator", email: "", initials: "SGH" },
+  { name: "Prof.(Dr.) Subhajit Das", role: "Faculty Integrator", email: "", initials: "SBD" },
+  { name: "Prof. Prakash Banerjee", role: "Faculty Integrator", email: "", initials: "PB" },
+  { name: "Prof.(Dr.) Rijhi Dey", role: "Faculty Integrator", email: "", initials: "RJD" },
+  { name: "Prof. Somnath Garai", role: "Faculty Integrator", email: "", initials: "SG" },
+  { name: "Sanchita Sarkar", role: "Faculty Integrator", email: "", initials: "SCS" },
+  { name: "Prof. Saikat Biswas", role: "Faculty Integrator", email: "", initials: "SKB" },
+  { name: "Prof.(Dr.) Pramita Nath", role: "Faculty Integrator", email: "", initials: "PRN" },
+  { name: "Prof.(Dr.) Arpita Biswas", role: "Faculty Integrator", email: "", initials: "ARB" },
+  { name: "Prof. Saptaparna Ghosh", role: "Faculty Integrator", email: "", initials: "SNG" }
+]
               });
               window.scrollTo({ top: 0, behavior: 'instant' });
             }}
@@ -2170,7 +2237,7 @@ export default function App() {
 
         {/* Key Core Coordinators */}
         <h3 style={{ fontFamily: 'var(--font-display)', color: 'var(--accent-gold)', letterSpacing: '1px', fontSize: '1.24rem', marginBottom: '25px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span>●</span> PROTOCOL COORDINATORS
+          <span>●</span> ORGANIZING COMMITTEE
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '30px' }}>
           {[
@@ -2180,7 +2247,7 @@ export default function App() {
               src: subhankar,
               initials: "SD",
               instagram: "https://instagram.com",
-              linkedin: "https://linkedin.com/in/subhankar-das-adhikary-196144299",
+              linkedin: "www.linkedin.com/in/subhankar-das-adhikary-a4b555320",
               desc: "Architecting core platform architecture, responsive system frameworks, and secure cloud handshakes."
             },
             {
@@ -2220,8 +2287,8 @@ export default function App() {
               desc: "Supervising venue micro-logistics, catering syncs, hardware kits distribution, and communications."
             },
             {
-              name: "Akan Sarkar",
-              role: "Treasurer",
+              name: "Ankan Sarkar",
+              role: "Event Finance Manager",
               src: ankan,
               initials: "PS",
               instagram: "https://instagram.com",
@@ -2230,7 +2297,7 @@ export default function App() {
             },
             {
               name: "Daliya Paul ",
-              role: "sponsorship manager",
+              role: "sponsorship Manager",
               src: dalia,
               initials: "PS",
               instagram: "https://www.instagram.com/_daliya_here?igsh=MXZqb3E1Y2EweHprbA==",
@@ -2295,35 +2362,37 @@ export default function App() {
                   </div>
 
                   {/* Clicking opens subordinate page */}
-                  <button 
-                    onClick={() => {
-                      setViewingSubordinateTeam({
-                        coordinatorName: coord.name,
-                        coordinatorRole: coord.role,
-                        coordinatorAvatar: coord.src,
-                        members: subordinateTeams[coord.name] || []
-                      });
-                      window.scrollTo({ top: 0, behavior: 'instant' });
-                    }}
-                    className="btn-cyber-outline"
-                    style={{
-                      padding: '6px 14px',
-                      fontSize: '0.75rem',
-                      fontWeight: 700,
-                      borderWidth: '1px',
-                      borderRadius: '4px',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      color: 'var(--accent-gold)',
-                      borderColor: 'rgba(255, 183, 3, 0.4)',
-                      background: 'rgba(0, 0, 0, 0.6)',
-                      cursor: 'pointer'
-                    }}
-                  >
-                    <ChevronRight size={12} />
-                    <span>VIEW SQUAD</span>
-                  </button>
+                  {Boolean(subordinateTeams[coord.name]?.length) && (
+                    <button 
+                      onClick={() => {
+                        setViewingSubordinateTeam({
+                          coordinatorName: coord.name,
+                          coordinatorRole: coord.role,
+                          coordinatorAvatar: coord.src,
+                          members: subordinateTeams[coord.name] || []
+                        });
+                        window.scrollTo({ top: 0, behavior: 'instant' });
+                      }}
+                      className="btn-cyber-outline"
+                      style={{
+                        padding: '6px 14px',
+                        fontSize: '0.75rem',
+                        fontWeight: 700,
+                        borderWidth: '1px',
+                        borderRadius: '4px',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        color: 'var(--accent-gold)',
+                        borderColor: 'rgba(255, 183, 3, 0.4)',
+                        background: 'rgba(0, 0, 0, 0.6)',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      <ChevronRight size={12} />
+                      <span>VIEW SQUAD</span>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -2419,7 +2488,8 @@ export default function App() {
       {/* ==========================================
          FOOTER & EMBEDDED GOOGLE MAP VENUE
          ========================================== */}
-      <footer className="footer">
+      <footer className="footer" id="contact">
+        <div id="rules-contact-link" />
         <div className="footer-grid" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
           {/* Contacts Block */}
           <div className="footer-news" style={{ gap: '15px' }}>
@@ -2473,7 +2543,7 @@ export default function App() {
                 <li><a href="#timeline" onClick={(e) => handleNavClick('timeline', e)}>Chronogram</a></li>
                 <li><a href="#team" onClick={(e) => handleNavClick('team', e)}>Teamintegrators</a></li>
                 <li><a href="#faq" onClick={(e) => handleNavClick('faq', e)}>FAQ Hub</a></li>
-                <li><a href="#home" onClick={(e) => { e.preventDefault(); alert("FusioniX Sustainable Whitepaper Draft mapped safely."); }}>Sustech Sheet</a></li>
+                <li><a href={brochurePdf} target="_blank" rel="noopener noreferrer" style={{ color: '#ffb703', fontWeight: 'bold' }}>Event Brochure (PDF)</a></li>
               </ul>
             </div>
           </div>
